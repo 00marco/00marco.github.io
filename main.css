@@ -1,0 +1,56 @@
+@media screen and (min-width: 500px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "search detail"
+      "listview detail"
+      "listview preview"
+      "listview preview";
+    background-color: gray;
+    height: 100%;
+    gap: 10px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .grid {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "search"
+      "listview"
+      "detail"
+      "preview";
+    background-color: gray;
+    height: 100%;
+    width: 100%;
+  }
+}
+.container {
+  background-color: white;
+  /* margin: 10px; */
+  padding: 10px;
+}
+
+.search-div {
+  background-color: white;
+  grid-area: search;
+}
+
+.listview-div {
+  background-color: white;
+  grid-area: listview;
+}
+
+.details-div {
+  background-color: white;
+  grid-area: detail;
+}
+
+.preview-div {
+  background-color: white;
+  grid-area: preview;
+}
