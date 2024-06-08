@@ -2,3 +2,4 @@ baseURL = 'https://00marco.github.io/'
 languageCode = 'en-us'
 title = 'Marco Pulido'
 theme = ["PaperMod"]
+

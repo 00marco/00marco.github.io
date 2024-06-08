@@ -17,12 +17,5 @@
 Every other IDE has some kind of autoformatter to speed up cleaning your code like in Pycharm and VS Code but Jupyter? No. At least by default No.
 Thankfully there&amp;rsquo;s this extension called Jupyter black &amp;ndash; basically when you have it set up it automatically formats a code cell as soon as you run it just like that</description>
     </item>
-    <item>
-      <title>Hello World</title>
-      <link>http://localhost:1313/posts/hello-world/</link>
-      <pubDate>Thu, 06 Jun 2024 21:50:36 +0800</pubDate>
-      <guid>http://localhost:1313/posts/hello-world/</guid>
-      <description>Hello world First post. Settled with Hugo after testing out different static site generators &amp;ndash; the themes are way prettier than anything I&amp;rsquo;ve tried so I&amp;rsquo;m going with this one.</description>
-    </item>
   </channel>
 </rss>

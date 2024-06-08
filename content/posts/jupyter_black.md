@@ -1,8 +1,7 @@
-+++
-title = 'Automatically clean up your Jupyter Notebooks with Jupyter Black'
-date = 2024-06-07T13:22:00+08:00
-draft = false
-+++
+---
+title: 'Automatically clean up your Jupyter Notebooks with Jupyter Black'
+date: 2024-06-07T13:22:00+08:00
+---
 
 One of my biggest gripes about Jupyter Notebooks is that it's so EASY to write dirty and messy code. 
 
