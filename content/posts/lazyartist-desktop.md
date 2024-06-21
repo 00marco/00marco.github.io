@@ -29,15 +29,15 @@ That's it. Dead simple, no AI or whatever. To make things even lazier, the app a
 
 {{<img src="/images/Pasted%20image%2020240621112411.png" caption="The user interface" >}}
 
-(caption: I literally just used [[Custom Tkinter]] for the UI. Not my best work, but this app will be in the background 95% of the time anyway 💀)
+(caption: I literally just used [Custom Tkinter](https://pypi.org/project/customtkinter/) for the UI. Not my best work, but this app will be in the background 95% of the time anyway 💀)
 
 ## Challenges
-This entire thing was mostly a personal challenge where I wanted to see how general purpose Python really is. I have experience with [[Electron JS]] and [[WPF]] -- but at the time I was looking for an easy way to utilize [[OpenCV]]. I chose OpenCV over something like FFMPEG since my wishlist feature for this project include things like automatically postprocessing the images. (giving it a paperlike texture, adjusting the colors, watermarks, [[Glaze]], automatically zooming in on the "interesting" parts of the image ..and so on)
+This entire thing was mostly a personal challenge where I wanted to see how general purpose Python really is. I have experience with [Electron JS](https://www.electronjs.org/) and [WPF](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/getting-started/introduction-to-wpf-in-vs?view=netframeworkdesktop-4.8) -- but at the time I was looking for an easy way to utilize [OpenCV](https://pypi.org/project/opencv-python/). I chose OpenCV over something like [FFMPEG](https://ffmpeg.org/) since I'm hoping to add more intensive postprocessing steps later on.
 
 Sure enough, getting OpenCV to work was easy -- but I ran into way more gotchas than expected just building and packaging the application. Here's a few tips from the top of my head:
 
-- For Python projects I usually use WSL by default -- it's just a muscle memory thing, everything is way easier on Linux. But I got way too many cryptic errors before I realized that building a desktop application for Windows on Linux ...was a pretty stupid decision.
-- With WPF and Electron, I don't remember ever having any issues with creating an installer. At some point, I just got the MSI installer as soon as I built the project and it was over. For this toolset the best I could get was a .exe of the application. It works for me since this is just a personal project anyway -- but the next thing I have to work on now would be to build that installer myself so that (1) Windows doesn't flag this as a virus and (2) Users can just check a box to run the app on startup instead of going through this whole process (LINK)
+- For Python projects I usually use [WSL](https://ubuntu.com/desktop/wsl) by default -- it's just a muscle memory thing, everything is way easier on Linux. But I got way too many cryptic errors before I realized that building a desktop application for Windows on Linux ...was a pretty stupid decision.
+- With WPF and Electron, I don't remember ever having any issues with creating an installer. At some point, I just got the MSI installer as soon as I built the project and it was over. For this toolset the best I could get was a .exe of the application. It works for me since this is just a personal project anyway -- but the next thing I have to work on now would be to build that installer myself so that (1) Windows doesn't flag this as a virus and (2) Users can just check a box to run the app on startup instead of going through [this whole process](https://www.dell.com/support/kbdoc/en-us/000124550/how-to-add-app-to-startup-in-windows-10)
 
 # Closing
 Regardless, the main point of side projects is really just to learn new things about my preferred toolkit and this really served its purpose -- commercializing this would be a fun next step but for now, I'll leave that to future me. Will update this article as I go. Cheers!

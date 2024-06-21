@@ -11,3 +11,6 @@ hugo
 - markdown syntax: https://www.markdownguide.org/basic-syntax/
 - to add images, use {{\<img>}} and storage images in assets folder
 - 
+
+# Development
+- feature branch convention: feature/Trello ticket ID. Example: https://trello.com/c/8wAhg5QC/1-fix-links-in-lazyartist-desktop-article
