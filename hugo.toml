@@ -3,6 +3,16 @@ languageCode = 'en-us'
 title = 'Marco Pulido'
 theme = ["PaperMod"]
 
+[params.homeInfoParams]
+    Title = "Hi there!  👋"
+    Content = "Welcome to my blog! Here, I share insights from my professional journey, explore tech and creativity, and offer inspiration. Join me as we learn and grow together!"
+    
+
+    [[params.socialIcons]]
+        name = "Instagram"
+        url = "https://www.instagram.com/"
+
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.parser]
