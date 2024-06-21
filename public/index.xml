@@ -13,14 +13,16 @@
       <link>http://localhost:1313/posts/lazyartist-desktop/</link>
       <pubDate>Fri, 21 Jun 2024 20:23:51 +0800</pubDate>
       <guid>http://localhost:1313/posts/lazyartist-desktop/</guid>
-      <description>Lorem ipsum dolor sit amet</description>
+      <description>Project showcase for a desktop app I built to help with my painting hobby</description>
     </item>
     <item>
       <title>Automatically clean up your Jupyter Notebooks with Jupyter Black</title>
       <link>http://localhost:1313/posts/jupyter_black/</link>
       <pubDate>Fri, 07 Jun 2024 13:22:00 +0800</pubDate>
       <guid>http://localhost:1313/posts/jupyter_black/</guid>
-      <description>Lorem ipsum dolor sit amet</description>
+      <description>One of my biggest gripes about Jupyter Notebooks is that it&amp;rsquo;s so EASY to write dirty and messy code.
+Every other IDE has some kind of autoformatter to speed up cleaning your code like in Pycharm and VS Code but Jupyter? No. At least by default No.
+Thankfully there&amp;rsquo;s this extension called Jupyter black &amp;ndash; basically when you have it set up it automatically formats a code cell as soon as you run it just like that</description>
     </item>
   </channel>
 </rss>

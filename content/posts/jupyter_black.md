@@ -1,6 +1,5 @@
 ---
 title: 'Automatically clean up your Jupyter Notebooks with Jupyter Black'
-summary: "Lorem ipsum dolor sit amet"
 date: 2024-06-07T13:22:00+08:00
 ---
 

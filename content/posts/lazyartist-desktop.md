@@ -1,6 +1,6 @@
 ---
 title: 'Content creation is boring as hell, so I built an app'
-summary: "Lorem ipsum dolor sit amet"
+summary: "Project showcase for a desktop app I built to help with my painting hobby"
 date: 2024-06-21T20:23:51+08:00
 ---
 
