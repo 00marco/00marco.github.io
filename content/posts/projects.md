@@ -5,35 +5,30 @@ date = 2025-05-31T16:31:29+08:00
 
 # 👋 Welcome to My Project Hub
 
-Here you’ll find the things I’m building to explore creativity, behavior, and automation.
+Here's some non-NDA things I'm working on independently
 
 ---
 
-## 🦝 [Hey Raccoon](https://heyraccoon.com)
+## 🦝 [HeyRaccoon!](https://heyraccoon.com)
 
-**A browser extension to gently curb screen time addiction.**  
-It tracks and visualizes your time on distracting sites so you can build awareness and make better choices—without guilt trips or hard blocks.
+Feel like you need to cut down your screentime but not ready for a site blocker yet? Might want to try at least measuring things first
 
-> _“You can't manage what you don't measure.”_
+Status: ✅ MVP now available at [Chrome Web Store](https://chromewebstore.google.com/detail/heyraccoon-browser-analyt/dpcgngcnhefnffoggbhllcnlnonnegfo)
 
 ---
 
 ## 🎨 [LazyArtist](https://lazyartistwebdemo-5mzkfvzu9w6xigwh7ffbcr.streamlit.app/)
 
-**Turn long art process videos into short, social-ready content.**  
-LazyArtist automatically generates high-quality video clips and image posts from your raw footage—perfect for sharing your work with less effort.
+What if you could just point a camera at yourself, focus on making art and have someone make reels for you?
 
-> _Make more. Edit less._
+Status: 🏗️ MVP ready for personal use (let me know if you're interested!)
 
 ------
 
-## 🎨 [SocmedStats](https://socmedstatsapp.streamlit.app/)
+## 👁️ [CompetitorMonitor](https://socmedstatsapp.streamlit.app/)
+Want to see how your competitions' social media accounts are doing? Did they gain more followers recently? Are they doing a new campaign? Did they get cancelled?
 
-**Turn long art process videos into short, social-ready content.**  
-LazyArtist automatically generates high-quality video clips and image posts from your raw footage—perfect for sharing your work with less effort.
-
-> _Make more. Edit less._
+Status: 🏗️ MVP ready for personal use (let me know if you're interested!)
 
 ---
 
-More coming soon ✌️
