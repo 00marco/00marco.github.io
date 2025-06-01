@@ -16,5 +16,6 @@ date = 2025-05-31T16:31:29+08:00
 
 # 🧑‍🦯 Low-cost assistive device for blind people
 - (Status: 🏗️ Old project, in the middle of recovering it)
-- Way back in 2019, I figured out that the Raspberry Pi 3 Model B could handle a quantized depth estimation model that accepted images as input. That meant it was worth exploring if it was possible to build an assistive device using relatively low cost parts (a webcam, a Raspberry Pi and some earphones) instead of the usual LiDAR sensors that already cost more than all the previously mentioned parts
+- Way back in 2019, I figured out that the Raspberry Pi 3 Model B could handle a quantized depth estimation model that accepted images as input. 
+- That meant it was worth exploring if it was possible to build an assistive device using relatively low cost parts (a webcam, a Raspberry Pi and some earphones) instead of the usual LiDAR sensors that already cost more than all the previously mentioned parts
 - (Article in progress ✍️)
