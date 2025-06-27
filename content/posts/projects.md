@@ -1,7 +1,7 @@
 +++
 title = 'Projects'
 date = 2025-05-31T16:31:29+08:00
-weight: 1
+weight = 1
 +++
 # 🦝 [HeyRaccoon!](https://heyraccoon.com)
 - (Status: ✅ MVP now available at the [Chrome Web Store](https://chromewebstore.google.com/detail/heyraccoon-browser-analyt/dpcgngcnhefnffoggbhllcnlnonnegfo)!)
