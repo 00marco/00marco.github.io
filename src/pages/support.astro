@@ -1,0 +1,43 @@
+---
+import ContentLayout from "../layouts/ContentLayout.astro";
+import { SUPPORT_EMAIL } from "../config";
+
+const supportHref = `mailto:${SUPPORT_EMAIL}?subject=LivingNotes%20Support`;
+---
+
+<ContentLayout
+  title="Support — LivingNotes"
+  description="Get help with LivingNotes for iPhone and iPad."
+  eyebrow="Support"
+  heading="How can we help?"
+  intro="Find a quick answer below, or send us a note. Including your device model and iOS or iPadOS version will help us understand the issue."
+>
+  <section>
+    <h2>Contact support</h2>
+    <p>For questions, feedback, or help with LivingNotes, email us at <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.</p>
+    <a class="contact-button" href={supportHref}>Email LivingNotes support</a>
+  </section>
+
+  <section>
+    <h2>Helpful details to include</h2>
+    <ul>
+      <li>What you were trying to do</li>
+      <li>What happened instead</li>
+      <li>Your iPhone or iPad model</li>
+      <li>Your iOS or iPadOS version</li>
+      <li>A screenshot, if it does not contain anything private</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Common questions</h2>
+    <h3>The app is not behaving as expected</h3>
+    <p>Close and reopen LivingNotes, then check whether an update is available in the App Store. If the problem continues, contact us with the details above.</p>
+
+    <h3>I found a bug or have an idea</h3>
+    <p>We welcome concise reports and suggestions. Tell us what would make LivingNotes more useful to you and how it fits into the way you think or write.</p>
+
+    <h3>I have a question about the terms</h3>
+    <p>Read the <a href="/terms/">LivingNotes terms</a>, then contact support if something is unclear.</p>
+  </section>
+</ContentLayout>

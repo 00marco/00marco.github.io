@@ -1,0 +1,114 @@
+---
+import PlantMark from "../components/PlantMark.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const socialImageURL = Astro.site
+  ? new URL("/images/livingnotes-preview.jpg", Astro.site)
+  : "/images/livingnotes-preview.jpg";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#17251f" />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImageURL} />
+    {canonicalURL && <meta property="og:url" content={canonicalURL} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    {canonicalURL && <link rel="canonical" href={canonicalURL} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap");
+
+  :root {
+    --ink: #f4f1e9;
+    --ink-muted: #b6bbb4;
+    --forest: #17251f;
+    --forest-deep: #101713;
+    --panel: #2f3335;
+    --panel-soft: #383d3e;
+    --line: rgba(235, 238, 229, 0.13);
+    --sage: #8ea486;
+    --sage-light: #b8c4a8;
+    --amber: #e7a52d;
+    --soil: #887465;
+    --serif: "Newsreader", Georgia, serif;
+    --sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--forest-deep);
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 84% 8%, rgba(56, 92, 72, 0.42), transparent 31rem),
+      linear-gradient(180deg, var(--forest) 0%, #121a16 56%, var(--forest-deep) 100%);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--amber);
+    outline-offset: 4px;
+  }
+
+  .plant-mark {
+    flex: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

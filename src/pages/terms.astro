@@ -1,0 +1,61 @@
+---
+import ContentLayout from "../layouts/ContentLayout.astro";
+import { SUPPORT_EMAIL } from "../config";
+---
+
+<ContentLayout
+  title="Terms and Conditions — LivingNotes"
+  description="The basic terms that apply when you use LivingNotes and its website."
+  eyebrow="Terms and conditions"
+  heading="A simple agreement for using LivingNotes."
+  intro="These terms describe the basic rules for using the LivingNotes app and website. By using LivingNotes, you agree to them."
+  updated="October 16, 2026"
+>
+  <section>
+    <h2>1. Using LivingNotes</h2>
+    <p>You may use LivingNotes for your personal, educational, or professional note-taking. You are responsible for how you use the app and for the content you create with it.</p>
+    <p>You must not use LivingNotes to break the law, interfere with the app or website, attempt to gain unauthorized access, or infringe another person’s rights.</p>
+  </section>
+
+  <section>
+    <h2>2. Your notes and content</h2>
+    <p>You keep ownership of the notes and other original content you create. These terms do not give LivingNotes ownership of your work.</p>
+    <p>You are responsible for keeping appropriate copies or backups of important content. Do not rely on LivingNotes as the only copy of information you cannot afford to lose.</p>
+  </section>
+
+  <section>
+    <h2>3. The app and its license</h2>
+    <p>LivingNotes and its design, branding, software, and original materials are protected by intellectual-property laws. You may not copy, resell, reverse engineer, or distribute the app except where applicable law expressly allows it.</p>
+    <p>If you download LivingNotes from Apple’s App Store, the app is licensed—not sold—and Apple’s <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Standard End User License Agreement</a> applies unless a different license is presented with the app.</p>
+  </section>
+
+  <section>
+    <h2>4. Availability and changes</h2>
+    <p>We may update, change, suspend, or discontinue parts of LivingNotes. We aim to keep the app useful and reliable, but we do not promise that it will always be available, uninterrupted, or error-free.</p>
+  </section>
+
+  <section>
+    <h2>5. No warranties</h2>
+    <p>To the extent permitted by law, LivingNotes is provided “as is” and “as available,” without warranties of any kind. Nothing in these terms excludes warranties or consumer rights that cannot legally be excluded.</p>
+  </section>
+
+  <section>
+    <h2>6. Limitation of liability</h2>
+    <p>To the extent permitted by law, LivingNotes will not be liable for indirect, incidental, special, or consequential loss arising from your use of—or inability to use—the app or website. This limitation does not apply where liability cannot legally be limited.</p>
+  </section>
+
+  <section>
+    <h2>7. Ending use</h2>
+    <p>You may stop using LivingNotes at any time. We may restrict access when reasonably necessary to protect the app, its users, or others, or when these terms are materially violated.</p>
+  </section>
+
+  <section>
+    <h2>8. Changes to these terms</h2>
+    <p>We may update these terms as LivingNotes changes. The updated date at the top of this page will show when the terms were last revised. Continued use after an update means the revised terms apply.</p>
+  </section>
+
+  <section>
+    <h2>9. Contact</h2>
+    <p>Questions about these terms can be sent to <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.</p>
+  </section>
+</ContentLayout>

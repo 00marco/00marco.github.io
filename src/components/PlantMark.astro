@@ -1,0 +1,27 @@
+---
+interface Props {
+  size?: number;
+  decorative?: boolean;
+}
+
+const { size = 36, decorative = true } = Astro.props;
+---
+
+<svg
+  class="plant-mark"
+  width={size}
+  height={size}
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden={decorative ? "true" : undefined}
+  role={decorative ? undefined : "img"}
+>
+  {!decorative && <title>LivingNotes</title>}
+  <path d="M24 35V18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M24 26C17 26 12.5 22.3 12.5 16.2C19.3 15.4 23.8 18.8 24 26Z" fill="var(--leaf-left, #76956f)" />
+  <path d="M24 21.5C24.4 14.4 28.7 10.3 35.7 10.5C35.8 17 31.7 21.2 24 21.5Z" fill="var(--leaf-right, #9ab08b)" />
+  <path d="M14.5 34H33.5L31.2 43H16.8L14.5 34Z" fill="var(--pot, #7e6c5c)" />
+  <path d="M13 31.5H35C36.1 31.5 37 32.4 37 33.5C37 34.6 36.1 35.5 35 35.5H13C11.9 35.5 11 34.6 11 33.5C11 32.4 11.9 31.5 13 31.5Z" fill="var(--pot-rim, #9a8470)" />
+</svg>
+
