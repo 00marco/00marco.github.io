@@ -1,4 +1,0 @@
-{
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-20.04", 
-  "remoteUser": "vscode"
-}
