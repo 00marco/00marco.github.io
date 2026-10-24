@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PlantMark from "../components/PlantMark.astro";
+import { SITE_ASSETS } from "../config";
 
 const title = "LivingNotes — Give unfinished ideas time to grow";
 const description = "A calm place to set thoughts aside, let them develop, and return before they fade. Coming soon for iPhone and iPad.";
@@ -41,7 +42,7 @@ const collectionNames = [
         <div class="halo halo-one"></div>
         <div class="halo halo-two"></div>
         <figure class="phone-shot">
-          <img src="/images/livingnotes-iphone.jpg" alt="LivingNotes on iPhone showing a visual garden of note collections" width="768" height="1665" fetchpriority="high" />
+          <img src={SITE_ASSETS.heroPhone.src} alt={SITE_ASSETS.heroPhone.alt} width={SITE_ASSETS.heroPhone.width} height={SITE_ASSETS.heroPhone.height} fetchpriority="high" />
         </figure>
       </div>
     </section>
@@ -51,7 +52,7 @@ const collectionNames = [
         <div class="phone-annotated">
           <p class="phone-label phone-label-card"><span>01</span>A clear place<br />for an idea to wait</p>
           <figure class="decay-phone">
-            <img src="/images/livingnotes-decay-cutout.png" alt="LivingNotes on iPhone showing a caterpillar obscuring a vowel in a note and instructions to press and hold it for two seconds" width="917" height="1715" loading="lazy" />
+            <img src={SITE_ASSETS.decayPhone.src} alt={SITE_ASSETS.decayPhone.alt} width={SITE_ASSETS.decayPhone.width} height={SITE_ASSETS.decayPhone.height} loading="lazy" />
           </figure>
           <p class="phone-label phone-label-decay"><span>02</span>Hold to clear decay<br />and reveal the thought</p>
         </div>

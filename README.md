@@ -40,13 +40,30 @@ The support inbox is also configured in `src/config.ts`. The support and terms p
 
 The included terms are a plain starter, not jurisdiction-specific legal advice. Have qualified counsel review them before relying on them as a custom legal agreement or App Store EULA.
 
-## Screenshots
+## Editing and replacing images
 
-Optimized site images live in `public/images/`:
+Browser-ready image assets live in `public/images/`. All images currently used by the homepage are configured in one place: `src/config.ts` under `SITE_ASSETS`.
 
-- `livingnotes-iphone.jpg` — main iPhone collection screen
-- `livingnotes-ipad.jpg` — iPad collection screen
-- `livingnotes-note.jpg` — focused iPhone note screen
-- `livingnotes-preview.jpg` — social sharing preview
+| File | Where it appears | Format guidance |
+| --- | --- | --- |
+| `livingnotes-iphone.jpg` | Hero phone | JPEG, sRGB |
+| `livingnotes-decay-cutout.png` | Decay/card section | PNG with a genuinely transparent background |
+| `livingnotes-preview.jpg` | Social sharing preview | JPEG, 1200 × 630 px |
+| `favicon.svg` | Browser icon | SVG; stored directly in `public/` |
 
-Preserve the filenames to replace an image without changing the page source. Export replacement JPEGs in sRGB at a quality of roughly 82–88%.
+The following files are retained as source/reference screenshots but are not currently rendered on the homepage: `livingnotes-decay.png`, `livingnotes-ipad.jpg`, and `livingnotes-note.jpg`.
+
+### Fastest replacement workflow
+
+1. Open the existing file from `public/images/` in Photoshop.
+2. Make your edits, or place your replacement artwork into a document with the same canvas dimensions.
+3. Export it back into `public/images/` with the exact same filename, replacing the old exported file.
+4. For JPEGs, export in sRGB at roughly 82–88% quality. For the phone cutout, export as PNG with transparency enabled.
+5. Run `npm run dev` and refresh the browser. If the old image is cached, do a hard refresh.
+6. Run `npm run build` before deploying.
+
+Keeping the same filename and dimensions means no code changes are needed. If you change either, edit the corresponding `src`, `width`, and `height` values in `SITE_ASSETS` inside `src/config.ts`. Width and height should match the exported pixel dimensions; Astro uses them to reserve the correct layout space while the image loads.
+
+Keep layered Photoshop working files outside `public/`—for example in a local `design-source/` folder—and export only flattened web assets into `public/images/`. Files inside `public/` are copied directly into the deployed website.
+
+The large plant grid in the third section is not an image. Its plants, labels, colors, spacing, and fade are generated in `src/pages/index.astro`; edit `collectionNames` near the top of that file to change its labels.
