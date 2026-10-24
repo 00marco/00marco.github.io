@@ -4,20 +4,26 @@ The static marketing site for LivingNotes, built with [Astro](https://astro.buil
 
 ## Local development
 
-This project requires Node.js 22.12 or newer and pnpm 10.
+This project requires Node.js 22.12 or newer. npm is included with Node.js.
 
 ```sh
-pnpm install
-pnpm dev
+npm install
+npm run dev
 ```
 
 Create a production build with:
 
 ```sh
-pnpm build
+npm run build
 ```
 
 The generated site is written to `dist/`. Pushes to `main` build and deploy that directory through `.github/workflows/astro.yaml`.
+
+Preview the production build locally with:
+
+```sh
+npm run preview
+```
 
 ## Launch configuration
 
