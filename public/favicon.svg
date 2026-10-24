@@ -3,6 +3,7 @@
   <path d="M32 45V22" stroke="#e9eee3" stroke-width="3" stroke-linecap="round"/>
   <path d="M32 33c-9 0-15-5-15-13 9-1 15 4 15 13Z" fill="#789673"/>
   <path d="M32 28c1-9 6-14 15-13 0 8-5 13-15 13Z" fill="#a8b99b"/>
+  <path d="M32 23.5c-3.8-3.5-3.6-8.1-.8-12.3 4.6 2.7 5.5 7.5.8 12.3Z" fill="#b9c9ab" transform="rotate(-30 32 23.5)"/>
   <path d="M20 43h24l-3 12H23l-3-12Z" fill="#837061"/>
   <path d="M18 40h28a3 3 0 0 1 0 6H18a3 3 0 0 1 0-6Z" fill="#9b846f"/>
 </svg>

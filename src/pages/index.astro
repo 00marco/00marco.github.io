@@ -2,25 +2,17 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PlantMark from "../components/PlantMark.astro";
 
-const title = "LivingNotes — A place for thoughts to grow";
-const description = "A calm, visual space for notes, ideas, and the thinking that happens between them. Coming soon for iPhone and iPad.";
+const title = "LivingNotes — Give unfinished ideas time to grow";
+const description = "A calm place to set thoughts aside, let them develop, and return before they fade. Coming soon for iPhone and iPad.";
 
-const benefits = [
-  {
-    number: "01",
-    title: "See the shape of your thinking",
-    copy: "Give each subject its own place, then return to the whole landscape whenever you need perspective.",
-  },
-  {
-    number: "02",
-    title: "Write without the noise",
-    copy: "A clear page keeps attention on the thought in front of you—not on managing a complicated system.",
-  },
-  {
-    number: "03",
-    title: "Let ideas develop naturally",
-    copy: "Collect passing thoughts, working notes, and longer reflections without deciding too much up front.",
-  },
+const collectionNames = [
+  "Songs", "Research ideas", "Joke ideas", "Movies", "Books", "Scripts",
+  "Lecture notes", "Journal", "Recipes", "Home projects", "To-do", "Poems",
+  "Story seeds", "Characters", "Experiments", "Questions", "Quotes", "Sketches",
+  "Essays", "Articles", "Podcast ideas", "Game ideas", "Designs", "Trips",
+  "Gift ideas", "Reading list", "Watchlist", "Classes", "Work notes", "Dreams",
+  "Memories", "Garden", "Repairs", "Finances", "Health", "Habits",
+  "Goals", "Events", "Letters", "Photos", "Inventions", "Side projects",
 ];
 ---
 
@@ -36,9 +28,9 @@ const benefits = [
   <main id="top">
     <section class="hero shell" aria-labelledby="hero-title">
       <div class="hero-copy reveal">
-        <p class="eyebrow"><span></span> Notes for independent thought</p>
-        <h1 id="hero-title">Give your thoughts<br /><em>room to grow.</em></h1>
-        <p class="lede">LivingNotes is a calm, visual place to gather ideas, follow them further, and find your way back to what matters.</p>
+        <p class="eyebrow"><span></span> A place for thoughts to wait</p>
+        <h1 id="hero-title">Some ideas need<br /><em>time to take root.</em></h1>
+        <p class="lede">LivingNotes is a parking lot for unfinished thoughts—a place to keep songs, stories, research questions, and experiments without forcing them to be finished before they’re ready.</p>
         <div class="hero-actions">
           <p class="launch-badge"><small>In development</small>Coming soon</p>
           <span class="platform-note">For iPhone and iPad</span>
@@ -48,49 +40,64 @@ const benefits = [
       <div class="hero-visual reveal" aria-label="LivingNotes shown on iPhone">
         <div class="halo halo-one"></div>
         <div class="halo halo-two"></div>
-        <div class="sprout-card" aria-hidden="true">
-          <PlantMark size={54} />
-          <span>One thought at a time</span>
-        </div>
         <figure class="phone-shot">
           <img src="/images/livingnotes-iphone.jpg" alt="LivingNotes on iPhone showing a visual garden of note collections" width="768" height="1665" fetchpriority="high" />
         </figure>
       </div>
     </section>
 
-    <section class="product-section shell" id="inside" aria-labelledby="inside-title">
-      <div class="section-heading">
-        <p class="eyebrow"><span></span> A different view of your notes</p>
-        <h2 id="inside-title">Your ideas, arranged<br />like a living collection.</h2>
-        <p>Move between the wider view and the page in front of you. LivingNotes keeps both close at hand.</p>
-      </div>
+    <section class="incubation" aria-labelledby="incubation-title">
+      <div class="shell incubation-inner">
+        <div class="phone-annotated">
+          <p class="phone-label phone-label-card"><span>01</span>A clear place<br />for an idea to wait</p>
+          <figure class="decay-phone">
+            <img src="/images/livingnotes-decay-cutout.png" alt="LivingNotes on iPhone showing a caterpillar obscuring a vowel in a note and instructions to press and hold it for two seconds" width="917" height="1715" loading="lazy" />
+          </figure>
+          <p class="phone-label phone-label-decay"><span>02</span>Hold to clear decay<br />and reveal the thought</p>
+        </div>
 
-      <div class="device-stage">
-        <div class="stage-glow" aria-hidden="true"></div>
-        <figure class="tablet-shot">
-          <img src="/images/livingnotes-ipad.jpg" alt="LivingNotes on iPad showing named collections represented as plants" width="1600" height="1112" loading="lazy" />
-        </figure>
-        <figure class="note-shot">
-          <img src="/images/livingnotes-note.jpg" alt="A focused note open in LivingNotes on iPhone" width="640" height="1387" loading="lazy" />
-        </figure>
+        <div class="incubation-copy">
+          <p class="eyebrow eyebrow-dark"><span></span> Ideas don’t run on deadlines</p>
+          <h2 id="incubation-title">You can’t rush a truly new idea.</h2>
+          <p class="incubation-intro">Effort matters. But some things only become clear after you stop pushing: the missing lyric, the turn in a story, the research question worth asking, the experiment you haven’t quite found yet.</p>
+
+          <div class="thought-examples" aria-label="Examples of ideas that need time">
+            <span>A melody</span>
+            <span>A story turn</span>
+            <span>A research question</span>
+            <span>An experiment</span>
+          </div>
+
+        </div>
       </div>
     </section>
 
-    <section class="benefits shell" aria-label="Benefits">
-      {benefits.map((benefit) => (
-        <article class="benefit">
-          <span class="benefit-number">{benefit.number}</span>
-          <PlantMark size={42} />
-          <h3>{benefit.title}</h3>
-          <p>{benefit.copy}</p>
-        </article>
-      ))}
+    <section class="product-section shell" id="inside" aria-labelledby="inside-title">
+      <div class="section-heading">
+        <p class="eyebrow"><span></span> The card is the container</p>
+        <h2 id="inside-title">Unfinished thoughts,<br />given a shape.</h2>
+        <p>Cards keep ideas distinct without isolating them. Add what you know, leave room for what you don’t, and see the whole collection at once.</p>
+      </div>
+
+      <div class="plant-field" role="img" aria-label="A wide grid of LivingNotes plants fading softly toward its edges">
+        {collectionNames.map((name, index) => (
+          <span class={`collection-plant plant-${(index % 6) + 1}`} aria-hidden="true">
+            <i class="leaf leaf-a"></i>
+            <i class="leaf leaf-b"></i>
+            <i class="leaf leaf-c"></i>
+            <i class="leaf leaf-d"></i>
+            <i class="stem"></i>
+            <i class="pot"></i>
+            <small>{name}</small>
+          </span>
+        ))}
+      </div>
     </section>
 
     <section class="closing shell" aria-labelledby="closing-title">
       <div class="closing-mark" aria-hidden="true"><PlantMark size={82} /></div>
       <p class="eyebrow centered"><span></span> Begin with a thought <span></span></p>
-      <h2 id="closing-title">Make a little space<br />for what’s on your mind.</h2>
+      <h2 id="closing-title">Not every thought needs<br />an answer today.</h2>
       <p>LivingNotes is coming soon for iPhone and iPad.</p>
       <p class="launch-badge launch-badge-light"><small>In development</small>Coming soon</p>
     </section>
@@ -285,163 +292,263 @@ const benefits = [
     border-radius: 35px;
   }
 
-  .sprout-card {
-    position: absolute;
-    z-index: 3;
-    right: 4%;
-    bottom: 13%;
-    display: flex;
+  .incubation {
+    color: #26302a;
+    background:
+      radial-gradient(circle at 50% 42%, rgba(155, 202, 161, 0.2), transparent 24rem),
+      #f7f5ef;
+  }
+
+  .incubation-inner {
+    display: grid;
+    grid-template-columns: minmax(440px, 500px) minmax(0, 1fr);
+    gap: clamp(38px, 5vw, 76px);
     align-items: center;
-    gap: 10px;
-    padding: 13px 16px 13px 11px;
-    color: #243029;
-    background: #d8dfce;
-    border-radius: 18px;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    padding-block: 78px;
+  }
+
+  .eyebrow-dark {
+    justify-content: flex-start;
+    color: #68816a;
+  }
+
+  .incubation h2 {
+    max-width: 650px;
+    color: #262a27;
+    font-size: clamp(2.35rem, 4vw, 4.2rem);
+    line-height: 0.98;
+  }
+
+  .incubation-intro {
+    max-width: 620px;
+    margin: 22px 0 0;
+    color: #606761;
+    font-size: clamp(0.96rem, 1.25vw, 1.08rem);
+    line-height: 1.55;
+  }
+
+  .thought-examples {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+    margin: 24px 0 28px;
+  }
+
+  .thought-examples span {
+    padding: 7px 11px;
+    color: #526454;
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(67, 91, 71, 0.14);
+    border-radius: 999px;
+    font-size: 0.72rem;
+  }
+
+  .phone-annotated {
+    position: relative;
+    width: 100%;
+    min-height: 610px;
+    display: grid;
+    place-items: center;
+  }
+
+  .decay-phone {
+    width: min(300px, 64%);
+    margin: 0 auto;
+    filter: drop-shadow(0 24px 28px rgba(28, 36, 30, 0.18));
+  }
+
+  .decay-phone img {
+    width: 100%;
+  }
+
+  .phone-label {
+    position: absolute;
+    z-index: 1;
+    margin: 0;
+    color: #527158;
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .phone-label span {
+    display: block;
+    margin-bottom: 4px;
+    color: #8cab90;
     font-family: var(--serif);
-    font-size: 1rem;
+    font-size: 0.82rem;
+    font-weight: 400;
+  }
+
+  .phone-label::after {
+    position: absolute;
+    top: 30px;
+    width: 54px;
+    height: 1px;
+    background: #80a486;
+    content: "";
+  }
+
+  .phone-label::before {
+    position: absolute;
+    top: 27px;
+    width: 7px;
+    height: 7px;
+    background: #80a486;
+    border-radius: 50%;
+    content: "";
+  }
+
+  .phone-label-card {
+    bottom: 27%;
+    left: -18px;
+    text-align: right;
+  }
+
+  .phone-label-card::after {
+    left: calc(100% + 10px);
+  }
+
+  .phone-label-card::before {
+    left: calc(100% + 61px);
+  }
+
+  .phone-label-decay {
+    top: 31%;
+    right: -18px;
+    text-align: left;
+  }
+
+  .phone-label-decay::after {
+    right: calc(100% + 10px);
+  }
+
+  .phone-label-decay::before {
+    right: calc(100% + 61px);
   }
 
   .product-section {
-    padding-block: 112px 118px;
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(480px, 1.18fr);
+    gap: clamp(48px, 7vw, 100px);
+    align-items: center;
+    min-height: 766px;
+    padding-block: 78px;
     border-top: 1px solid var(--line);
   }
 
   .section-heading {
-    display: grid;
-    grid-template-columns: 1fr 0.55fr;
-    column-gap: 40px;
-    align-items: end;
-    margin-bottom: 64px;
+    display: block;
+    margin: 0;
   }
 
   .section-heading .eyebrow {
-    grid-column: 1 / -1;
+    margin-bottom: 22px;
   }
 
-  h2 {
-    font-size: clamp(3rem, 5.4vw, 5.5rem);
+  .section-heading h2 {
+    font-size: clamp(2.65rem, 4.3vw, 4.6rem);
+    line-height: 1;
   }
 
   .section-heading > p:last-child {
-    max-width: 400px;
-    margin: 0 0 7px auto;
+    max-width: 480px;
+    margin: 24px 0 0;
     color: var(--ink-muted);
-    line-height: 1.7;
+    font-size: clamp(0.96rem, 1.25vw, 1.08rem);
+    line-height: 1.55;
   }
 
-  .device-stage {
+  .plant-field {
     position: relative;
-    min-height: 585px;
-    padding: 7% 10% 0;
-    background: linear-gradient(140deg, rgba(58, 78, 66, 0.7), rgba(35, 45, 40, 0.45));
-    border: 1px solid var(--line);
-    border-radius: 38px;
-    overflow: hidden;
-  }
-
-  .device-stage::before {
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(rgba(201, 215, 196, 0.11) 1px, transparent 1px);
-    background-size: 22px 22px;
-    content: "";
-    mask-image: linear-gradient(to bottom, black, transparent 75%);
-  }
-
-  .stage-glow {
-    position: absolute;
-    top: -35%;
-    right: 5%;
-    width: 500px;
-    height: 500px;
-    background: rgba(123, 158, 116, 0.2);
-    border-radius: 50%;
-    filter: blur(80px);
-  }
-
-  .tablet-shot {
-    position: relative;
-    z-index: 1;
-    width: min(830px, 78%);
-    margin: 0;
-    padding: 9px;
-    background: #171b19;
-    border: 1px solid rgba(236, 239, 230, 0.21);
-    border-radius: 26px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.38);
-    transform: rotate(-1.5deg);
-  }
-
-  .tablet-shot img {
-    border-radius: 18px;
-  }
-
-  .note-shot {
-    position: absolute;
-    z-index: 2;
-    right: 8%;
-    bottom: -14%;
-    width: 205px;
-    margin: 0;
-    padding: 7px;
-    background: #121614;
-    border: 1px solid rgba(236, 239, 230, 0.2);
-    border-radius: 30px;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-    transform: rotate(3.5deg);
-  }
-
-  .note-shot img {
-    border-radius: 23px;
-  }
-
-  .benefits {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    gap: 18px 16px;
+    width: 100%;
+    height: 610px;
+    padding: 18px;
+    overflow: hidden;
+    background: radial-gradient(circle at center, rgba(67, 91, 71, 0.08), transparent 68%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 38%, rgba(0, 0, 0, 0.82) 61%, transparent 95%);
+    mask-image: radial-gradient(ellipse at center, #000 38%, rgba(0, 0, 0, 0.82) 61%, transparent 95%);
   }
 
-  .benefit {
+  .collection-plant {
     position: relative;
-    padding: 64px 42px 70px;
+    display: block;
+    width: 58px;
+    height: 58px;
+    place-self: center;
+    transform: scale(var(--plant-scale, 1));
   }
 
-  .benefit + .benefit {
-    border-left: 1px solid var(--line);
-  }
-
-  .benefit-number {
+  .collection-plant i {
     position: absolute;
-    top: 25px;
-    right: 28px;
-    color: #67716a;
-    font-family: var(--serif);
-    font-size: 0.9rem;
+    display: block;
   }
 
-  .benefit :global(.plant-mark) {
-    margin-bottom: 32px;
-    color: #5c785d;
+  .collection-plant .leaf {
+    z-index: 2;
+    width: 25px;
+    height: 14px;
+    background: linear-gradient(145deg, #789477, #526c57);
+    border-radius: 8px;
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.13), 0 4px 8px rgba(0, 0, 0, 0.13);
   }
 
-  .benefit h3 {
-    max-width: 280px;
-    margin: 0 0 17px;
-    font-family: var(--serif);
-    font-size: clamp(1.55rem, 2.2vw, 2.2rem);
-    font-weight: 400;
-    letter-spacing: -0.025em;
-    line-height: 1.12;
+  .leaf-a { top: 7px; left: 17px; }
+  .leaf-b { top: 18px; left: 7px; transform: rotate(-4deg); }
+  .leaf-c { top: 18px; right: 5px; transform: rotate(5deg); }
+  .leaf-d { top: 28px; left: 17px; }
+
+  .collection-plant .stem {
+    z-index: 1;
+    top: 24px;
+    left: 28px;
+    width: 3px;
+    height: 20px;
+    background: #5f6d51;
   }
 
-  .benefit p {
-    max-width: 300px;
-    margin: 0;
-    color: var(--ink-muted);
-    font-size: 0.91rem;
-    line-height: 1.7;
+  .collection-plant .pot {
+    bottom: 2px;
+    left: 18px;
+    width: 24px;
+    height: 12px;
+    background: linear-gradient(#796a5e 0 25%, #5f534c 25%);
+    border-radius: 2px 2px 7px 7px;
+  }
+
+  .collection-plant small {
+    position: absolute;
+    top: 62px;
+    left: 50%;
+    width: 86px;
+    color: #8f9991;
+    font-size: 0.56rem;
+    font-weight: 500;
+    line-height: 1.15;
+    text-align: center;
+    white-space: nowrap;
+    transform: translateX(-50%);
+  }
+
+  .plant-2 { --plant-scale: 0.82; }
+  .plant-3 { --plant-scale: 1.08; }
+  .plant-4 { --plant-scale: 0.72; }
+  .plant-5 { --plant-scale: 0.92; }
+  .plant-6 { --plant-scale: 1.14; }
+
+  .plant-3 .leaf-a,
+  .plant-6 .leaf-c {
+    background: linear-gradient(145deg, #a3a25c, #6d8258);
+  }
+
+  .plant-4 .leaf-d,
+  .plant-6 .leaf-b {
+    background: linear-gradient(145deg, #a7653e, #7d5f44);
   }
 
   .closing {
@@ -546,30 +653,38 @@ const benefits = [
       width: 320px;
     }
 
-    .sprout-card {
-      right: 17%;
+    .incubation-inner {
+      grid-template-columns: minmax(350px, 390px) minmax(0, 1fr);
+      gap: 30px;
+    }
+
+    .phone-label-card {
+      left: -8px;
+    }
+
+    .phone-label-decay {
+      right: -8px;
     }
 
     .section-heading {
-      grid-template-columns: 1fr;
+      margin: 0;
     }
 
     .section-heading > p:last-child {
-      margin: 26px 0 0;
+      margin: 22px 0 0;
     }
 
-    .device-stage {
-      min-height: 480px;
-      padding-inline: 5%;
+    .product-section {
+      grid-template-columns: minmax(0, 0.8fr) minmax(340px, 1.2fr);
+      gap: 30px;
     }
 
-    .tablet-shot {
-      width: 85%;
+    .plant-field {
+      height: 540px;
+      gap: 12px 8px;
+      padding-inline: 0;
     }
 
-    .benefit {
-      padding-inline: 24px;
-    }
   }
 
   @media (max-width: 680px) {
@@ -623,14 +738,57 @@ const benefits = [
       width: 272px;
     }
 
-    .sprout-card {
-      right: 1%;
-      bottom: 8%;
-      font-size: 0.9rem;
+    .product-section {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      min-height: auto;
+      padding-block: 64px 70px;
     }
 
-    .product-section {
-      padding-block: 90px 100px;
+    .incubation-inner {
+      grid-template-columns: 1fr;
+      gap: 42px;
+      padding-block: 64px 70px;
+    }
+
+    .phone-annotated {
+      width: min(100%, 440px);
+      min-height: 560px;
+      margin-inline: auto;
+    }
+
+    .incubation h2 {
+      max-width: 520px;
+      font-size: clamp(2.25rem, 10vw, 3.2rem);
+    }
+
+    .thought-examples {
+      margin-bottom: 24px;
+    }
+
+    .decay-phone {
+      width: min(270px, 72vw);
+      margin-inline: auto;
+    }
+
+    .phone-label-card {
+      left: 0;
+    }
+
+    .phone-label-decay {
+      right: 0;
+    }
+
+    .phone-label::after {
+      width: 34px;
+    }
+
+    .phone-label-card::before {
+      left: calc(100% + 41px);
+    }
+
+    .phone-label-decay::before {
+      right: calc(100% + 41px);
     }
 
     h2 {
@@ -638,53 +796,22 @@ const benefits = [
     }
 
     .section-heading {
-      margin-bottom: 44px;
+      margin: 0;
     }
 
-    .device-stage {
-      min-height: 360px;
-      padding: 10% 3% 0;
-      border-radius: 24px;
+    .section-heading h2 {
+      font-size: clamp(2.5rem, 12vw, 3.75rem);
     }
 
-    .tablet-shot {
-      width: 94%;
-      padding: 5px;
-      border-radius: 15px;
+    .plant-field {
+      height: 450px;
+      gap: 4px;
+      margin-inline: -10px;
+      width: calc(100% + 20px);
     }
 
-    .tablet-shot img {
-      border-radius: 10px;
-    }
-
-    .note-shot {
-      right: 2%;
-      bottom: -10%;
-      width: 118px;
-      padding: 4px;
-      border-radius: 19px;
-    }
-
-    .note-shot img {
-      border-radius: 15px;
-    }
-
-    .benefits {
-      grid-template-columns: 1fr;
-    }
-
-    .benefit {
-      padding: 56px 20px 58px;
-    }
-
-    .benefit + .benefit {
-      border-top: 1px solid var(--line);
-      border-left: 0;
-    }
-
-    .benefit h3,
-    .benefit p {
-      max-width: 420px;
+    .collection-plant small {
+      font-size: 0.52rem;
     }
 
     .closing {
