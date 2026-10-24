@@ -85,18 +85,18 @@ const logoPlantPots = new Map([
 const decaySteps = [
   {
     title: "Notice the yellow",
+    description: "A yellowing plant means its notes need attention.",
     image: SITE_ASSETS.decayWorkflow[0],
   },
   {
-    title: "Open the note",
-    image: SITE_ASSETS.decayWorkflow[1],
-  },
-  {
-    title: "Hold the caterpillar",
+    title: "Hold to clear",
+    description: "Press and hold the caterpillar to reveal the vowel.",
+    note: "Your text is only hidden—it is never deleted or damaged.",
     image: SITE_ASSETS.decayWorkflow[2],
   },
   {
-    title: "Read it whole again",
+    title: "Clean again",
+    description: "One vowel on each decaying card is covered every day.",
     image: SITE_ASSETS.decayWorkflow[3],
   },
 ];
@@ -133,14 +133,6 @@ const decaySteps = [
 
     <section class="incubation" aria-labelledby="incubation-title">
       <div class="shell incubation-inner">
-        <div class="phone-annotated">
-          <p class="phone-label phone-label-card"><span>01</span>A clear place<br />for an idea to wait</p>
-          <figure class="decay-phone">
-            <img src={SITE_ASSETS.decayPhone.src} alt={SITE_ASSETS.decayPhone.alt} width={SITE_ASSETS.decayPhone.width} height={SITE_ASSETS.decayPhone.height} loading="lazy" />
-          </figure>
-          <p class="phone-label phone-label-decay"><span>02</span>Hold to clear decay<br />and reveal the thought</p>
-        </div>
-
         <div class="incubation-copy">
           <p class="eyebrow eyebrow-dark"><span></span> Ideas don’t run on deadlines</p>
           <h2 id="incubation-title">You can’t rush a truly new idea.</h2>
@@ -152,26 +144,20 @@ const decaySteps = [
             <span>A research question</span>
             <span>An experiment</span>
           </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="decay-workflow" aria-labelledby="decay-workflow-title">
-      <div class="shell workflow-inner">
-        <div class="workflow-heading">
-          <p class="eyebrow"><span></span> A small reason to return</p>
-          <h2 id="decay-workflow-title">Bring a fading thought back.</h2>
-          <p>Decay turns revisiting a note into a brief, deliberate ritual.</p>
         </div>
 
         <ol class="workflow-steps">
           {decaySteps.map((step, index) => (
-            <li class="workflow-step">
+            <li class={`workflow-step workflow-step-${index + 1}`}>
               <figure class="workflow-shot">
                 <img src={step.image.src} alt={step.image.alt} width={step.image.width} height={step.image.height} loading="lazy" />
+                <figcaption class="workflow-callout">
+                  <strong><span>{String(index + 1).padStart(2, "0")}</span>{step.title}</strong>
+                  <span>{step.description}</span>
+                  {step.note && <small>{step.note}</small>}
+                </figcaption>
+                {index === 1 && <p class="workflow-collection-callout">Each plant is a collection of notes.</p>}
               </figure>
-              <h3 class="step-title"><span>STEP {index + 1}:</span> {step.title}</h3>
             </li>
           ))}
         </ol>
@@ -420,20 +406,23 @@ const decaySteps = [
   }
 
   .incubation-inner {
-    display: grid;
-    grid-template-columns: minmax(440px, 500px) minmax(0, 1fr);
-    gap: clamp(38px, 5vw, 76px);
-    align-items: center;
-    padding-block: 78px;
+    padding-block: 82px 104px;
   }
 
   .eyebrow-dark {
-    justify-content: flex-start;
+    justify-content: center;
     color: #68816a;
   }
 
+  .incubation-copy {
+    max-width: 780px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
   .incubation h2 {
-    max-width: 650px;
+    max-width: 720px;
+    margin-inline: auto;
     color: #262a27;
     font-size: clamp(2.35rem, 4vw, 4.2rem);
     line-height: 0.98;
@@ -441,7 +430,7 @@ const decaySteps = [
 
   .incubation-intro {
     max-width: 620px;
-    margin: 22px 0 0;
+    margin: 22px auto 0;
     color: #606761;
     font-size: clamp(0.96rem, 1.25vw, 1.08rem);
     line-height: 1.55;
@@ -450,9 +439,9 @@ const decaySteps = [
   .thought-examples {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 8px;
-    margin: 24px 0 28px;
+    margin: 24px 0 0;
   }
 
   .thought-examples span {
@@ -464,127 +453,11 @@ const decaySteps = [
     font-size: 0.72rem;
   }
 
-  .phone-annotated {
-    position: relative;
-    width: 100%;
-    min-height: 610px;
-    display: grid;
-    place-items: center;
-  }
-
-  .decay-phone {
-    width: min(300px, 64%);
-    margin: 0 auto;
-    filter: drop-shadow(0 24px 28px rgba(28, 36, 30, 0.18));
-  }
-
-  .decay-phone img {
-    width: 100%;
-  }
-
-  .phone-label {
-    position: absolute;
-    z-index: 1;
-    margin: 0;
-    color: #527158;
-    font-size: 0.72rem;
-    font-weight: 600;
-    line-height: 1.35;
-  }
-
-  .phone-label span {
-    display: block;
-    margin-bottom: 4px;
-    color: #8cab90;
-    font-family: var(--serif);
-    font-size: 0.82rem;
-    font-weight: 400;
-  }
-
-  .phone-label::after {
-    position: absolute;
-    top: 30px;
-    width: 54px;
-    height: 1px;
-    background: #80a486;
-    content: "";
-  }
-
-  .phone-label::before {
-    position: absolute;
-    top: 27px;
-    width: 7px;
-    height: 7px;
-    background: #80a486;
-    border-radius: 50%;
-    content: "";
-  }
-
-  .phone-label-card {
-    bottom: 27%;
-    left: -18px;
-    text-align: right;
-  }
-
-  .phone-label-card::after {
-    left: calc(100% + 10px);
-  }
-
-  .phone-label-card::before {
-    left: calc(100% + 61px);
-  }
-
-  .phone-label-decay {
-    top: 31%;
-    right: -18px;
-    text-align: left;
-  }
-
-  .phone-label-decay::after {
-    right: calc(100% + 10px);
-  }
-
-  .phone-label-decay::before {
-    right: calc(100% + 61px);
-  }
-
-  .decay-workflow {
-    background:
-      radial-gradient(circle at 50% 10%, rgba(115, 149, 112, 0.13), transparent 34rem),
-      #202723;
-    border-top: 1px solid rgba(235, 238, 229, 0.1);
-    border-bottom: 1px solid var(--line);
-  }
-
-  .workflow-inner {
-    padding-block: 104px 112px;
-  }
-
-  .workflow-heading {
-    max-width: 720px;
-    margin-bottom: 58px;
-  }
-
-  .workflow-heading h2 {
-    max-width: 680px;
-    font-size: clamp(2.65rem, 4.8vw, 4.8rem);
-    line-height: 1;
-  }
-
-  .workflow-heading > p:last-child {
-    margin: 22px 0 0;
-    color: var(--ink-muted);
-    font-size: clamp(0.96rem, 1.25vw, 1.08rem);
-    line-height: 1.55;
-  }
-
   .workflow-steps {
-    --workflow-gap: clamp(18px, 2.4vw, 32px);
-    position: relative;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--workflow-gap);
-    margin: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(12px, 2vw, 28px);
+    margin: 64px 0 0;
     padding: 0;
     list-style: none;
   }
@@ -594,35 +467,152 @@ const decaySteps = [
     min-width: 0;
   }
 
-  .step-title {
-    margin: 5px 0 0;
-    color: #dfe7dc;
-    font-family: var(--sans);
-    font-size: clamp(0.72rem, 0.95vw, 0.86rem);
-    font-weight: 500;
-    line-height: 1.3;
-    text-align: center;
-    letter-spacing: 0;
-  }
-
-  .step-title span {
-    color: #8cab90;
-    font-size: 0.8em;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-  }
-
   .workflow-shot {
-    width: 100%;
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 470px;
     margin: 0;
-    filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.24));
   }
 
   .workflow-shot img {
     display: block;
-    width: 100%;
+    width: min(215px, 56%);
     aspect-ratio: 917 / 1715;
     object-fit: contain;
+    filter: drop-shadow(0 24px 28px rgba(28, 36, 30, 0.18));
+  }
+
+  .workflow-callout {
+    position: absolute;
+    z-index: 1;
+    width: min(112px, 30%);
+    color: #527158;
+    font-size: 0.72rem;
+    line-height: 1.38;
+  }
+
+  .workflow-callout strong,
+  .workflow-callout > span,
+  .workflow-callout small {
+    display: block;
+  }
+
+  .workflow-callout strong {
+    margin-bottom: 5px;
+    color: #3f5e45;
+    font-size: 0.8rem;
+    font-weight: 650;
+  }
+
+  .workflow-callout strong span {
+    display: block;
+    margin-bottom: 3px;
+    color: #8cab90;
+    font-family: var(--serif);
+    font-size: 0.82rem;
+    font-weight: 400;
+  }
+
+  .workflow-callout small {
+    margin-top: 7px;
+    color: #7b847d;
+    font-size: 0.62rem;
+    line-height: 1.35;
+  }
+
+  .workflow-callout::after {
+    position: absolute;
+    top: 31px;
+    width: clamp(52px, 6vw, 82px);
+    height: 1px;
+    background: #80a486;
+    content: "";
+  }
+
+  .workflow-callout::before {
+    position: absolute;
+    top: 28px;
+    width: 7px;
+    height: 7px;
+    background: #80a486;
+    border-radius: 50%;
+    content: "";
+  }
+
+  .workflow-step-1 .workflow-callout {
+    left: -44px;
+    text-align: right;
+  }
+
+  .workflow-step-1 .workflow-callout {
+    top: 25%;
+  }
+
+  .workflow-step-3 .workflow-callout {
+    top: 56%;
+  }
+
+  .workflow-step-1 .workflow-callout::after {
+    left: calc(100% + 10px);
+  }
+
+  .workflow-step-1 .workflow-callout::before {
+    left: calc(100% + 10px + clamp(49px, 6vw, 79px));
+  }
+
+  .workflow-step-2 .workflow-callout,
+  .workflow-step-3 .workflow-callout {
+    right: -44px;
+    text-align: left;
+  }
+
+  .workflow-step-2 .workflow-callout {
+    top: 16%;
+  }
+
+  .workflow-step-2 .workflow-callout::after,
+  .workflow-step-3 .workflow-callout::after {
+    right: calc(100% + 10px);
+  }
+
+  .workflow-step-2 .workflow-callout::before,
+  .workflow-step-3 .workflow-callout::before {
+    right: calc(100% + 10px + clamp(49px, 6vw, 79px));
+  }
+
+  .workflow-collection-callout {
+    position: absolute;
+    bottom: 12%;
+    left: -44px;
+    width: min(112px, 30%);
+    margin: 0;
+    color: #527158;
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: right;
+  }
+
+  .workflow-collection-callout::before {
+    position: absolute;
+    top: 10px;
+    left: calc(100% + 10px);
+    width: clamp(52px, 6vw, 82px);
+    height: 1px;
+    background: #80a486;
+    content: "";
+  }
+
+  .workflow-collection-callout::after {
+    position: absolute;
+    top: 7px;
+    left: calc(100% + 10px + clamp(49px, 6vw, 79px));
+    width: 7px;
+    height: 7px;
+    background: #80a486;
+    border-radius: 50%;
+    content: "";
   }
 
   .product-section {
@@ -808,17 +798,6 @@ const decaySteps = [
     to { opacity: 1; transform: translateY(0); }
   }
 
-  @media (max-width: 1000px) {
-    .workflow-steps {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      row-gap: 52px;
-    }
-
-    .workflow-shot {
-      max-width: 340px;
-    }
-  }
-
   @media (max-width: 900px) {
     .hero {
       grid-template-columns: 1fr;
@@ -837,17 +816,52 @@ const decaySteps = [
       width: 285px;
     }
 
-    .incubation-inner {
-      grid-template-columns: minmax(350px, 390px) minmax(0, 1fr);
-      gap: 30px;
+    .workflow-steps {
+      column-gap: 16px;
     }
 
-    .phone-label-card {
-      left: -8px;
+    .workflow-shot {
+      min-height: 470px;
     }
 
-    .phone-label-decay {
-      right: -8px;
+    .workflow-shot img {
+      width: min(225px, 58%);
+    }
+
+    .workflow-callout {
+      width: min(145px, 30%);
+      font-size: 0.68rem;
+    }
+
+    .workflow-step-1 .workflow-callout,
+    .workflow-collection-callout {
+      left: -34px;
+    }
+
+    .workflow-step-2 .workflow-callout,
+    .workflow-step-3 .workflow-callout {
+      right: -34px;
+    }
+
+    .workflow-callout::after {
+      width: 42px;
+    }
+
+    .workflow-collection-callout::before {
+      width: 42px;
+    }
+
+    .workflow-step-1 .workflow-callout::before {
+      left: calc(100% + 49px);
+    }
+
+    .workflow-step-2 .workflow-callout::before,
+    .workflow-step-3 .workflow-callout::before {
+      right: calc(100% + 49px);
+    }
+
+    .workflow-collection-callout::after {
+      left: calc(100% + 49px);
     }
 
     .section-heading {
@@ -941,15 +955,7 @@ const decaySteps = [
     }
 
     .incubation-inner {
-      grid-template-columns: 1fr;
-      gap: 42px;
-      padding-block: 64px 70px;
-    }
-
-    .phone-annotated {
-      width: min(100%, 440px);
-      min-height: 560px;
-      margin-inline: auto;
+      padding-block: 64px 76px;
     }
 
     .incubation h2 {
@@ -961,61 +967,23 @@ const decaySteps = [
       margin-bottom: 24px;
     }
 
-    .decay-phone {
-      width: min(270px, 72vw);
-      margin-inline: auto;
-    }
-
-    .phone-label-card {
-      left: 0;
-    }
-
-    .phone-label-decay {
-      right: 0;
-    }
-
-    .phone-label::after {
-      width: 34px;
-    }
-
-    .phone-label-card::before {
-      left: calc(100% + 41px);
-    }
-
-    .phone-label-decay::before {
-      right: calc(100% + 41px);
-    }
-
-    .workflow-inner {
-      padding-block: 76px 84px;
-    }
-
-    .workflow-heading {
-      margin-bottom: 44px;
-    }
-
-    .workflow-heading h2 {
-      font-size: clamp(2.45rem, 11.5vw, 3.55rem);
-    }
-
     .workflow-steps {
       grid-template-columns: 1fr;
-      gap: 50px;
-    }
-
-    .workflow-step {
-      display: block;
+      gap: 42px;
+      margin-top: 48px;
     }
 
     .workflow-shot {
-      width: min(100%, 330px);
-      margin-inline: auto;
+      min-height: 500px;
     }
 
-    .step-title {
-      width: min(100%, 330px);
-      margin-inline: auto;
-      margin-top: 5px;
+    .workflow-shot img {
+      width: min(235px, 51%);
+    }
+
+    .workflow-callout {
+      width: min(150px, 31%);
+      font-size: 0.7rem;
     }
 
     h2 {
@@ -1062,6 +1030,80 @@ const decaySteps = [
 
     .footer-links {
       gap: 14px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .workflow-shot {
+      min-height: 405px;
+    }
+
+    .workflow-shot img {
+      width: 178px;
+    }
+
+    .workflow-callout {
+      width: 96px;
+      font-size: 0.62rem;
+      line-height: 1.3;
+    }
+
+    .workflow-callout strong {
+      font-size: 0.7rem;
+    }
+
+    .workflow-callout small {
+      font-size: 0.56rem;
+    }
+
+    .workflow-step-1 .workflow-callout {
+      left: 0;
+    }
+
+    .workflow-step-2 .workflow-callout,
+    .workflow-step-3 .workflow-callout {
+      right: 0;
+    }
+
+    .workflow-step-1 .workflow-shot img {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    .workflow-step-2 .workflow-shot img,
+    .workflow-step-3 .workflow-shot img {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    .workflow-callout::after {
+      width: 14px;
+    }
+
+    .workflow-step-1 .workflow-callout::before {
+      left: calc(100% + 21px);
+    }
+
+    .workflow-step-2 .workflow-callout::before,
+    .workflow-step-3 .workflow-callout::before {
+      right: calc(100% + 21px);
+    }
+
+    .workflow-collection-callout {
+      right: 0;
+      left: auto;
+      text-align: left;
+    }
+
+    .workflow-collection-callout::before {
+      right: calc(100% + 10px);
+      left: auto;
+      width: 14px;
+    }
+
+    .workflow-collection-callout::after {
+      right: calc(100% + 21px);
+      left: auto;
     }
   }
 </style>
