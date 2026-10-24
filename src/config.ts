@@ -19,6 +19,32 @@ export const SITE_ASSETS = {
     height: 1715,
     alt: "LivingNotes on iPhone showing a caterpillar obscuring a vowel in a note and instructions to press and hold it for two seconds",
   },
+  decayWorkflow: [
+    {
+      src: "/images/decay-step-1-garden.png",
+      width: 917,
+      height: 1715,
+      alt: "LivingNotes garden with a yellowing plant indicating a collection that needs attention",
+    },
+    {
+      src: "/images/decay-step-2-open-note.png",
+      width: 917,
+      height: 1715,
+      alt: "An affected note opened in LivingNotes",
+    },
+    {
+      src: "/images/decay-step-3-hold.png",
+      width: 917,
+      height: 1715,
+      alt: "A caterpillar obscuring a vowel with instructions to press and hold it for two seconds",
+    },
+    {
+      src: "/images/decay-step-4-repaired.png",
+      width: 917,
+      height: 1715,
+      alt: "The LivingNotes card repaired with its complete text visible again",
+    },
+  ],
   socialPreview: {
     src: "/images/livingnotes-preview.jpg",
     width: 1200,
