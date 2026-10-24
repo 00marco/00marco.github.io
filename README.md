@@ -73,3 +73,5 @@ The four `decay-step-*.png` files currently use normalized placeholder exports f
 Keep layered Photoshop working files outside `public/`—for example in a local `design-source/` folder—and export only flattened web assets into `public/images/`. Files inside `public/` are copied directly into the deployed website.
 
 The large plant grid in the third section is not an image. Its plants, labels, colors, spacing, and fade are generated in `src/pages/index.astro`; edit `collectionNames` near the top of that file to change its labels.
+
+The plant grid uses the transparent exports in `public/images/plants/`, copied from `ExportedAssets/Plants/`. The page deterministically shuffles foliage stages 0, 2, 3, 4, and 5 across all 5 pot designs, so the arrangement looks varied without jumping around between page loads. Foliage stage 1 is intentionally excluded. Four spaced-out plants use the 10%, 25%, 50%, and 100% decay exports, six additional plants have a randomized selection of yellow leaves, and four hybrids combine the exported pots with the LivingNotes logo seedling.

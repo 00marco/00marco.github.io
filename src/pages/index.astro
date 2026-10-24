@@ -16,6 +16,63 @@ const collectionNames = [
   "Goals", "Events", "Letters", "Photos", "Inventions", "Side projects",
 ];
 
+const plantCombinations = [0, 2, 3, 4, 5].flatMap((foliage) =>
+  Array.from({ length: 5 }, (_, pot) => ({ foliage, pot })),
+);
+
+// Shuffle complete decks so every allowed design gets used before it repeats.
+const shuffledPlantDeck = (seed: number) => {
+  const deck = [...plantCombinations];
+  let state = seed >>> 0;
+
+  for (let index = deck.length - 1; index > 0; index -= 1) {
+    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+    const swapIndex = state % (index + 1);
+    [deck[index], deck[swapIndex]] = [deck[swapIndex], deck[index]];
+  }
+
+  return deck;
+};
+
+const collectionPlants = [
+  ...shuffledPlantDeck(0x4c697669),
+  ...shuffledPlantDeck(0x6e674e6f),
+]
+  .slice(0, collectionNames.length)
+  .map(({ foliage, pot }) => `/images/plants/plant_foliage-${foliage}_pot-${pot}_healthy.png`);
+
+// A few fading plants hint at the decay mechanic without overwhelming the garden.
+const decayingPlants = new Map([
+  [5, 10],
+  [16, 25],
+  [29, 50],
+  [38, 100],
+]);
+
+decayingPlants.forEach((decay, index) => {
+  collectionPlants[index] = `/images/plants/plant_foliage-5_pot-4_decay-${decay}.png`;
+});
+
+const yellowingPlants = new Map([
+  [8, "/images/plants/plant_foliage-2_pot-0_decay-25.png"],
+  [14, "/images/plants/plant_foliage-3_pot-2_decay-25.png"],
+  [20, "/images/plants/plant_foliage-4_pot-1_decay-25.png"],
+  [27, "/images/plants/plant_foliage-5_pot-3_decay-25.png"],
+  [32, "/images/plants/plant_foliage-3_pot-4_decay-50.png"],
+  [40, "/images/plants/plant_foliage-4_pot-0_decay-50.png"],
+]);
+
+yellowingPlants.forEach((plant, index) => {
+  collectionPlants[index] = plant;
+});
+
+const logoPlantPots = new Map([
+  [2, 1],
+  [12, 2],
+  [23, 3],
+  [34, 4],
+]);
+
 const decaySteps = [
   {
     title: "Notice the yellow",
@@ -57,7 +114,6 @@ const decaySteps = [
         <p class="lede">LivingNotes is a parking lot for unfinished thoughts—a place to keep songs, stories, research questions, and experiments without forcing them to be finished before they’re ready.</p>
         <div class="hero-actions">
           <p class="launch-badge"><small>In development</small>Coming soon</p>
-          <span class="platform-note">For iPhone and iPad</span>
         </div>
       </div>
 
@@ -130,13 +186,29 @@ const decaySteps = [
 
       <div class="plant-field" role="img" aria-label="A wide grid of LivingNotes plants fading softly toward its edges">
         {collectionNames.map((name, index) => (
-          <span class={`collection-plant plant-${(index % 6) + 1}`} aria-hidden="true">
-            <i class="leaf leaf-a"></i>
-            <i class="leaf leaf-b"></i>
-            <i class="leaf leaf-c"></i>
-            <i class="leaf leaf-d"></i>
-            <i class="stem"></i>
-            <i class="pot"></i>
+          <span class="collection-plant" aria-hidden="true">
+            {logoPlantPots.has(index) ? (
+              <span class="logo-plant">
+                <svg viewBox="0 0 624 648" fill="none">
+                  <g transform="translate(139 218) scale(7.2)">
+                    <path d="M24 35V18" stroke="#76513d" stroke-width="2.5" stroke-linecap="round" />
+                    <path d="M24 26C17 26 12.5 22.3 12.5 16.2C19.3 15.4 23.8 18.8 24 26Z" fill="#76956f" />
+                    <path d="M24 21.5C24.4 14.4 28.7 10.3 35.7 10.5C35.8 17 31.7 21.2 24 21.5Z" fill="#9ab08b" />
+                    <path d="M24 18.5C21.1 15.9 21.3 12.5 23.4 9.2C26.8 11.4 27.7 14.8 24 18.5Z" fill="#b7c7a8" transform="rotate(-30 24 18.5)" />
+                  </g>
+                </svg>
+                <img
+                  src={`/images/plants/plant_foliage-0_pot-${logoPlantPots.get(index)}_healthy.png`}
+                  alt=""
+                  width="624"
+                  height="648"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+            ) : (
+              <img src={collectionPlants[index]} alt="" width="624" height="648" loading="lazy" decoding="async" />
+            )}
             <small>{name}</small>
           </span>
         ))}
@@ -212,8 +284,8 @@ const decaySteps = [
     grid-template-columns: 0.92fr 1.08fr;
     gap: clamp(40px, 6vw, 90px);
     align-items: center;
-    min-height: 760px;
-    padding-block: 72px 94px;
+    min-height: 650px;
+    padding-block: 48px 62px;
   }
 
   .eyebrow {
@@ -295,16 +367,11 @@ const decaySteps = [
     text-transform: uppercase;
   }
 
-  .platform-note {
-    color: #8f9790;
-    font-size: 0.78rem;
-  }
-
   .hero-visual {
     position: relative;
     display: grid;
     place-items: center;
-    min-height: 640px;
+    min-height: 540px;
   }
 
   .halo {
@@ -314,19 +381,19 @@ const decaySteps = [
   }
 
   .halo-one {
-    width: 610px;
-    height: 610px;
+    width: 520px;
+    height: 520px;
   }
 
   .halo-two {
-    width: 470px;
-    height: 470px;
+    width: 400px;
+    height: 400px;
   }
 
   .phone-shot {
     position: relative;
     z-index: 2;
-    width: min(330px, 67%);
+    width: min(285px, 62%);
     margin: 0;
     padding: 9px;
     background: #111513;
@@ -334,7 +401,6 @@ const decaySteps = [
     border-radius: 44px;
     box-shadow: 0 32px 70px rgba(0, 0, 0, 0.45);
     overflow: hidden;
-    transform: rotate(2.5deg);
   }
 
   .phone-shot img {
@@ -530,37 +596,13 @@ const decaySteps = [
     place-items: center;
     width: 34px;
     height: 34px;
-    margin-bottom: 18px;
+    margin: 0 auto 18px;
     color: #dfe7dc;
     background: #526b56;
     border: 1px solid rgba(214, 226, 210, 0.28);
     border-radius: 50%;
     font-family: var(--serif);
     font-size: 0.75rem;
-  }
-
-  .workflow-step:not(:last-child)::after {
-    position: absolute;
-    z-index: 1;
-    top: 17px;
-    right: calc(-1 * var(--workflow-gap));
-    left: 33px;
-    height: 1px;
-    background: rgba(177, 197, 176, 0.28);
-    content: "";
-  }
-
-  .workflow-step:not(:last-child)::before {
-    position: absolute;
-    z-index: 2;
-    top: 14px;
-    right: calc(-1 * var(--workflow-gap));
-    width: 6px;
-    height: 6px;
-    border-top: 1px solid rgba(177, 197, 176, 0.48);
-    border-right: 1px solid rgba(177, 197, 176, 0.48);
-    content: "";
-    transform: rotate(45deg);
   }
 
   .workflow-shot {
@@ -651,52 +693,33 @@ const decaySteps = [
   .collection-plant {
     position: relative;
     display: block;
-    width: 58px;
-    height: 58px;
+    width: 70px;
+    height: 73px;
     place-self: center;
-    transform: scale(var(--plant-scale, 1));
   }
 
-  .collection-plant i {
+  .collection-plant img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.16));
+  }
+
+  .logo-plant,
+  .logo-plant svg {
     position: absolute;
-    display: block;
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
 
-  .collection-plant .leaf {
-    z-index: 2;
-    width: 25px;
-    height: 14px;
-    background: linear-gradient(145deg, #789477, #526c57);
-    border-radius: 8px;
-    box-shadow: inset 0 1px rgba(255, 255, 255, 0.13), 0 4px 8px rgba(0, 0, 0, 0.13);
-  }
-
-  .leaf-a { top: 7px; left: 17px; }
-  .leaf-b { top: 18px; left: 7px; transform: rotate(-4deg); }
-  .leaf-c { top: 18px; right: 5px; transform: rotate(5deg); }
-  .leaf-d { top: 28px; left: 17px; }
-
-  .collection-plant .stem {
-    z-index: 1;
-    top: 24px;
-    left: 28px;
-    width: 3px;
-    height: 20px;
-    background: #5f6d51;
-  }
-
-  .collection-plant .pot {
-    bottom: 2px;
-    left: 18px;
-    width: 24px;
-    height: 12px;
-    background: linear-gradient(#796a5e 0 25%, #5f534c 25%);
-    border-radius: 2px 2px 7px 7px;
+  .logo-plant svg {
+    filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.12));
   }
 
   .collection-plant small {
     position: absolute;
-    top: 62px;
+    top: 75px;
     left: 50%;
     width: 86px;
     color: #8f9991;
@@ -706,22 +729,6 @@ const decaySteps = [
     text-align: center;
     white-space: nowrap;
     transform: translateX(-50%);
-  }
-
-  .plant-2 { --plant-scale: 0.82; }
-  .plant-3 { --plant-scale: 1.08; }
-  .plant-4 { --plant-scale: 0.72; }
-  .plant-5 { --plant-scale: 0.92; }
-  .plant-6 { --plant-scale: 1.14; }
-
-  .plant-3 .leaf-a,
-  .plant-6 .leaf-c {
-    background: linear-gradient(145deg, #a3a25c, #6d8258);
-  }
-
-  .plant-4 .leaf-d,
-  .plant-6 .leaf-b {
-    background: linear-gradient(145deg, #a7653e, #7d5f44);
   }
 
   .closing {
@@ -814,11 +821,6 @@ const decaySteps = [
       row-gap: 52px;
     }
 
-    .workflow-step:nth-child(2)::before,
-    .workflow-step:nth-child(2)::after {
-      display: none;
-    }
-
     .workflow-shot {
       max-width: 340px;
     }
@@ -827,7 +829,7 @@ const decaySteps = [
   @media (max-width: 900px) {
     .hero {
       grid-template-columns: 1fr;
-      padding-top: 76px;
+      padding-top: 58px;
     }
 
     .hero-copy {
@@ -835,11 +837,11 @@ const decaySteps = [
     }
 
     .hero-visual {
-      min-height: 680px;
+      min-height: 590px;
     }
 
     .phone-shot {
-      width: 320px;
+      width: 285px;
     }
 
     .incubation-inner {
@@ -891,7 +893,7 @@ const decaySteps = [
 
     .hero {
       min-height: auto;
-      padding-block: 66px 76px;
+      padding-block: 52px 60px;
     }
 
     h1 {
@@ -908,23 +910,23 @@ const decaySteps = [
     }
 
     .hero-visual {
-      min-height: 570px;
+      min-height: 480px;
       margin-top: 14px;
       overflow: hidden;
     }
 
     .halo-one {
-      width: 510px;
-      height: 510px;
+      width: 440px;
+      height: 440px;
     }
 
     .halo-two {
-      width: 390px;
-      height: 390px;
+      width: 340px;
+      height: 340px;
     }
 
     .phone-shot {
-      width: 272px;
+      width: 235px;
     }
 
     .product-section {
@@ -998,53 +1000,22 @@ const decaySteps = [
     }
 
     .workflow-step {
-      display: grid;
-      grid-template-columns: 34px minmax(0, 1fr);
-      column-gap: 18px;
-      row-gap: 18px;
-    }
-
-    .workflow-step:nth-child(2)::before,
-    .workflow-step:nth-child(2)::after {
       display: block;
     }
 
-    .workflow-step:not(:last-child)::after {
-      top: 34px;
-      right: auto;
-      bottom: -50px;
-      left: 16px;
-      width: 1px;
-      height: auto;
-    }
-
-    .workflow-step:not(:last-child)::before {
-      top: auto;
-      right: auto;
-      bottom: -50px;
-      left: 13px;
-      border-top: 0;
-      border-right: 1px solid rgba(177, 197, 176, 0.48);
-      border-bottom: 1px solid rgba(177, 197, 176, 0.48);
-      transform: rotate(45deg);
-    }
-
     .step-marker {
-      grid-column: 1;
-      grid-row: 1;
-      margin: 0;
+      margin: 0 auto 18px;
     }
 
     .workflow-shot {
-      grid-column: 2;
-      grid-row: 1;
       width: min(100%, 330px);
+      margin-inline: auto;
     }
 
     .step-copy {
-      grid-column: 2;
-      grid-row: 2;
-      padding: 0 4px;
+      width: min(100%, 330px);
+      margin-inline: auto;
+      padding: 20px 4px 0;
     }
 
     h2 {
