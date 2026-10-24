@@ -14,6 +14,9 @@ const collectionNames = [
   "Gift ideas", "Reading list", "Watchlist", "Classes", "Work notes", "Dreams",
   "Memories", "Garden", "Repairs", "Finances", "Health", "Habits",
   "Goals", "Events", "Letters", "Photos", "Inventions", "Side projects",
+  "Song fragments", "Thesis ideas", "Interview notes", "Worldbuilding", "Riffs", "Observations",
+  "Problem list", "Learning notes", "Meal ideas", "Weekend plans", "Prototypes", "Writing prompts",
+  "People", "Someday",
 ];
 
 const plantCombinations = [0, 2, 3, 4, 5].flatMap((foliage) =>
@@ -37,6 +40,7 @@ const shuffledPlantDeck = (seed: number) => {
 const collectionPlants = [
   ...shuffledPlantDeck(0x4c697669),
   ...shuffledPlantDeck(0x6e674e6f),
+  ...shuffledPlantDeck(0x74657347),
 ]
   .slice(0, collectionNames.length)
   .map(({ foliage, pot }) => `/images/plants/plant_foliage-${foliage}_pot-${pot}_healthy.png`);
@@ -46,7 +50,8 @@ const decayingPlants = new Map([
   [5, 10],
   [16, 25],
   [29, 50],
-  [38, 100],
+  [35, 100],
+  [50, 25],
 ]);
 
 decayingPlants.forEach((decay, index) => {
@@ -59,7 +64,9 @@ const yellowingPlants = new Map([
   [20, "/images/plants/plant_foliage-4_pot-1_decay-25.png"],
   [27, "/images/plants/plant_foliage-5_pot-3_decay-25.png"],
   [32, "/images/plants/plant_foliage-3_pot-4_decay-50.png"],
-  [40, "/images/plants/plant_foliage-4_pot-0_decay-50.png"],
+  [33, "/images/plants/plant_foliage-4_pot-0_decay-50.png"],
+  [44, "/images/plants/plant_foliage-2_pot-0_decay-25.png"],
+  [52, "/images/plants/plant_foliage-4_pot-1_decay-25.png"],
 ]);
 
 yellowingPlants.forEach((plant, index) => {
@@ -71,27 +78,25 @@ const logoPlantPots = new Map([
   [12, 2],
   [23, 3],
   [34, 4],
+  [47, 0],
+  [54, 2],
 ]);
 
 const decaySteps = [
   {
     title: "Notice the yellow",
-    copy: "A yellowing plant signals that a collection needs attention.",
     image: SITE_ASSETS.decayWorkflow[0],
   },
   {
     title: "Open the note",
-    copy: "Enter the collection and find the affected card.",
     image: SITE_ASSETS.decayWorkflow[1],
   },
   {
     title: "Hold the caterpillar",
-    copy: "Press and hold it for two seconds to restore the hidden vowel.",
     image: SITE_ASSETS.decayWorkflow[2],
   },
   {
     title: "Read it whole again",
-    copy: "The caterpillar disappears and the complete thought returns.",
     image: SITE_ASSETS.decayWorkflow[3],
   },
 ];
@@ -163,14 +168,10 @@ const decaySteps = [
         <ol class="workflow-steps">
           {decaySteps.map((step, index) => (
             <li class="workflow-step">
-              <span class="step-marker" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
               <figure class="workflow-shot">
                 <img src={step.image.src} alt={step.image.alt} width={step.image.width} height={step.image.height} loading="lazy" />
               </figure>
-              <div class="step-copy">
-                <h3>{step.title}</h3>
-                <p>{step.copy}</p>
-              </div>
+              <h3 class="step-title"><span>STEP {index + 1}:</span> {step.title}</h3>
             </li>
           ))}
         </ol>
@@ -184,9 +185,10 @@ const decaySteps = [
         <p>Cards keep ideas distinct without isolating them. Add what you know, leave room for what you don’t, and see the whole collection at once.</p>
       </div>
 
-      <div class="plant-field" role="img" aria-label="A wide grid of LivingNotes plants fading softly toward its edges">
-        {collectionNames.map((name, index) => (
-          <span class="collection-plant" aria-hidden="true">
+      <div class="plant-field-window" role="img" aria-label="An expansive grid of LivingNotes plants continuing beyond the visible area">
+        <div class="plant-field" aria-hidden="true">
+          {collectionNames.map((name, index) => (
+            <span class="collection-plant">
             {logoPlantPots.has(index) ? (
               <span class="logo-plant">
                 <svg viewBox="0 0 624 648" fill="none">
@@ -210,8 +212,9 @@ const decaySteps = [
               <img src={collectionPlants[index]} alt="" width="624" height="648" loading="lazy" decoding="async" />
             )}
             <small>{name}</small>
-          </span>
-        ))}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -318,7 +321,7 @@ const decaySteps = [
 
   h1 {
     max-width: 720px;
-    font-size: clamp(4.2rem, 7vw, 7.3rem);
+    font-size: clamp(3.3rem, 5.5vw, 5.6rem);
   }
 
   h1 em {
@@ -400,6 +403,8 @@ const decaySteps = [
     border: 1px solid rgba(236, 239, 230, 0.25);
     border-radius: 44px;
     box-shadow: 0 32px 70px rgba(0, 0, 0, 0.45);
+    transform: rotate(4deg);
+    transform-origin: 50% 60%;
     overflow: hidden;
   }
 
@@ -589,58 +594,35 @@ const decaySteps = [
     min-width: 0;
   }
 
-  .step-marker {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
-    margin: 0 auto 18px;
+  .step-title {
+    margin: 5px 0 0;
     color: #dfe7dc;
-    background: #526b56;
-    border: 1px solid rgba(214, 226, 210, 0.28);
-    border-radius: 50%;
-    font-family: var(--serif);
-    font-size: 0.75rem;
+    font-family: var(--sans);
+    font-size: clamp(0.72rem, 0.95vw, 0.86rem);
+    font-weight: 500;
+    line-height: 1.3;
+    text-align: center;
+    letter-spacing: 0;
+  }
+
+  .step-title span {
+    color: #8cab90;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
   }
 
   .workflow-shot {
     width: 100%;
     margin: 0;
-    padding: 7px;
-    background: #111513;
-    border: 1px solid rgba(236, 239, 230, 0.17);
-    border-radius: 24px;
-    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.24);
-    overflow: hidden;
+    filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.24));
   }
 
   .workflow-shot img {
+    display: block;
     width: 100%;
     aspect-ratio: 917 / 1715;
-    background: #1e2220;
-    border-radius: 17px;
-    object-fit: cover;
-  }
-
-  .step-copy {
-    padding: 22px 4px 0;
-  }
-
-  .step-copy h3 {
-    margin: 0 0 9px;
-    font-family: var(--serif);
-    font-size: clamp(1.2rem, 1.8vw, 1.55rem);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-  }
-
-  .step-copy p {
-    margin: 0;
-    color: var(--ink-muted);
-    font-size: 0.82rem;
-    line-height: 1.55;
+    object-fit: contain;
   }
 
   .product-section {
@@ -675,26 +657,37 @@ const decaySteps = [
     line-height: 1.55;
   }
 
-  .plant-field {
+  .plant-field-window {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(7, 1fr);
-    gap: 18px 16px;
     width: 100%;
-    height: 610px;
-    padding: 18px;
+    height: 555px;
+    align-self: center;
+    justify-self: center;
     overflow: hidden;
     background: radial-gradient(circle at center, rgba(67, 91, 71, 0.08), transparent 68%);
-    -webkit-mask-image: radial-gradient(ellipse at center, #000 38%, rgba(0, 0, 0, 0.82) 61%, transparent 95%);
-    mask-image: radial-gradient(ellipse at center, #000 38%, rgba(0, 0, 0, 0.82) 61%, transparent 95%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 28%, rgba(0, 0, 0, 0.88) 48%, rgba(0, 0, 0, 0.4) 72%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, #000 28%, rgba(0, 0, 0, 0.88) 48%, rgba(0, 0, 0, 0.4) 72%, transparent 100%);
+  }
+
+  .plant-field {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    gap: 8px 10px;
+    width: 126%;
+    height: 124%;
+    padding: 12px;
+    transform: translate(-50%, -50%);
   }
 
   .collection-plant {
     position: relative;
     display: block;
-    width: 70px;
-    height: 73px;
+    width: 56px;
+    height: 58px;
     place-self: center;
   }
 
@@ -719,7 +712,7 @@ const decaySteps = [
 
   .collection-plant small {
     position: absolute;
-    top: 75px;
+    top: 60px;
     left: 50%;
     width: 86px;
     color: #8f9991;
@@ -870,10 +863,21 @@ const decaySteps = [
       gap: 30px;
     }
 
+    .plant-field-window {
+      height: 520px;
+    }
+
     .plant-field {
-      height: 540px;
-      gap: 12px 8px;
-      padding-inline: 0;
+      gap: 6px;
+    }
+
+    .collection-plant {
+      width: 52px;
+      height: 54px;
+    }
+
+    .collection-plant small {
+      top: 56px;
     }
 
   }
@@ -897,7 +901,7 @@ const decaySteps = [
     }
 
     h1 {
-      font-size: clamp(3.5rem, 17vw, 5rem);
+      font-size: clamp(2.8rem, 13vw, 4.1rem);
     }
 
     .lede {
@@ -1003,19 +1007,15 @@ const decaySteps = [
       display: block;
     }
 
-    .step-marker {
-      margin: 0 auto 18px;
-    }
-
     .workflow-shot {
       width: min(100%, 330px);
       margin-inline: auto;
     }
 
-    .step-copy {
+    .step-title {
       width: min(100%, 330px);
       margin-inline: auto;
-      padding: 20px 4px 0;
+      margin-top: 5px;
     }
 
     h2 {
@@ -1030,15 +1030,26 @@ const decaySteps = [
       font-size: clamp(2.5rem, 12vw, 3.75rem);
     }
 
-    .plant-field {
+    .plant-field-window {
       height: 450px;
-      gap: 4px;
       margin-inline: -10px;
       width: calc(100% + 20px);
     }
 
+    .plant-field {
+      gap: 2px;
+      width: 132%;
+      height: 126%;
+    }
+
     .collection-plant small {
-      font-size: 0.52rem;
+      top: 50px;
+      font-size: 0.48rem;
+    }
+
+    .collection-plant {
+      width: 46px;
+      height: 48px;
     }
 
     .closing {

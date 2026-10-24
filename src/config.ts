@@ -21,25 +21,25 @@ export const SITE_ASSETS = {
   },
   decayWorkflow: [
     {
-      src: "/images/decay-step-1-garden.png",
+      src: "/images/decay-step-1-garden.png?v=2",
       width: 917,
       height: 1715,
       alt: "LivingNotes garden with a yellowing plant indicating a collection that needs attention",
     },
     {
-      src: "/images/decay-step-2-open-note.png",
+      src: "/images/decay-step-2-open-note.png?v=2",
       width: 917,
       height: 1715,
       alt: "An affected note opened in LivingNotes",
     },
     {
-      src: "/images/decay-step-3-hold.png",
+      src: "/images/decay-step-3-hold.png?v=2",
       width: 917,
       height: 1715,
       alt: "A caterpillar obscuring a vowel with instructions to press and hold it for two seconds",
     },
     {
-      src: "/images/decay-step-4-repaired.png",
+      src: "/images/decay-step-4-repaired.png?v=2",
       width: 917,
       height: 1715,
       alt: "The LivingNotes card repaired with its complete text visible again",

@@ -48,10 +48,10 @@ Browser-ready image assets live in `public/images/`. All images currently used b
 | --- | --- | --- |
 | `livingnotes-iphone.jpg` | Hero phone | JPEG, sRGB |
 | `livingnotes-decay-cutout.png` | Decay/card section | PNG with a genuinely transparent background |
-| `decay-step-1-garden.png` | Workflow: yellow garden | PNG, 917 × 1715 px |
-| `decay-step-2-open-note.png` | Workflow: opened note | PNG, 917 × 1715 px |
-| `decay-step-3-hold.png` | Workflow: hold the caterpillar | PNG, 917 × 1715 px |
-| `decay-step-4-repaired.png` | Workflow: repaired note | PNG, 917 × 1715 px |
+| `decay-step-1-garden.png` | Workflow: yellow garden | Transparent PNG, 917 × 1715 px |
+| `decay-step-2-open-note.png` | Workflow: opened note | Transparent PNG, 917 × 1715 px |
+| `decay-step-3-hold.png` | Workflow: hold the caterpillar | Transparent PNG, 917 × 1715 px |
+| `decay-step-4-repaired.png` | Workflow: repaired note | Transparent PNG, 917 × 1715 px |
 | `livingnotes-preview.jpg` | Social sharing preview | JPEG, 1200 × 630 px |
 | `favicon.svg` | Browser icon | SVG; stored directly in `public/` |
 
@@ -68,7 +68,7 @@ The following files are retained as source/reference screenshots but are not cur
 
 Keeping the same filename and dimensions means no code changes are needed. If you change either, edit the corresponding `src`, `width`, and `height` values in `SITE_ASSETS` inside `src/config.ts`. Width and height should match the exported pixel dimensions; Astro uses them to reserve the correct layout space while the image loads.
 
-The four `decay-step-*.png` files currently use normalized placeholder exports from the available screenshots. Replace them with four exact captures using the same `917 × 1715` canvas and consistent framing. Step 1 should show the yellow garden state, step 2 the affected note, step 3 the caterpillar and hold instruction, and step 4 the same note repaired.
+The four `decay-step-*.png` files use the same transparent `917 × 1715` phone framing as `livingnotes-decay-cutout.png`. Keep the pixels outside the physical phone transparent when replacing them. Step 1 should show the yellow garden state, step 2 the affected note, step 3 the caterpillar and hold instruction, and step 4 the same note repaired.
 
 Keep layered Photoshop working files outside `public/`—for example in a local `design-source/` folder—and export only flattened web assets into `public/images/`. Files inside `public/` are copied directly into the deployed website.
 
