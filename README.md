@@ -4,7 +4,7 @@ The static marketing site for LivingNotes, built with [Astro](https://astro.buil
 
 ## Local development
 
-This project requires Node.js 22.12 or newer. npm is included with Node.js.
+This project requires Node.js 24 or newer. npm is included with Node.js.
 
 ```sh
 npm install
