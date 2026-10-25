@@ -8,10 +8,22 @@ export const SUPPORT_EMAIL = "support@livingnotes.app";
 // paths and dimensions here when exporting an asset with a different size.
 export const SITE_ASSETS = {
   heroPhone: {
-    src: "/images/livingnotes-iphone.jpg",
-    width: 354,
-    height: 768,
+    src: "/images/livingnotes-garden-iphone.png",
+    width: 1206,
+    height: 2622,
     alt: "LivingNotes on iPhone showing a visual garden of note collections",
+  },
+  heroTablet: {
+    src: "/images/livingnotes-overview-ipad.png",
+    width: 2360,
+    height: 1640,
+    alt: "LivingNotes on iPad showing three garden sections",
+  },
+  heroMac: {
+    src: "/images/livingnotes-garden-mac.png",
+    width: 2326,
+    height: 1864,
+    alt: "LivingNotes on Mac showing Ideas, Projects, and Life gardens",
   },
   decayPhone: {
     src: "/images/livingnotes-decay-cutout.png",
@@ -21,30 +33,36 @@ export const SITE_ASSETS = {
   },
   decayWorkflow: [
     {
-      src: "/images/decay-step-1-garden.png?v=2",
-      width: 917,
-      height: 1715,
+      src: "/images/livingnotes-garden-iphone.png",
+      width: 1206,
+      height: 2622,
       alt: "LivingNotes garden with a yellowing plant indicating a collection that needs attention",
     },
     {
-      src: "/images/decay-step-2-open-note.png?v=2",
-      width: 917,
-      height: 1715,
-      alt: "An affected note opened in LivingNotes",
+      src: "/images/livingnotes-decay-before-iphone.png",
+      width: 1206,
+      height: 2622,
+      alt: "A LivingNotes card with a caterpillar covering a vowel and instructions to press and hold it",
     },
     {
-      src: "/images/decay-step-3-hold.png?v=2",
-      width: 917,
-      height: 1715,
-      alt: "A caterpillar obscuring a vowel with instructions to press and hold it for two seconds",
-    },
-    {
-      src: "/images/decay-step-4-repaired.png?v=2",
-      width: 917,
-      height: 1715,
+      src: "/images/livingnotes-decay-after-iphone.png",
+      width: 1206,
+      height: 2622,
       alt: "The LivingNotes card repaired with its complete text visible again",
     },
   ],
+  featureCards: {
+    src: "/images/livingnotes-cards-ipad.png",
+    width: 2360,
+    height: 1640,
+    alt: "LivingNotes on iPad showing several short note cards in a horizontal rail",
+  },
+  featureGarden: {
+    src: "/images/livingnotes-garden-mac.png",
+    width: 2326,
+    height: 1864,
+    alt: "LivingNotes on Mac showing three finite garden plots with open slots",
+  },
   socialPreview: {
     src: "/images/livingnotes-preview.jpg",
     width: 1200,

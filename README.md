@@ -46,14 +46,14 @@ Browser-ready image assets live in `public/images/`. All images currently used b
 
 | File | Where it appears | Format guidance |
 | --- | --- | --- |
-| `livingnotes-iphone.jpg` | Hero phone | JPEG, sRGB |
+| `livingnotes-garden-iphone.png` | Hero phone and workflow garden | PNG, 1206 × 2622 px |
+| `livingnotes-overview-ipad.png` | Hero iPad | PNG, 2360 × 1640 px |
+| `livingnotes-garden-mac.png` | Hero Mac and garden feature | Transparent PNG, 2326 × 1864 px |
+| `livingnotes-cards-ipad.png` | Small cards feature | PNG, 2360 × 1640 px |
+| `livingnotes-decay-before-iphone.png` | Workflow hold state | PNG, 1206 × 2622 px |
+| `livingnotes-decay-after-iphone.png` | Workflow repaired state | PNG, 1206 × 2622 px |
 | `livingnotes-decay-cutout.png` | Decay/card section | PNG with a genuinely transparent background |
-| `decay-step-1-garden.png` | Workflow: yellow garden | Transparent PNG, 917 × 1715 px |
-| `decay-step-2-open-note.png` | Workflow: opened note | Transparent PNG, 917 × 1715 px |
-| `decay-step-3-hold.png` | Base phone for the hold animation | Transparent PNG, 917 × 1715 px |
-| `decay-step-3-repaired.png` | Repaired state shown after the hold | Transparent PNG, 917 × 1715 px |
 | `pointing-hand.png` | Exact hand layered over the phone by CSS | Transparent PNG, 512 × 512 px |
-| `decay-step-4-repaired.png` | Workflow: repaired note | Transparent PNG, 917 × 1715 px |
 | `livingnotes-preview.jpg` | Social sharing preview | JPEG, 1200 × 630 px |
 | `favicon.svg` | Browser icon | SVG; stored directly in `public/` |
 

@@ -92,21 +92,15 @@ const decaySteps = [
     title: "Hold to clear",
     description: "Press and hold the caterpillar to reveal the vowel.",
     note: "Your text is only hidden—it is never deleted or damaged.",
-    image: SITE_ASSETS.decayWorkflow[2],
+    image: SITE_ASSETS.decayWorkflow[1],
   },
   {
     title: "Clean again",
     description: "One vowel on each decaying card is covered every day.",
-    image: SITE_ASSETS.decayWorkflow[3],
+    image: SITE_ASSETS.decayWorkflow[2],
   },
 ];
 
-const featureGardenSlots = [
-  collectionPlants[0], collectionPlants[3], null, collectionPlants[6], collectionPlants[8],
-  null, collectionPlants[11], collectionPlants[14], collectionPlants[17], null,
-  collectionPlants[20], collectionPlants[23], null, collectionPlants[26], collectionPlants[29],
-  collectionPlants[31], null, collectionPlants[36], null, collectionPlants[41],
-];
 ---
 
 <BaseLayout {title} {description}>
@@ -129,12 +123,23 @@ const featureGardenSlots = [
         </div>
       </div>
 
-      <div class="hero-visual reveal" aria-label="LivingNotes shown on iPhone">
+      <div class="hero-visual reveal" aria-label="LivingNotes shown on Mac, iPad, and iPhone">
         <div class="halo halo-one"></div>
         <div class="halo halo-two"></div>
-        <figure class="phone-shot">
-          <img src={SITE_ASSETS.heroPhone.src} alt={SITE_ASSETS.heroPhone.alt} width={SITE_ASSETS.heroPhone.width} height={SITE_ASSETS.heroPhone.height} fetchpriority="high" />
-        </figure>
+        <div class="hero-devices">
+          <figure class="hero-mac-shot">
+            <div class="macbook-screen">
+              <img src={SITE_ASSETS.heroMac.src} alt={SITE_ASSETS.heroMac.alt} width={SITE_ASSETS.heroMac.width} height={SITE_ASSETS.heroMac.height} fetchpriority="high" />
+            </div>
+            <span class="macbook-base" aria-hidden="true"></span>
+          </figure>
+          <figure class="hero-ipad-shot">
+            <img src={SITE_ASSETS.heroTablet.src} alt={SITE_ASSETS.heroTablet.alt} width={SITE_ASSETS.heroTablet.width} height={SITE_ASSETS.heroTablet.height} fetchpriority="high" />
+          </figure>
+          <figure class="hero-phone-shot">
+            <img src={SITE_ASSETS.heroPhone.src} alt={SITE_ASSETS.heroPhone.alt} width={SITE_ASSETS.heroPhone.width} height={SITE_ASSETS.heroPhone.height} fetchpriority="high" />
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -142,7 +147,7 @@ const featureGardenSlots = [
       <div class="shell incubation-inner">
         <div class="incubation-copy">
           <h2 id="incubation-title">How does it work?</h2>
-          <p class="incubation-intro">Plants yellow when their notes need attention. Open the note and hold the caterpillar for two seconds to bring the hidden vowel back.</p>
+          <p class="incubation-intro">Old notes can be hard to return to once the spark has faded. LivingNotes gives you a gentler way back: find the caterpillar, hold it for two seconds, and reveal the thought underneath.</p>
         </div>
 
         <div class="feature-decay" aria-label="Decay workflow">
@@ -153,7 +158,7 @@ const featureGardenSlots = [
                   {index === 1 ? (
                     <div class="hold-animation">
                       <img class="hold-phone" src={step.image.src} alt={step.image.alt} width={step.image.width} height={step.image.height} loading="lazy" />
-                      <img class="hold-repaired" src="/images/decay-step-3-repaired.png" alt="" width="917" height="1715" loading="lazy" aria-hidden="true" />
+                      <img class="hold-repaired" src={SITE_ASSETS.decayWorkflow[2].src} alt="" width={SITE_ASSETS.decayWorkflow[2].width} height={SITE_ASSETS.decayWorkflow[2].height} loading="lazy" aria-hidden="true" />
                       <img class="hold-hand" src="/images/pointing-hand.png" alt="" width="512" height="512" loading="lazy" aria-hidden="true" />
                     </div>
                   ) : (
@@ -181,52 +186,18 @@ const featureGardenSlots = [
             </div>
           </div>
 
-          <div class="card-rail-visual" role="img" aria-label="A horizontal rail of short LivingNotes cards that can be reordered into a larger outline">
-            <div class="card-rail-header" aria-hidden="true">
-              <span>Story structure</span>
-              <small>4 cards</small>
-            </div>
-            <div class="card-rail" aria-hidden="true">
-              <article class="sample-note-card">
-                <span class="card-grip">•••</span>
-                <p>The visitor arrives before anyone knows why the town has stopped keeping clocks.</p>
-                <footer><span>79 / 200</span><span>Card 1</span></footer>
-              </article>
-              <article class="sample-note-card sample-note-card-active">
-                <span class="card-grip">•••</span>
-                <p>Each missing hour belongs to someone who chose to forget it.</p>
-                <footer><span>60 / 200</span><span>Card 2</span></footer>
-              </article>
-              <article class="sample-note-card">
-                <span class="card-grip">•••</span>
-                <p>The clockmaker remembers every hour and has been waiting for the visitor.</p>
-                <footer><span>73 / 200</span><span>Card 3</span></footer>
-              </article>
-            </div>
-            <div class="card-rail-footer" aria-hidden="true">
-              <span>← swipe through cards →</span>
-              <strong>200 characters maximum</strong>
-              <span>↔ move to reorder</span>
-            </div>
-          </div>
+          <figure class="feature-device feature-ipad">
+            <img src={SITE_ASSETS.featureCards.src} alt={SITE_ASSETS.featureCards.alt} width={SITE_ASSETS.featureCards.width} height={SITE_ASSETS.featureCards.height} loading="lazy" />
+          </figure>
         </article>
 
         <article class="feature-chapter feature-garden" aria-labelledby="feature-garden-title">
-          <div class="garden-plot" role="img" aria-label="A LivingNotes garden section with exactly 20 manually placeable slots, including open spaces">
-            <div class="garden-plot-header" aria-hidden="true">
-              <span>Research garden</span>
-              <small>14 / 20</small>
+          <figure class="feature-device feature-mac">
+            <div class="macbook-screen">
+              <img src={SITE_ASSETS.featureGarden.src} alt={SITE_ASSETS.featureGarden.alt} width={SITE_ASSETS.featureGarden.width} height={SITE_ASSETS.featureGarden.height} loading="lazy" />
             </div>
-            <div class="garden-plot-grid" aria-hidden="true">
-              {featureGardenSlots.map((plant, index) => (
-                <span class:list={["garden-plot-slot", { "garden-plot-slot-open": !plant }]}>
-                  {plant ? <img src={plant} alt="" width="624" height="648" loading="lazy" /> : <span>+</span>}
-                  <small>{index + 1}</small>
-                </span>
-              ))}
-            </div>
-            <p class="garden-plot-hint" aria-hidden="true">Hold and move a plant to place it anywhere in the plot.</p>
-          </div>
+            <span class="macbook-base" aria-hidden="true"></span>
+          </figure>
 
           <div class="feature-copy">
             <p class="feature-number">03</p>
@@ -346,11 +317,28 @@ const featureGardenSlots = [
 
   .hero {
     display: grid;
-    grid-template-columns: 0.92fr 1.08fr;
-    gap: clamp(40px, 6vw, 90px);
+    grid-template-columns: 1fr;
+    gap: 22px;
     align-items: center;
-    min-height: 650px;
-    padding-block: 48px 62px;
+    min-height: 860px;
+    padding-block: 58px 72px;
+  }
+
+  .hero-copy {
+    max-width: 820px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .hero-copy .eyebrow,
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-copy h1,
+  .hero-copy .lede {
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .eyebrow {
@@ -436,7 +424,125 @@ const featureGardenSlots = [
     position: relative;
     display: grid;
     place-items: center;
-    min-height: 540px;
+    min-height: 500px;
+  }
+
+  .hero-devices {
+    position: relative;
+    z-index: 2;
+    width: min(1040px, 100%);
+    height: 500px;
+    transform: none;
+  }
+
+  .hero-devices figure {
+    position: absolute;
+    margin: 0;
+  }
+
+  .hero-devices img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .hero-mac-shot {
+    z-index: 3;
+    top: 4%;
+    left: 50%;
+    width: 44%;
+    transform: translateX(-50%);
+  }
+
+  .hero-mac-shot,
+  .feature-mac {
+    padding: 8px 8px 14px;
+    background: linear-gradient(145deg, #383d3b, #121514 58%);
+    border: 1px solid rgba(232, 237, 232, 0.28);
+    border-radius: 15px 15px 10px 10px;
+    box-shadow: inset 0 0 0 2px #090b0a;
+  }
+
+  .hero-mac-shot::before,
+  .feature-mac::before {
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: #050606;
+    border-radius: 50%;
+    content: "";
+    transform: translateX(-50%);
+  }
+
+  .macbook-screen {
+    position: relative;
+    z-index: 1;
+    aspect-ratio: 1.265 / 1;
+    overflow: hidden;
+    background: #050606;
+    border-radius: 8px 8px 4px 4px;
+  }
+
+  .hero-mac-shot .macbook-screen img,
+  .feature-mac .macbook-screen img {
+    width: 110%;
+    max-width: none;
+    height: auto;
+    transform: translate(-4.6%, -4.1%);
+  }
+
+  .macbook-base {
+    position: absolute;
+    z-index: 0;
+    right: -6%;
+    bottom: -4%;
+    left: -6%;
+    height: 5%;
+    min-height: 7px;
+    background: linear-gradient(180deg, #777d79, #303532 48%, #171a18);
+    border-radius: 2px 2px 45% 45%;
+    box-shadow: 0 7px 12px rgba(0, 0, 0, 0.28);
+  }
+
+  .macbook-base::after {
+    position: absolute;
+    top: 0;
+    left: 44%;
+    width: 12%;
+    height: 35%;
+    background: #a0a5a1;
+    border-radius: 0 0 5px 5px;
+    content: "";
+  }
+
+  .hero-ipad-shot,
+  .hero-phone-shot {
+    overflow: hidden;
+    background: #050606;
+    border: solid #050606;
+    box-shadow: 0 24px 45px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-ipad-shot {
+    z-index: 5;
+    top: 18%;
+    right: -9%;
+    width: 30%;
+    border-width: 3px;
+    border-radius: 14px;
+  }
+
+  .hero-phone-shot {
+    z-index: 6;
+    top: 18%;
+    left: 10%;
+    width: 11%;
+    border-width: 3px;
+    border-radius: 22px;
+    transform: none;
   }
 
   .halo {
@@ -565,7 +671,7 @@ const featureGardenSlots = [
     order: 1;
   }
 
-  .feature-cards .card-rail-visual {
+  .feature-cards .feature-device {
     order: 2;
   }
 
@@ -573,12 +679,42 @@ const featureGardenSlots = [
     grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
   }
 
-  .feature-garden .garden-plot {
+  .feature-garden .feature-device {
     order: 1;
   }
 
   .feature-garden .feature-copy {
     order: 2;
+  }
+
+  .feature-device {
+    min-width: 0;
+    margin: 0;
+  }
+
+  .feature-device img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .feature-ipad {
+    overflow: hidden;
+    padding: 8px;
+    background: #050606;
+    border-radius: 24px;
+    box-shadow: 0 28px 55px rgba(44, 51, 45, 0.22);
+  }
+
+  .feature-ipad img {
+    border-radius: 17px;
+  }
+
+  .feature-mac {
+    position: relative;
+    width: min(100%, 680px);
+    justify-self: start;
+    filter: drop-shadow(0 28px 45px rgba(44, 51, 45, 0.2));
   }
 
   .card-rail-visual,
@@ -762,18 +898,23 @@ const featureGardenSlots = [
   .hold-animation {
     display: block;
     width: min(215px, 56%);
-    aspect-ratio: 917 / 1715;
+    aspect-ratio: 1206 / 2622;
+    overflow: hidden;
+    background: #050606;
+    border: 6px solid #050606;
+    border-radius: 32px;
+    box-shadow: 0 24px 28px rgba(28, 36, 30, 0.18);
   }
 
   .workflow-shot > img,
   .hold-phone,
   .hold-repaired {
     object-fit: contain;
-    filter: drop-shadow(0 24px 28px rgba(28, 36, 30, 0.18));
   }
 
   .hold-animation {
     position: relative;
+    overflow: visible;
   }
 
   .hold-animation img {
@@ -786,6 +927,7 @@ const featureGardenSlots = [
     inset: 0;
     width: 100%;
     height: 100%;
+    border-radius: 25px;
   }
 
   .hold-repaired {
@@ -796,8 +938,8 @@ const featureGardenSlots = [
   .hold-hand {
     position: absolute;
     z-index: 2;
-    top: 20.6%;
-    left: -9.4%;
+    top: 19.1%;
+    left: -11.9%;
     width: 40%;
     height: auto;
     opacity: 0;
@@ -1136,7 +1278,6 @@ const featureGardenSlots = [
 
   @media (max-width: 900px) {
     .hero {
-      grid-template-columns: 1fr;
       padding-top: 58px;
     }
 
@@ -1146,6 +1287,12 @@ const featureGardenSlots = [
 
     .hero-visual {
       min-height: 590px;
+    }
+
+    .hero-devices {
+      width: min(820px, 100%);
+      height: 430px;
+      transform: none;
     }
 
     .phone-shot {
@@ -1276,7 +1423,7 @@ const featureGardenSlots = [
     }
 
     .hero-actions {
-      align-items: flex-start;
+      align-items: center;
       flex-direction: column;
     }
 
@@ -1284,6 +1431,12 @@ const featureGardenSlots = [
       min-height: 480px;
       margin-top: 14px;
       overflow: hidden;
+    }
+
+    .hero-devices {
+      width: 560px;
+      max-width: 112%;
+      height: 320px;
     }
 
     .halo-one {
@@ -1328,8 +1481,8 @@ const featureGardenSlots = [
       max-width: 520px;
     }
 
-    .feature-cards .card-rail-visual,
-    .feature-garden .garden-plot {
+    .feature-cards .feature-device,
+    .feature-garden .feature-device {
       order: 2;
       width: 100%;
     }
