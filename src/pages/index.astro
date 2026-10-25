@@ -1875,6 +1875,252 @@ const decaySteps = [
     }
   }
 
+  @media (max-width: 680px) and (orientation: portrait) {
+    .hero-copy,
+    .incubation-copy,
+    .feature-copy,
+    .section-heading,
+    .closing {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .hero-copy .eyebrow,
+    .section-heading .eyebrow {
+      justify-content: center;
+    }
+
+    .eyebrow {
+      margin-bottom: 20px;
+      font-size: 0.64rem;
+    }
+
+    h1 {
+      max-width: 430px;
+      font-size: clamp(2.4rem, 10.5vw, 3.3rem);
+      line-height: 1.02;
+    }
+
+    .lede {
+      max-width: 410px;
+      margin-top: 24px;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+    }
+
+    .hero-visual {
+      min-height: 380px;
+    }
+
+    .hero-carousel-viewport {
+      height: 330px;
+    }
+
+    .hero-mac-shot,
+    .hero-ipad-shot {
+      width: min(84%, 440px);
+    }
+
+    .hero-phone-shot {
+      height: min(88%, 310px);
+    }
+
+    .halo-one {
+      width: 360px;
+      height: 360px;
+    }
+
+    .halo-two {
+      width: 280px;
+      height: 280px;
+    }
+
+    .incubation h2 {
+      font-size: clamp(2rem, 8.5vw, 2.65rem);
+      line-height: 1.02;
+    }
+
+    .incubation-intro,
+    .decay-outro {
+      max-width: 410px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .incubation-intro {
+      margin-top: 16px;
+    }
+
+    .feature-chapter {
+      padding-block: 64px;
+    }
+
+    .feature-copy h3 {
+      font-size: clamp(2rem, 8.5vw, 2.7rem);
+      line-height: 1.03;
+    }
+
+    .feature-prose p,
+    .section-heading > p:last-child,
+    .closing > p:not(.eyebrow) {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .feature-copy > .feature-prose {
+      margin-top: 19px;
+    }
+
+    .feature-copy,
+    .section-heading > p:last-child {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2.1rem, 9vw, 2.85rem);
+      line-height: 1.03;
+    }
+
+    .product-section {
+      display: block;
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+
+    .product-section::before,
+    .product-section::after {
+      display: none;
+    }
+
+    .plant-field-window {
+      position: relative;
+      inset: auto;
+      left: 50%;
+      width: 100vw;
+      height: 350px;
+      margin-top: -88px;
+      background: radial-gradient(circle at 50% 50%, rgba(67, 91, 71, 0.09), transparent 62%);
+      -webkit-mask-image: radial-gradient(ellipse 68% 43% at 50% 50%, #000 16%, rgba(0, 0, 0, 0.82) 31%, rgba(0, 0, 0, 0.22) 52%, transparent 74%);
+      mask-image: radial-gradient(ellipse 68% 43% at 50% 50%, #000 16%, rgba(0, 0, 0, 0.82) 31%, rgba(0, 0, 0, 0.22) 52%, transparent 74%);
+      transform: translateX(-50%);
+    }
+
+    .plant-field {
+      height: 554px;
+    }
+
+    .closing {
+      padding-top: 78px;
+    }
+
+    .closing h2 {
+      font-size: clamp(2.2rem, 9.5vw, 3rem);
+      line-height: 1.03;
+    }
+
+    .feature-cards .feature-device,
+    .feature-garden .feature-device {
+      width: 88%;
+      margin-inline: auto;
+    }
+
+    .workflow-steps {
+      gap: 64px;
+    }
+
+    .workflow-shot {
+      --workflow-phone-half: min(100px, 24%);
+      display: grid;
+      min-height: 455px;
+      place-items: center;
+    }
+
+    .workflow-shot > img,
+    .workflow-step-1 .workflow-shot > img,
+    .workflow-step-2 .hold-animation,
+    .workflow-step-3 .workflow-shot > img {
+      width: min(200px, 48%);
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .workflow-step-label {
+      position: absolute;
+      right: auto;
+      bottom: -12px;
+      left: 50%;
+      width: auto;
+      margin: 0;
+      text-align: center;
+      transform: translateX(-50%);
+    }
+
+    .workflow-callout,
+    .workflow-collection-callout {
+      position: absolute;
+      width: min(105px, 27%);
+      font-size: 0.65rem;
+      line-height: 1.4;
+    }
+
+    .workflow-step-1 .workflow-callout {
+      top: 25%;
+      right: calc(50% + var(--workflow-phone-half) + 22px);
+      left: auto;
+      text-align: right;
+    }
+
+    .workflow-step-2 .workflow-callout {
+      top: 16%;
+      right: auto;
+      left: calc(50% + var(--workflow-phone-half) + 22px);
+      text-align: left;
+    }
+
+    .workflow-step-3 .workflow-callout {
+      top: 56%;
+      right: auto;
+      left: calc(50% + var(--workflow-phone-half) + 22px);
+      text-align: left;
+    }
+
+    .workflow-collection-callout {
+      right: calc(50% + var(--workflow-phone-half) + 22px);
+      bottom: 12%;
+      left: auto;
+      margin: 0;
+      text-align: right;
+    }
+
+    .workflow-callout strong {
+      font-size: 0.72rem;
+    }
+
+    .workflow-callout small {
+      font-size: 0.58rem;
+    }
+
+  }
+
+  @media (max-width: 420px) and (orientation: portrait) {
+    .workflow-shot {
+      --workflow-phone-half: 80px;
+      min-height: 380px;
+    }
+
+    .workflow-shot > img,
+    .workflow-step-1 .workflow-shot > img,
+    .workflow-step-2 .hold-animation,
+    .workflow-step-3 .workflow-shot > img {
+      width: 160px;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .hero-slide {
       transition: none;
