@@ -82,6 +82,11 @@ const logoPlantPots = new Map([
   [54, 2],
 ]);
 
+const plantFieldNames = Array.from(
+  { length: 120 },
+  (_, index) => collectionNames[index % collectionNames.length],
+);
+
 const decaySteps = [
   {
     title: "Notice the yellow",
@@ -123,22 +128,29 @@ const decaySteps = [
         </div>
       </div>
 
-      <div class="hero-visual reveal" aria-label="LivingNotes shown on Mac, iPad, and iPhone">
+      <div class="hero-visual reveal">
         <div class="halo halo-one"></div>
         <div class="halo halo-two"></div>
-        <div class="hero-devices">
-          <figure class="hero-mac-shot">
-            <div class="macbook-screen">
-              <img src={SITE_ASSETS.heroMac.src} alt={SITE_ASSETS.heroMac.alt} width={SITE_ASSETS.heroMac.width} height={SITE_ASSETS.heroMac.height} fetchpriority="high" />
-            </div>
-            <span class="macbook-base" aria-hidden="true"></span>
-          </figure>
-          <figure class="hero-ipad-shot">
-            <img src={SITE_ASSETS.heroTablet.src} alt={SITE_ASSETS.heroTablet.alt} width={SITE_ASSETS.heroTablet.width} height={SITE_ASSETS.heroTablet.height} fetchpriority="high" />
-          </figure>
-          <figure class="hero-phone-shot">
-            <img src={SITE_ASSETS.heroPhone.src} alt={SITE_ASSETS.heroPhone.alt} width={SITE_ASSETS.heroPhone.width} height={SITE_ASSETS.heroPhone.height} fetchpriority="high" />
-          </figure>
+        <div class="hero-carousel" data-hero-carousel aria-roledescription="carousel" aria-label="LivingNotes across devices">
+          <div class="hero-carousel-viewport">
+            <figure class="hero-slide hero-phone-shot is-active" data-hero-slide aria-label="1 of 3: iPhone" aria-hidden="false">
+              <img src={SITE_ASSETS.heroPhone.src} alt={SITE_ASSETS.heroPhone.alt} width={SITE_ASSETS.heroPhone.width} height={SITE_ASSETS.heroPhone.height} fetchpriority="high" />
+            </figure>
+            <figure class="hero-slide hero-ipad-shot" data-hero-slide aria-label="2 of 3: iPad" aria-hidden="true">
+              <img src={SITE_ASSETS.heroTablet.src} alt={SITE_ASSETS.heroTablet.alt} width={SITE_ASSETS.heroTablet.width} height={SITE_ASSETS.heroTablet.height} fetchpriority="high" />
+            </figure>
+            <figure class="hero-slide hero-mac-shot" data-hero-slide aria-label="3 of 3: Mac" aria-hidden="true">
+              <div class="macbook-screen">
+                <img src={SITE_ASSETS.heroMac.src} alt={SITE_ASSETS.heroMac.alt} width={SITE_ASSETS.heroMac.width} height={SITE_ASSETS.heroMac.height} fetchpriority="high" />
+              </div>
+              <span class="macbook-base" aria-hidden="true"></span>
+            </figure>
+          </div>
+          <div class="hero-carousel-controls" aria-label="Choose a device">
+            <button type="button" class="hero-carousel-dot is-active" data-hero-dot aria-label="Show LivingNotes on iPhone" aria-current="true"><span>iPhone</span></button>
+            <button type="button" class="hero-carousel-dot" data-hero-dot aria-label="Show LivingNotes on iPad"><span>iPad</span></button>
+            <button type="button" class="hero-carousel-dot" data-hero-dot aria-label="Show LivingNotes on Mac"><span>Mac</span></button>
+          </div>
         </div>
       </div>
     </section>
@@ -164,8 +176,9 @@ const decaySteps = [
                   ) : (
                     <img src={step.image.src} alt={step.image.alt} width={step.image.width} height={step.image.height} loading="lazy" />
                   )}
+                  <p class="workflow-step-label">Step {index + 1}</p>
                   <figcaption class="workflow-callout">
-                    <strong><span>{String(index + 1).padStart(2, "0")}</span>{step.title}</strong>
+                    <strong>{step.title}</strong>
                     <span>{step.description}</span>
                     {step.note && <small>{step.note}</small>}
                   </figcaption>
@@ -174,6 +187,7 @@ const decaySteps = [
               </li>
             ))}
           </ol>
+          <p class="decay-outro">Notice what needs attention, clear one caterpillar, then read the note whole again. This small repair loop gives an old thought a gentle way back into view.</p>
         </div>
 
         <article class="feature-chapter feature-cards" aria-labelledby="feature-cards-title">
@@ -220,7 +234,7 @@ const decaySteps = [
 
       <div class="plant-field-window" role="img" aria-label="An expansive grid of LivingNotes plants continuing beyond the visible area">
         <div class="plant-field" aria-hidden="true">
-          {collectionNames.map((name, index) => (
+          {plantFieldNames.map((name, index) => (
             <span class="collection-plant">
             {logoPlantPots.has(index) ? (
               <span class="logo-plant">
@@ -242,7 +256,7 @@ const decaySteps = [
                 />
               </span>
             ) : (
-              <img src={collectionPlants[index]} alt="" width="624" height="648" loading="lazy" decoding="async" />
+              <img src={collectionPlants[index % collectionPlants.length]} alt="" width="624" height="648" loading="lazy" decoding="async" />
             )}
             <small>{name}</small>
             </span>
@@ -269,6 +283,65 @@ const decaySteps = [
     <p>© {new Date().getFullYear()} LivingNotes</p>
   </footer>
 </BaseLayout>
+
+<script>
+  const carousels = document.querySelectorAll<HTMLElement>("[data-hero-carousel]");
+
+  carousels.forEach((carousel) => {
+    const slides = Array.from(carousel.querySelectorAll<HTMLElement>("[data-hero-slide]"));
+    const dots = Array.from(carousel.querySelectorAll<HTMLButtonElement>("[data-hero-dot]"));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let activeIndex = 0;
+    let timer: number | undefined;
+    let automaticAdvances = 0;
+
+    const showSlide = (nextIndex: number) => {
+      activeIndex = (nextIndex + slides.length) % slides.length;
+
+      slides.forEach((slide, index) => {
+        const isActive = index === activeIndex;
+        slide.classList.toggle("is-active", isActive);
+        slide.setAttribute("aria-hidden", String(!isActive));
+      });
+
+      dots.forEach((dot, index) => {
+        const isActive = index === activeIndex;
+        dot.classList.toggle("is-active", isActive);
+        if (isActive) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+    };
+
+    const stop = () => {
+      if (timer !== undefined) window.clearTimeout(timer);
+      timer = undefined;
+    };
+
+    const start = () => {
+      stop();
+      if (reduceMotion.matches) return;
+
+      const delay = automaticAdvances < slides.length ? 1000 : 3000;
+      timer = window.setTimeout(() => {
+        showSlide(activeIndex + 1);
+        automaticAdvances += 1;
+        start();
+      }, delay);
+    };
+
+    dots.forEach((dot, index) => dot.addEventListener("click", () => {
+      showSlide(index);
+    }));
+
+    carousel.addEventListener("focusin", stop);
+    carousel.addEventListener("focusout", (event) => {
+      if (!carousel.contains(event.relatedTarget as Node | null)) start();
+    });
+    reduceMotion.addEventListener("change", start);
+    document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
+    start();
+  });
+</script>
 
 <style>
   .shell {
@@ -317,28 +390,26 @@ const decaySteps = [
 
   .hero {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 22px;
+    grid-template-columns: minmax(0, 0.88fr) minmax(480px, 1.12fr);
+    gap: clamp(30px, 4vw, 72px);
     align-items: center;
-    min-height: 860px;
-    padding-block: 58px 72px;
+    min-height: 700px;
+    padding-block: 54px 72px;
   }
 
   .hero-copy {
-    max-width: 820px;
-    margin-inline: auto;
-    text-align: center;
+    max-width: 560px;
+    text-align: left;
   }
 
   .hero-copy .eyebrow,
   .hero-actions {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .hero-copy h1,
   .hero-copy .lede {
-    margin-right: auto;
-    margin-left: auto;
+    margin-left: 0;
   }
 
   .eyebrow {
@@ -370,8 +441,8 @@ const decaySteps = [
   }
 
   h1 {
-    max-width: 720px;
-    font-size: clamp(3.3rem, 5.5vw, 5.6rem);
+    max-width: 620px;
+    font-size: clamp(3.2rem, 5vw, 5.15rem);
   }
 
   h1 em {
@@ -424,23 +495,39 @@ const decaySteps = [
     position: relative;
     display: grid;
     place-items: center;
-    min-height: 500px;
+    min-width: 0;
+    min-height: 560px;
   }
 
-  .hero-devices {
+  .hero-carousel {
     position: relative;
     z-index: 2;
-    width: min(1040px, 100%);
-    height: 500px;
-    transform: none;
+    width: 100%;
   }
 
-  .hero-devices figure {
+  .hero-carousel-viewport {
+    position: relative;
+    height: 510px;
+  }
+
+  .hero-slide {
     position: absolute;
+    top: 50%;
+    left: 50%;
     margin: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-43%, -50%) rotate(var(--hero-device-tilt, 0deg));
+    transition: opacity 650ms ease, transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .hero-devices img {
+  .hero-slide.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) rotate(var(--hero-device-tilt, 0deg));
+  }
+
+  .hero-slide img {
     display: block;
     width: 100%;
     height: auto;
@@ -448,11 +535,7 @@ const decaySteps = [
   }
 
   .hero-mac-shot {
-    z-index: 3;
-    top: 4%;
-    left: 50%;
-    width: 44%;
-    transform: translateX(-50%);
+    width: min(96%, 620px);
   }
 
   .hero-mac-shot,
@@ -527,22 +610,72 @@ const decaySteps = [
   }
 
   .hero-ipad-shot {
-    z-index: 5;
-    top: 18%;
-    right: -9%;
-    width: 30%;
+    width: min(96%, 640px);
     border-width: 3px;
-    border-radius: 14px;
+    border-radius: 18px;
   }
 
   .hero-phone-shot {
-    z-index: 6;
-    top: 18%;
-    left: 10%;
-    width: 11%;
+    --hero-device-tilt: -7deg;
+    width: auto;
+    height: min(94%, 490px);
+    aspect-ratio: 1206 / 2622;
     border-width: 3px;
-    border-radius: 22px;
-    transform: none;
+    border-radius: 28px;
+  }
+
+  .hero-phone-shot img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 8px;
+  }
+
+  .hero-carousel-dot {
+    position: relative;
+    width: 38px;
+    height: 24px;
+    padding: 0;
+    color: transparent;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .hero-carousel-dot::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 22px;
+    height: 3px;
+    background: rgba(160, 180, 164, 0.32);
+    border-radius: 999px;
+    content: "";
+    transform: translate(-50%, -50%);
+    transition: width 180ms ease, background 180ms ease;
+  }
+
+  .hero-carousel-dot:is(:hover, :focus-visible)::before {
+    background: rgba(190, 207, 192, 0.7);
+  }
+
+  .hero-carousel-dot.is-active::before {
+    width: 32px;
+    background: var(--sage-light);
+  }
+
+  .hero-carousel-dot span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 
   .halo {
@@ -620,6 +753,16 @@ const decaySteps = [
 
   .feature-decay {
     padding-bottom: clamp(58px, 7vw, 82px);
+  }
+
+  .decay-outro {
+    max-width: 620px;
+    margin: 28px auto 0;
+    color: #606761;
+    font-family: var(--sans);
+    font-size: clamp(0.96rem, 1.25vw, 1.08rem);
+    line-height: 1.55;
+    text-align: center;
   }
 
   .feature-copy {
@@ -890,8 +1033,22 @@ const decaySteps = [
     position: relative;
     display: grid;
     place-items: center;
-    min-height: 470px;
+    min-height: 510px;
     margin: 0;
+  }
+
+  .workflow-step-label {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin: 0;
+    color: #6e7d72;
+    font-size: 0.68rem;
+    font-weight: 650;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+    transform: translateX(-50%);
   }
 
   .workflow-shot > img,
@@ -981,15 +1138,6 @@ const decaySteps = [
     color: #3f5e45;
     font-size: 0.8rem;
     font-weight: 650;
-  }
-
-  .workflow-callout strong span {
-    display: block;
-    margin-bottom: 3px;
-    color: #8cab90;
-    font-family: var(--serif);
-    font-size: 0.82rem;
-    font-weight: 400;
   }
 
   .workflow-callout small {
@@ -1094,17 +1242,39 @@ const decaySteps = [
   }
 
   .product-section {
+    position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 0.82fr) minmax(480px, 1.18fr);
-    gap: clamp(48px, 7vw, 100px);
+    grid-template-columns: 1fr;
     align-items: center;
     min-height: 766px;
     padding-block: 78px;
     border-top: 1px solid var(--line);
+    isolation: isolate;
+  }
+
+  .product-section::after {
+    position: absolute;
+    z-index: 1;
+    inset: 0 calc(50% - 50vw);
+    background: linear-gradient(90deg, rgba(16, 23, 19, 0.98) 0%, rgba(16, 23, 19, 0.88) 26%, rgba(16, 23, 19, 0.35) 47%, transparent 68%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .product-section::before {
+    position: absolute;
+    z-index: 1;
+    inset: 0 calc(50% - 50vw);
+    background: linear-gradient(270deg, rgba(16, 23, 19, 0.96) 0%, rgba(16, 23, 19, 0.7) 11%, rgba(16, 23, 19, 0.24) 24%, transparent 38%);
+    content: "";
+    pointer-events: none;
   }
 
   .section-heading {
+    position: relative;
+    z-index: 2;
     display: block;
+    max-width: 500px;
     margin: 0;
   }
 
@@ -1126,15 +1296,16 @@ const decaySteps = [
   }
 
   .plant-field-window {
-    position: relative;
-    width: 100%;
-    height: 555px;
-    align-self: center;
-    justify-self: center;
+    position: absolute;
+    z-index: 0;
+    inset: 0 calc(50% - 50vw);
+    width: 100vw;
+    height: 100%;
     overflow: hidden;
-    background: radial-gradient(circle at center, rgba(67, 91, 71, 0.08), transparent 68%);
-    -webkit-mask-image: radial-gradient(ellipse at center, #000 28%, rgba(0, 0, 0, 0.88) 48%, rgba(0, 0, 0, 0.4) 72%, transparent 100%);
-    mask-image: radial-gradient(ellipse at center, #000 28%, rgba(0, 0, 0, 0.88) 48%, rgba(0, 0, 0, 0.4) 72%, transparent 100%);
+    background: radial-gradient(circle at 80% 50%, rgba(67, 91, 71, 0.08), transparent 62%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 58% at 80% 50%, #000 22%, rgba(0, 0, 0, 0.88) 38%, rgba(0, 0, 0, 0.3) 62%, transparent 88%);
+    mask-image: radial-gradient(ellipse 60% 58% at 80% 50%, #000 22%, rgba(0, 0, 0, 0.88) 38%, rgba(0, 0, 0, 0.3) 62%, transparent 88%);
+    pointer-events: none;
   }
 
   .plant-field {
@@ -1142,11 +1313,11 @@ const decaySteps = [
     top: 50%;
     left: 50%;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(7, 1fr);
-    gap: 8px 10px;
-    width: 126%;
-    height: 124%;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 3px 5px;
+    width: 108%;
+    height: 126%;
     padding: 12px;
     transform: translate(-50%, -50%);
   }
@@ -1278,21 +1449,38 @@ const decaySteps = [
 
   @media (max-width: 900px) {
     .hero {
+      grid-template-columns: 1fr;
+      gap: 22px;
       padding-top: 58px;
     }
 
     .hero-copy {
       max-width: 720px;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .hero-copy .eyebrow,
+    .hero-actions {
+      justify-content: center;
+    }
+
+    .hero-copy h1,
+    .hero-copy .lede {
+      margin-right: auto;
+      margin-left: auto;
     }
 
     .hero-visual {
-      min-height: 590px;
+      min-height: 550px;
     }
 
-    .hero-devices {
-      width: min(820px, 100%);
-      height: 430px;
-      transform: none;
+    .hero-carousel {
+      width: min(720px, 100%);
+    }
+
+    .hero-carousel-viewport {
+      height: 500px;
     }
 
     .phone-shot {
@@ -1320,7 +1508,7 @@ const decaySteps = [
     }
 
     .workflow-shot {
-      min-height: 470px;
+      min-height: 525px;
     }
 
     .workflow-shot > img,
@@ -1373,12 +1561,11 @@ const decaySteps = [
     }
 
     .product-section {
-      grid-template-columns: minmax(0, 0.8fr) minmax(340px, 1.2fr);
-      gap: 30px;
+      grid-template-columns: 1fr;
     }
 
     .plant-field-window {
-      height: 520px;
+      height: 100%;
     }
 
     .plant-field {
@@ -1428,15 +1615,26 @@ const decaySteps = [
     }
 
     .hero-visual {
-      min-height: 480px;
+      min-height: 440px;
       margin-top: 14px;
       overflow: hidden;
     }
 
-    .hero-devices {
-      width: 560px;
-      max-width: 112%;
-      height: 320px;
+    .hero-carousel {
+      width: 100%;
+    }
+
+    .hero-carousel-viewport {
+      height: 390px;
+    }
+
+    .hero-mac-shot,
+    .hero-ipad-shot {
+      width: min(96%, 520px);
+    }
+
+    .hero-phone-shot {
+      height: min(94%, 370px);
     }
 
     .halo-one {
@@ -1455,7 +1653,6 @@ const decaySteps = [
 
     .product-section {
       grid-template-columns: 1fr;
-      gap: 36px;
       min-height: auto;
       padding-block: 64px 70px;
     }
@@ -1511,7 +1708,7 @@ const decaySteps = [
     }
 
     .workflow-shot {
-      min-height: 500px;
+      min-height: 550px;
     }
 
     .workflow-shot > img,
@@ -1537,15 +1734,15 @@ const decaySteps = [
     }
 
     .plant-field-window {
-      height: 450px;
-      margin-inline: -10px;
-      width: calc(100% + 20px);
+      inset: 0 calc(50% - 50vw);
+      width: 100vw;
+      height: 100%;
     }
 
     .plant-field {
       gap: 2px;
-      width: 132%;
-      height: 126%;
+      width: 142%;
+      height: 132%;
     }
 
     .collection-plant small {
@@ -1573,7 +1770,7 @@ const decaySteps = [
 
   @media (max-width: 420px) {
     .workflow-shot {
-      min-height: 405px;
+      min-height: 430px;
     }
 
     .workflow-shot > img,
@@ -1647,6 +1844,10 @@ const decaySteps = [
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .hero-slide {
+      transition: none;
+    }
+
     .hold-hand {
       display: none;
       animation: none;
