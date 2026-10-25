@@ -50,7 +50,9 @@ Browser-ready image assets live in `public/images/`. All images currently used b
 | `livingnotes-decay-cutout.png` | Decay/card section | PNG with a genuinely transparent background |
 | `decay-step-1-garden.png` | Workflow: yellow garden | Transparent PNG, 917 × 1715 px |
 | `decay-step-2-open-note.png` | Workflow: opened note | Transparent PNG, 917 × 1715 px |
-| `decay-step-3-hold.png` | Workflow: hold the caterpillar | Transparent PNG, 917 × 1715 px |
+| `decay-step-3-hold.png` | Base phone for the hold animation | Transparent PNG, 917 × 1715 px |
+| `decay-step-3-repaired.png` | Repaired state shown after the hold | Transparent PNG, 917 × 1715 px |
+| `pointing-hand.png` | Exact hand layered over the phone by CSS | Transparent PNG, 512 × 512 px |
 | `decay-step-4-repaired.png` | Workflow: repaired note | Transparent PNG, 917 × 1715 px |
 | `livingnotes-preview.jpg` | Social sharing preview | JPEG, 1200 × 630 px |
 | `favicon.svg` | Browser icon | SVG; stored directly in `public/` |
