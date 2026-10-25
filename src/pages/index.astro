@@ -100,6 +100,13 @@ const decaySteps = [
     image: SITE_ASSETS.decayWorkflow[3],
   },
 ];
+
+const featureGardenSlots = [
+  collectionPlants[0], collectionPlants[3], null, collectionPlants[6], collectionPlants[8],
+  null, collectionPlants[11], collectionPlants[14], collectionPlants[17], null,
+  collectionPlants[20], collectionPlants[23], null, collectionPlants[26], collectionPlants[29],
+  collectionPlants[31], null, collectionPlants[36], null, collectionPlants[41],
+];
 ---
 
 <BaseLayout {title} {description}>
@@ -134,33 +141,94 @@ const decaySteps = [
     <section class="incubation" aria-labelledby="incubation-title">
       <div class="shell incubation-inner">
         <div class="incubation-copy">
-          <p class="eyebrow eyebrow-dark"><span></span> Ideas don’t run on deadlines</p>
-          <h2 id="incubation-title">You can’t rush a truly new idea.</h2>
-          <p class="incubation-intro">Effort matters. But some things only become clear after you stop pushing: the missing lyric, the turn in a story, the research question worth asking, the experiment you haven’t quite found yet.</p>
-
-          <div class="thought-examples" aria-label="Examples of ideas that need time">
-            <span>A melody</span>
-            <span>A story turn</span>
-            <span>A research question</span>
-            <span>An experiment</span>
-          </div>
+          <h2 id="incubation-title">How does it work?</h2>
+          <p class="incubation-intro">Plants yellow when their notes need attention. Open the note and hold the caterpillar for two seconds to bring the hidden vowel back.</p>
         </div>
 
-        <ol class="workflow-steps">
-          {decaySteps.map((step, index) => (
-            <li class={`workflow-step workflow-step-${index + 1}`}>
-              <figure class="workflow-shot">
-                <img src={step.image.src} alt={step.image.alt} width={step.image.width} height={step.image.height} loading="lazy" />
-                <figcaption class="workflow-callout">
-                  <strong><span>{String(index + 1).padStart(2, "0")}</span>{step.title}</strong>
-                  <span>{step.description}</span>
-                  {step.note && <small>{step.note}</small>}
-                </figcaption>
-                {index === 1 && <p class="workflow-collection-callout">Each plant is a collection of notes.</p>}
-              </figure>
-            </li>
-          ))}
-        </ol>
+        <div class="feature-decay" aria-label="Decay workflow">
+          <ol class="workflow-steps">
+            {decaySteps.map((step, index) => (
+              <li class={`workflow-step workflow-step-${index + 1}`}>
+                <figure class="workflow-shot">
+                  <img src={step.image.src} alt={step.image.alt} width={step.image.width} height={step.image.height} loading="lazy" />
+                  <figcaption class="workflow-callout">
+                    <strong><span>{String(index + 1).padStart(2, "0")}</span>{step.title}</strong>
+                    <span>{step.description}</span>
+                    {step.note && <small>{step.note}</small>}
+                  </figcaption>
+                  {index === 1 && <p class="workflow-collection-callout">Each plant is a collection of notes.</p>}
+                </figure>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <article class="feature-chapter feature-cards" aria-labelledby="feature-cards-title">
+          <div class="feature-copy">
+            <p class="feature-number">02</p>
+            <h3 id="feature-cards-title">Small cards,<br />larger structures.</h3>
+            <div class="feature-prose">
+              <p>A thread can hold as many cards as the idea needs, but every card stops at 200 characters. The limit encourages one short, standalone thought at a time.</p>
+              <p>Swipe through the rail, then move cards into the order that makes sense. It is closer to building an outline than filling one endless document.</p>
+            </div>
+          </div>
+
+          <div class="card-rail-visual" role="img" aria-label="A horizontal rail of short LivingNotes cards that can be reordered into a larger outline">
+            <div class="card-rail-header" aria-hidden="true">
+              <span>Story structure</span>
+              <small>4 cards</small>
+            </div>
+            <div class="card-rail" aria-hidden="true">
+              <article class="sample-note-card">
+                <span class="card-grip">•••</span>
+                <p>The visitor arrives before anyone knows why the town has stopped keeping clocks.</p>
+                <footer><span>79 / 200</span><span>Card 1</span></footer>
+              </article>
+              <article class="sample-note-card sample-note-card-active">
+                <span class="card-grip">•••</span>
+                <p>Each missing hour belongs to someone who chose to forget it.</p>
+                <footer><span>60 / 200</span><span>Card 2</span></footer>
+              </article>
+              <article class="sample-note-card">
+                <span class="card-grip">•••</span>
+                <p>The clockmaker remembers every hour and has been waiting for the visitor.</p>
+                <footer><span>73 / 200</span><span>Card 3</span></footer>
+              </article>
+            </div>
+            <div class="card-rail-footer" aria-hidden="true">
+              <span>← swipe through cards →</span>
+              <strong>200 characters maximum</strong>
+              <span>↔ move to reorder</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature-chapter feature-garden" aria-labelledby="feature-garden-title">
+          <div class="garden-plot" role="img" aria-label="A LivingNotes garden section with exactly 20 manually placeable slots, including open spaces">
+            <div class="garden-plot-header" aria-hidden="true">
+              <span>Research garden</span>
+              <small>14 / 20</small>
+            </div>
+            <div class="garden-plot-grid" aria-hidden="true">
+              {featureGardenSlots.map((plant, index) => (
+                <span class:list={["garden-plot-slot", { "garden-plot-slot-open": !plant }]}>
+                  {plant ? <img src={plant} alt="" width="624" height="648" loading="lazy" /> : <span>+</span>}
+                  <small>{index + 1}</small>
+                </span>
+              ))}
+            </div>
+            <p class="garden-plot-hint" aria-hidden="true">Hold and move a plant to place it anywhere in the plot.</p>
+          </div>
+
+          <div class="feature-copy">
+            <p class="feature-number">03</p>
+            <h3 id="feature-garden-title">A garden,<br />not another feed.</h3>
+            <div class="feature-prose">
+              <p>Each garden section gives you 20 places for plants. Put them in any open slot, then move or swap them as your priorities change.</p>
+              <p>Like gardening in an apartment, the visible space is intentionally finite. You choose what deserves a place without limiting your whole life to one plot—new sections make room for other areas.</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -406,12 +474,7 @@ const decaySteps = [
   }
 
   .incubation-inner {
-    padding-block: 82px 104px;
-  }
-
-  .eyebrow-dark {
-    justify-content: center;
-    color: #68816a;
+    padding-block: 68px 0;
   }
 
   .incubation-copy {
@@ -436,28 +499,240 @@ const decaySteps = [
     line-height: 1.55;
   }
 
-  .thought-examples {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin: 24px 0 0;
+  .feature-chapter {
+    padding-block: clamp(78px, 9vw, 120px);
+    border-top: 1px solid rgba(67, 91, 71, 0.15);
   }
 
-  .thought-examples span {
-    padding: 7px 11px;
-    color: #526454;
-    background: rgba(255, 255, 255, 0.76);
-    border: 1px solid rgba(67, 91, 71, 0.14);
-    border-radius: 999px;
+  .feature-decay {
+    padding-bottom: clamp(58px, 7vw, 82px);
+  }
+
+  .feature-copy {
+    max-width: 470px;
+  }
+
+  .feature-number {
+    margin: 0 0 18px;
+    color: #8cab90;
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+  }
+
+  .feature-copy h3 {
+    margin: 0;
+    color: #262a27;
+    font-family: var(--serif);
+    font-size: clamp(2.25rem, 4vw, 4rem);
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+
+  .feature-prose p {
+    margin: 0;
+    color: #606761;
+    font-size: clamp(0.94rem, 1.15vw, 1.05rem);
+    line-height: 1.58;
+  }
+
+  .feature-prose p + p {
+    margin-top: 14px;
+  }
+
+  .feature-copy > .feature-prose {
+    margin-top: 24px;
+  }
+
+  .feature-cards,
+  .feature-garden {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.22fr);
+    gap: clamp(48px, 7vw, 94px);
+    align-items: center;
+  }
+
+  .feature-cards .feature-copy {
+    order: 1;
+  }
+
+  .feature-cards .card-rail-visual {
+    order: 2;
+  }
+
+  .feature-garden {
+    grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
+  }
+
+  .feature-garden .garden-plot {
+    order: 1;
+  }
+
+  .feature-garden .feature-copy {
+    order: 2;
+  }
+
+  .card-rail-visual,
+  .garden-plot {
+    min-width: 0;
+    padding: 24px;
+    color: #e8ebe5;
+    background:
+      radial-gradient(circle at 70% 0%, rgba(134, 166, 130, 0.12), transparent 20rem),
+      #262d29;
+    border: 1px solid rgba(54, 67, 58, 0.16);
+    border-radius: 26px;
+    box-shadow: 0 24px 54px rgba(44, 51, 45, 0.17);
+  }
+
+  .card-rail-header,
+  .garden-plot-header,
+  .card-rail-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .card-rail-header,
+  .garden-plot-header {
+    padding: 0 4px 18px;
+    font-size: 0.78rem;
+    font-weight: 650;
+  }
+
+  .card-rail-header small,
+  .garden-plot-header small {
+    color: #9fa9a1;
+    font-size: 0.65rem;
+    font-weight: 500;
+  }
+
+  .card-rail {
+    display: flex;
+    gap: 12px;
+    overflow: hidden;
+    scroll-snap-type: x mandatory;
+  }
+
+  .sample-note-card {
+    position: relative;
+    flex: 0 0 min(245px, 58%);
+    min-height: 285px;
+    padding: 25px 20px 18px;
+    color: #e8ebe5;
+    background: #333a36;
+    border: 1px solid rgba(235, 238, 229, 0.12);
+    border-radius: 18px;
+    scroll-snap-align: center;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.17);
+  }
+
+  .sample-note-card-active {
+    border-color: rgba(148, 181, 143, 0.48);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(148, 181, 143, 0.12);
+  }
+
+  .card-grip {
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    color: #829087;
     font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    transform: translateX(-50%);
+  }
+
+  .sample-note-card p {
+    margin: 24px 0 0;
+    font-family: var(--serif);
+    font-size: 1.18rem;
+    line-height: 1.35;
+  }
+
+  .sample-note-card footer {
+    position: absolute;
+    right: 18px;
+    bottom: 16px;
+    left: 18px;
+    display: flex;
+    justify-content: space-between;
+    color: #96a099;
+    font-size: 0.58rem;
+  }
+
+  .card-rail-footer {
+    padding: 18px 4px 0;
+    color: #8f9a92;
+    font-size: 0.58rem;
+  }
+
+  .card-rail-footer strong {
+    color: #b9c9b6;
+    font-size: 0.62rem;
+    font-weight: 650;
+  }
+
+  .garden-plot {
+    width: min(100%, 590px);
+    justify-self: start;
+  }
+
+  .garden-plot-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .garden-plot-slot {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(235, 238, 229, 0.09);
+    border-radius: 14px;
+  }
+
+  .garden-plot-slot img {
+    width: 78%;
+    height: 78%;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.2));
+  }
+
+  .garden-plot-slot > small {
+    position: absolute;
+    right: 7px;
+    bottom: 5px;
+    color: #68736b;
+    font-size: 0.48rem;
+  }
+
+  .garden-plot-slot-open {
+    border-style: dashed;
+  }
+
+  .garden-plot-slot-open > span {
+    color: #66736a;
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .garden-plot-hint {
+    margin: 18px 0 0;
+    color: #8f9a92;
+    font-size: 0.62rem;
+    line-height: 1.4;
+    text-align: center;
   }
 
   .workflow-steps {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: clamp(12px, 2vw, 28px);
-    margin: 64px 0 0;
+    margin: 34px 0 0;
     padding: 0;
     list-style: none;
   }
@@ -816,6 +1091,22 @@ const decaySteps = [
       width: 285px;
     }
 
+    .feature-cards,
+    .feature-garden {
+      gap: 38px;
+    }
+
+    .card-rail-visual,
+    .garden-plot {
+      padding: 18px;
+      border-radius: 22px;
+    }
+
+    .sample-note-card {
+      flex-basis: 68%;
+      min-height: 260px;
+    }
+
     .workflow-steps {
       column-gap: 16px;
     }
@@ -955,7 +1246,7 @@ const decaySteps = [
     }
 
     .incubation-inner {
-      padding-block: 64px 76px;
+      padding-block: 64px 0;
     }
 
     .incubation h2 {
@@ -963,14 +1254,45 @@ const decaySteps = [
       font-size: clamp(2.25rem, 10vw, 3.2rem);
     }
 
-    .thought-examples {
-      margin-bottom: 24px;
+    .feature-cards,
+    .feature-garden {
+      grid-template-columns: 1fr;
+      gap: 38px;
+    }
+
+    .feature-cards .feature-copy,
+    .feature-garden .feature-copy {
+      order: 1;
+      max-width: 520px;
+    }
+
+    .feature-cards .card-rail-visual,
+    .feature-garden .garden-plot {
+      order: 2;
+      width: 100%;
+    }
+
+    .card-rail-visual,
+    .garden-plot {
+      padding: 18px;
+    }
+
+    .sample-note-card {
+      flex-basis: min(245px, 72%);
+    }
+
+    .garden-plot-grid {
+      gap: 7px;
+    }
+
+    .garden-plot-slot {
+      border-radius: 10px;
     }
 
     .workflow-steps {
       grid-template-columns: 1fr;
       gap: 42px;
-      margin-top: 48px;
+      margin-top: 30px;
     }
 
     .workflow-shot {
