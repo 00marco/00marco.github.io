@@ -7,16 +7,16 @@ const title = "LivingNotes — Give unfinished ideas time to grow";
 const description = "A calm place to set thoughts aside, let them develop, and return before they fade. Coming soon for iPhone and iPad.";
 
 const collectionNames = [
-  "Songs", "Research ideas", "Joke ideas", "Movies", "Books", "Scripts",
-  "Lecture notes", "Journal", "Recipes", "Home projects", "To-do", "Poems",
-  "Story seeds", "Characters", "Experiments", "Questions", "Quotes", "Sketches",
-  "Essays", "Articles", "Podcast ideas", "Game ideas", "Designs", "Trips",
-  "Gift ideas", "Reading list", "Watchlist", "Classes", "Work notes", "Dreams",
-  "Memories", "Garden", "Repairs", "Finances", "Health", "Habits",
-  "Goals", "Events", "Letters", "Photos", "Inventions", "Side projects",
-  "Song fragments", "Thesis ideas", "Interview notes", "Worldbuilding", "Riffs", "Observations",
-  "Problem list", "Learning notes", "Meal ideas", "Weekend plans", "Prototypes", "Writing prompts",
-  "People", "Someday",
+  "Lorem", "Ipsum", "Dolor", "Sit amet", "Consectetur", "Adipiscing",
+  "Elit", "Sed do", "Eiusmod", "Tempor", "Incididunt", "Labore",
+  "Dolore", "Magna", "Aliqua", "Enim", "Minim", "Veniam",
+  "Quis", "Nostrud", "Exercitation", "Ullamco", "Laboris", "Nisi",
+  "Aliquip", "Commodo", "Consequat", "Duis", "Aute", "Irure",
+  "Reprehenderit", "Voluptate", "Velit", "Esse", "Cillum", "Fugiat",
+  "Nulla", "Pariatur", "Excepteur", "Sint", "Occaecat", "Cupidatat",
+  "Proident", "Sunt", "Culpa", "Officia", "Deserunt", "Mollit",
+  "Anim", "Laborum", "Curabitur", "Viverra", "Metus", "Integer",
+  "Tincidunt", "Semper",
 ];
 
 const plantCombinations = [0, 2, 3, 4, 5].flatMap((foliage) =>
@@ -89,19 +89,19 @@ const plantFieldNames = Array.from(
 
 const decaySteps = [
   {
-    title: "Notice the yellow",
-    description: "A yellowing plant means its notes need attention.",
+    title: "Lorem ipsum dolor",
+    description: "Consectetur adipiscing elit sed do eiusmod.",
     image: SITE_ASSETS.decayWorkflow[0],
   },
   {
-    title: "Hold to clear",
-    description: "Press and hold the caterpillar to reveal the vowel.",
-    note: "Your text is only hidden—it is never deleted or damaged.",
+    title: "Sit amet consectetur",
+    description: "Tempor incididunt ut labore et dolore magna.",
+    note: "Ut enim ad minim veniam quis nostrud exercitation.",
     image: SITE_ASSETS.decayWorkflow[1],
   },
   {
-    title: "Clean again",
-    description: "One vowel on each decaying card is covered every day.",
+    title: "Adipiscing elit sed",
+    description: "Duis aute irure dolor in reprehenderit voluptate.",
     image: SITE_ASSETS.decayWorkflow[2],
   },
 ];
@@ -120,9 +120,9 @@ const decaySteps = [
   <main id="top">
     <section class="hero shell" aria-labelledby="hero-title">
       <div class="hero-copy reveal">
-        <p class="eyebrow"><span></span> A place for thoughts to wait</p>
-        <h1 id="hero-title">Some ideas need<br /><em>time to take root.</em></h1>
-        <p class="lede">LivingNotes is a parking lot for unfinished thoughts—a place to keep songs, stories, research questions, and experiments without forcing them to be finished before they’re ready.</p>
+        <p class="eyebrow"><span></span> Lorem ipsum dolor sit</p>
+        <h1 id="hero-title">Lorem ipsum dolor<br /><em>sit amet consectetur.</em></h1>
+        <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         <div class="hero-actions">
           <p class="launch-badge"><small>In development</small>Coming soon</p>
         </div>
@@ -158,8 +158,8 @@ const decaySteps = [
     <section class="incubation" aria-labelledby="incubation-title">
       <div class="shell incubation-inner">
         <div class="incubation-copy">
-          <h2 id="incubation-title">How does it work?</h2>
-          <p class="incubation-intro">Old notes can be hard to return to once the spark has faded. LivingNotes gives you a gentler way back: find the caterpillar, hold it for two seconds, and reveal the thought underneath.</p>
+          <h2 id="incubation-title">Lorem ipsum dolor?</h2>
+          <p class="incubation-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
 
         <div class="feature-decay" aria-label="Decay workflow">
@@ -171,6 +171,9 @@ const decaySteps = [
                     <div class="hold-animation">
                       <img class="hold-phone" src={step.image.src} alt={step.image.alt} width={step.image.width} height={step.image.height} loading="lazy" />
                       <img class="hold-repaired" src={SITE_ASSETS.decayWorkflow[2].src} alt="" width={SITE_ASSETS.decayWorkflow[2].width} height={SITE_ASSETS.decayWorkflow[2].height} loading="lazy" aria-hidden="true" />
+                      <svg class="hold-progress" viewBox="0 0 1179 2556" preserveAspectRatio="none" aria-hidden="true">
+                        <rect pathLength="1" x="117" y="380" width="944" height="1967" rx="60" />
+                      </svg>
                       <img class="hold-hand" src="/images/pointing-hand.png" alt="" width="512" height="512" loading="lazy" aria-hidden="true" />
                     </div>
                   ) : (
@@ -182,21 +185,21 @@ const decaySteps = [
                     <span>{step.description}</span>
                     {step.note && <small>{step.note}</small>}
                   </figcaption>
-                  {index === 1 && <p class="workflow-collection-callout">Each plant is a collection of notes.</p>}
+                  {index === 1 && <p class="workflow-collection-callout">Lorem ipsum dolor sit amet.</p>}
                 </figure>
               </li>
             ))}
           </ol>
-          <p class="decay-outro">Notice what needs attention, clear one caterpillar, then read the note whole again. This small repair loop gives an old thought a gentle way back into view.</p>
+          <p class="decay-outro">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
 
         <article class="feature-chapter feature-cards" aria-labelledby="feature-cards-title">
           <div class="feature-copy">
             <p class="feature-number">02</p>
-            <h3 id="feature-cards-title">Small cards,<br />larger structures.</h3>
+            <h3 id="feature-cards-title">Lorem ipsum,<br />dolor sit amet.</h3>
             <div class="feature-prose">
-              <p>A thread can hold as many cards as the idea needs, but every card stops at 200 characters. The limit encourages one short, standalone thought at a time.</p>
-              <p>Swipe through the rail, then move cards into the order that makes sense. It is closer to building an outline than filling one endless document.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
           </div>
 
@@ -215,10 +218,10 @@ const decaySteps = [
 
           <div class="feature-copy">
             <p class="feature-number">03</p>
-            <h3 id="feature-garden-title">A garden,<br />not another feed.</h3>
+            <h3 id="feature-garden-title">Duis aute,<br />irure dolor.</h3>
             <div class="feature-prose">
-              <p>Each garden section gives you 20 places for plants. Put them in any open slot, then move or swap them as your priorities change.</p>
-              <p>Like gardening in an apartment, the visible space is intentionally finite. You choose what deserves a place without limiting your whole life to one plot—new sections make room for other areas.</p>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
           </div>
         </article>
@@ -227,9 +230,9 @@ const decaySteps = [
 
     <section class="product-section shell" id="inside" aria-labelledby="inside-title">
       <div class="section-heading">
-        <p class="eyebrow"><span></span> The card is the container</p>
-        <h2 id="inside-title">Unfinished thoughts,<br />given a shape.</h2>
-        <p>Cards keep ideas distinct without isolating them. Add what you know, leave room for what you don’t, and see the whole collection at once.</p>
+        <p class="eyebrow"><span></span> Lorem ipsum dolor sit</p>
+        <h2 id="inside-title">Consectetur adipiscing,<br />elit sed do.</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       </div>
 
       <div class="plant-field-window" role="img" aria-label="An expansive grid of LivingNotes plants continuing beyond the visible area">
@@ -267,9 +270,9 @@ const decaySteps = [
 
     <section class="closing shell" aria-labelledby="closing-title">
       <div class="closing-mark" aria-hidden="true"><PlantMark size={82} /></div>
-      <p class="eyebrow centered"><span></span> Begin with a thought <span></span></p>
-      <h2 id="closing-title">Not every thought needs<br />an answer today.</h2>
-      <p>LivingNotes is coming soon for iPhone and iPad.</p>
+      <p class="eyebrow centered"><span></span> Lorem ipsum dolor <span></span></p>
+      <h2 id="closing-title">Ut enim ad minim<br />veniam quis nostrud.</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <p class="launch-badge launch-badge-light"><small>In development</small>Coming soon</p>
     </section>
   </main>
@@ -1089,33 +1092,61 @@ const decaySteps = [
 
   .hold-repaired {
     opacity: 0;
-    animation: reveal-repaired 4.96s steps(1, end) infinite;
+    animation: reveal-repaired 6.96s steps(1, end) infinite;
+  }
+
+  .hold-progress {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    pointer-events: none;
+  }
+
+  .hold-progress rect {
+    stroke: #7eaa72;
+    stroke-width: 12px;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 10px rgba(126, 170, 114, 0.45));
+    animation: trace-repair 6.96s linear infinite;
   }
 
   .hold-hand {
     position: absolute;
     z-index: 2;
-    top: 19.1%;
-    left: -11.9%;
-    width: 40%;
+    top: 17%;
+    left: -23.5%;
+    width: 52%;
     height: auto;
     opacity: 0;
     transform-origin: 96.3% 35.2%;
-    animation: press-caterpillar 4.96s ease-in-out infinite;
+    animation: press-caterpillar 6.96s ease-in-out infinite;
   }
 
   @keyframes press-caterpillar {
-    0%, 3.6% { opacity: 0; transform: translateX(-220%) scale(1); }
-    15.6% { opacity: 1; transform: translateX(0) scale(1); }
-    21% { opacity: 1; transform: translateX(0) scale(0.926); }
-    61.3% { opacity: 1; transform: translateX(0) scale(0.926); }
-    66.7% { opacity: 1; transform: translateX(0) scale(1); }
-    78.7%, 100% { opacity: 0; transform: translateX(-220%) scale(1); }
+    0%, 31.3% { opacity: 0; transform: translateX(-220%) scale(1); }
+    39.8% { opacity: 1; transform: translateX(0) scale(1); }
+    43.7% { opacity: 1; transform: translateX(0) scale(0.926); }
+    72.4% { opacity: 1; transform: translateX(0) scale(0.926); }
+    76.3% { opacity: 1; transform: translateX(0) scale(1); }
+    84.8%, 100% { opacity: 0; transform: translateX(-220%) scale(1); }
   }
 
   @keyframes reveal-repaired {
-    0%, 81.7% { opacity: 0; }
-    81.8%, 100% { opacity: 1; }
+    0%, 72.4% { opacity: 0; }
+    72.5%, 100% { opacity: 1; }
+  }
+
+  @keyframes trace-repair {
+    0%, 43.6% { opacity: 0; stroke-dashoffset: 1; }
+    43.7% { opacity: 1; stroke-dashoffset: 1; }
+    72.4% { opacity: 1; stroke-dashoffset: 0; }
+    72.5%, 100% { opacity: 0; stroke-dashoffset: 0; }
   }
 
   .workflow-callout {
@@ -1148,6 +1179,7 @@ const decaySteps = [
   }
 
   .workflow-callout::after {
+    display: none;
     position: absolute;
     top: 31px;
     width: clamp(52px, 6vw, 82px);
@@ -1157,6 +1189,7 @@ const decaySteps = [
   }
 
   .workflow-callout::before {
+    display: none;
     position: absolute;
     top: 28px;
     width: 7px;
@@ -1221,6 +1254,7 @@ const decaySteps = [
   }
 
   .workflow-collection-callout::before {
+    display: none;
     position: absolute;
     top: 10px;
     left: calc(100% + 10px);
@@ -1231,6 +1265,7 @@ const decaySteps = [
   }
 
   .workflow-collection-callout::after {
+    display: none;
     position: absolute;
     top: 7px;
     left: calc(100% + 10px + clamp(49px, 6vw, 79px));
@@ -1848,7 +1883,8 @@ const decaySteps = [
       transition: none;
     }
 
-    .hold-hand {
+    .hold-hand,
+    .hold-progress {
       display: none;
       animation: none;
     }
