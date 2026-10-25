@@ -296,7 +296,6 @@ const decaySteps = [
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let activeIndex = 0;
     let timer: number | undefined;
-    let automaticAdvances = 0;
 
     const showSlide = (nextIndex: number) => {
       activeIndex = (nextIndex + slides.length) % slides.length;
@@ -324,12 +323,10 @@ const decaySteps = [
       stop();
       if (reduceMotion.matches) return;
 
-      const delay = automaticAdvances < slides.length ? 1000 : 3000;
       timer = window.setTimeout(() => {
         showSlide(activeIndex + 1);
-        automaticAdvances += 1;
         start();
-      }, delay);
+      }, 3000);
     };
 
     dots.forEach((dot, index) => dot.addEventListener("click", () => {
