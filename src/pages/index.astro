@@ -3,20 +3,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PlantMark from "../components/PlantMark.astro";
 import { SITE_ASSETS } from "../config";
 
-const title = "LivingNotes — Give unfinished ideas time to grow";
-const description = "A calm place to set thoughts aside, let them develop, and return before they fade. Coming soon for iPhone and iPad.";
+const title = "LivingNotes — Keep what matters alive";
+const description = "A living garden for ideas, study notes, references, and discoveries worth returning to.";
 
 const collectionNames = [
-  "Lorem", "Ipsum", "Dolor", "Sit amet", "Consectetur", "Adipiscing",
-  "Elit", "Sed do", "Eiusmod", "Tempor", "Incididunt", "Labore",
-  "Dolore", "Magna", "Aliqua", "Enim", "Minim", "Veniam",
-  "Quis", "Nostrud", "Exercitation", "Ullamco", "Laboris", "Nisi",
-  "Aliquip", "Commodo", "Consequat", "Duis", "Aute", "Irure",
-  "Reprehenderit", "Voluptate", "Velit", "Esse", "Cillum", "Fugiat",
-  "Nulla", "Pariatur", "Excepteur", "Sint", "Occaecat", "Cupidatat",
-  "Proident", "Sunt", "Culpa", "Officia", "Deserunt", "Mollit",
-  "Anim", "Laborum", "Curabitur", "Viverra", "Metus", "Integer",
-  "Tincidunt", "Semper",
+  "Ideas", "Reading Notes", "Drafts", "Questions", "Research", "Recipes",
+  "Projects", "Observations", "Someday", "Worth Keeping", "Private", "Inspiration",
+  "Book Notes", "Experiments", "Loose Threads", "Field Notes", "Essays", "References",
+  "Conversations", "Things I Learned", "Possibilities", "Fragments", "Sketches", "Plans",
+  "Journal", "Places", "People", "Films", "Music", "Poems",
+  "Design", "Work in Progress", "Good Questions", "Small Discoveries", "Arguments", "Sources",
+  "Dreams", "Watch Later", "To Revisit", "Unfinished", "Connections", "Curiosities",
+  "Project Seeds", "Daily Notes", "Study", "Travel", "Home", "Garden",
+  "Writing", "Collected Lines", "Open Questions", "Notes to Self", "Future", "Remember",
+  "New Directions", "Quiet Thoughts",
 ];
 
 const plantCombinations = [0, 2, 3, 4, 5].flatMap((foliage) =>
@@ -89,19 +89,18 @@ const plantFieldNames = Array.from(
 
 const decaySteps = [
   {
-    title: "Lorem ipsum dolor",
-    description: "Consectetur adipiscing elit sed do eiusmod.",
+    title: "Notice what has gone quiet",
+    description: "A plant gently changes when its collection has not been visited for a while.",
     image: SITE_ASSETS.decayWorkflow[0],
   },
   {
-    title: "Sit amet consectetur",
-    description: "Tempor incididunt ut labore et dolore magna.",
-    note: "Ut enim ad minim veniam quis nostrud exercitation.",
+    title: "Return when you are ready",
+    description: "Open the collection and press and hold the card to clear the decay.",
     image: SITE_ASSETS.decayWorkflow[1],
   },
   {
-    title: "Adipiscing elit sed",
-    description: "Duis aute irure dolor in reprehenderit voluptate.",
+    title: "Bring it back to health",
+    description: "Clearing the decay restores the card and brings its plant back to health.",
     image: SITE_ASSETS.decayWorkflow[2],
   },
 ];
@@ -120,9 +119,8 @@ const decaySteps = [
   <main id="top">
     <section class="hero shell" aria-labelledby="hero-title">
       <div class="hero-copy reveal">
-        <p class="eyebrow"><span></span> Lorem ipsum dolor sit</p>
-        <h1 id="hero-title">Lorem ipsum dolor<br /><em>sit amet consectetur.</em></h1>
-        <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h1 id="hero-title">Keep what matters<br /><em>alive.</em></h1>
+        <p class="lede">Gather ideas, study notes, references, and discoveries in a garden that grows familiar over time.</p>
         <div class="hero-actions">
           <p class="launch-badge"><small>In development</small>Coming soon</p>
         </div>
@@ -158,8 +156,8 @@ const decaySteps = [
     <section class="incubation" aria-labelledby="incubation-title">
       <div class="shell incubation-inner">
         <div class="incubation-copy">
-          <h2 id="incubation-title">Lorem ipsum dolor?</h2>
-          <p class="incubation-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <h2 id="incubation-title">A little attention keeps things alive.</h2>
+          <p class="incubation-intro">The garden quietly reflects where your attention has been. When a plant changes, it is simply an invitation to revisit the collection and spend a moment with what is there.</p>
         </div>
 
         <div class="feature-decay" aria-label="Decay workflow">
@@ -183,23 +181,20 @@ const decaySteps = [
                   <figcaption class="workflow-callout">
                     <strong>{step.title}</strong>
                     <span>{step.description}</span>
-                    {step.note && <small>{step.note}</small>}
                   </figcaption>
-                  {index === 1 && <p class="workflow-collection-callout">Lorem ipsum dolor sit amet.</p>}
                 </figure>
               </li>
             ))}
           </ol>
-          <p class="decay-outro">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
 
         <article class="feature-chapter feature-cards" aria-labelledby="feature-cards-title">
           <div class="feature-copy">
             <p class="feature-number">02</p>
-            <h3 id="feature-cards-title">Lorem ipsum,<br />dolor sit amet.</h3>
+            <h3 id="feature-cards-title">A place for each<br /><em>thought to live.</em></h3>
             <div class="feature-prose">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p>Each card can hold an idea, a question, a useful detail, or something you are still working through.</p>
+              <p>Add to it as your understanding grows, or return simply to keep it familiar.</p>
             </div>
           </div>
 
@@ -218,10 +213,10 @@ const decaySteps = [
 
           <div class="feature-copy">
             <p class="feature-number">03</p>
-            <h3 id="feature-garden-title">Duis aute,<br />irure dolor.</h3>
+            <h3 id="feature-garden-title">A garden you<br /><em>come to know.</em></h3>
             <div class="feature-prose">
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>Every collection grows into a distinct plant, giving ideas, subjects, projects, and references a place you can recognize at a glance.</p>
+              <p>As the garden becomes familiar, returning to a collection feels natural—and each visit helps you reconnect with what is there.</p>
             </div>
           </div>
         </article>
@@ -230,9 +225,9 @@ const decaySteps = [
 
     <section class="product-section shell" id="inside" aria-labelledby="inside-title">
       <div class="section-heading">
-        <p class="eyebrow"><span></span> Lorem ipsum dolor sit</p>
-        <h2 id="inside-title">Consectetur adipiscing,<br />elit sed do.</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p class="eyebrow"><span></span> What matters, gathered together</p>
+        <h2 id="inside-title">A familiar place<br /><em>for what you keep.</em></h2>
+        <p>Ideas, lessons, research, recipes, projects, and reflections can live alongside one another, each with a place you will recognize when you return.</p>
       </div>
 
       <div class="plant-field-window" role="img" aria-label="An expansive grid of LivingNotes plants continuing beyond the visible area">
@@ -270,9 +265,9 @@ const decaySteps = [
 
     <section class="closing shell" aria-labelledby="closing-title">
       <div class="closing-mark" aria-hidden="true"><PlantMark size={82} /></div>
-      <p class="eyebrow centered"><span></span> Lorem ipsum dolor <span></span></p>
-      <h2 id="closing-title">Ut enim ad minim<br />veniam quis nostrud.</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="eyebrow centered"><span></span> Worth returning to <span></span></p>
+      <h2 id="closing-title">Keep your thoughts<br /><em>growing with you.</em></h2>
+      <p>LivingNotes is coming soon to iPhone, iPad, and Mac.</p>
       <p class="launch-badge launch-badge-light"><small>In development</small>Coming soon</p>
     </section>
   </main>
@@ -2125,6 +2120,49 @@ const decaySteps = [
     .workflow-step-3 .workflow-shot > img {
       width: 160px;
     }
+  }
+
+  /* Keep each workflow step in a simple top-to-bottom reading order. */
+  .workflow-shot {
+    display: flex;
+    min-height: 0;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .workflow-step-label {
+    position: static;
+    order: -2;
+    margin: 0 0 18px;
+    transform: none;
+  }
+
+  .workflow-shot > img,
+  .hold-animation,
+  .workflow-step-1 .workflow-shot > img,
+  .workflow-step-2 .hold-animation,
+  .workflow-step-3 .workflow-shot > img {
+    order: -1;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .workflow-callout,
+  .workflow-step-1 .workflow-callout,
+  .workflow-step-2 .workflow-callout,
+  .workflow-step-3 .workflow-callout {
+    position: static;
+    width: min(280px, 90%);
+    margin: 20px 0 0;
+    text-align: center;
+    transform: none;
+  }
+
+  .workflow-collection-callout {
+    position: static;
+    width: min(280px, 90%);
+    margin: 8px 0 0;
+    text-align: center;
   }
 
   @media (prefers-reduced-motion: reduce) {
