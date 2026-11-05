@@ -3,8 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PlantMark from "../components/PlantMark.astro";
 import { SITE_ASSETS } from "../config";
 
-const title = "LivingNotes — Keep what matters alive";
-const description = "A living garden for ideas, study notes, references, and discoveries worth returning to.";
+const title = "LivingNotes — Keep useful thoughts close";
+const description = "Collect ideas, study notes, references, and anything else you’ll want to come back to.";
 
 const collectionNames = [
   "Ideas", "Reading Notes", "Drafts", "Questions", "Research", "Recipes",
@@ -89,18 +89,18 @@ const plantFieldNames = Array.from(
 
 const decaySteps = [
   {
-    title: "Notice what has gone quiet",
-    description: "A plant gently changes when its collection has not been visited for a while.",
+    title: "See what you haven’t opened",
+    description: "Plants change when their collections have been quiet for a while.",
     image: SITE_ASSETS.decayWorkflow[0],
   },
   {
-    title: "Return when you are ready",
-    description: "Open the collection and press and hold the card to clear the decay.",
+    title: "Clear the decay",
+    description: "Open the collection and press and hold the card.",
     image: SITE_ASSETS.decayWorkflow[1],
   },
   {
-    title: "Bring it back to health",
-    description: "Clearing the decay restores the card and brings its plant back to health.",
+    title: "Back to health",
+    description: "Clearing the decay restores the card and its plant.",
     image: SITE_ASSETS.decayWorkflow[2],
   },
 ];
@@ -119,8 +119,8 @@ const decaySteps = [
   <main id="top">
     <section class="hero shell" aria-labelledby="hero-title">
       <div class="hero-copy reveal">
-        <h1 id="hero-title">Keep what matters<br /><em>alive.</em></h1>
-        <p class="lede">Gather ideas, study notes, references, and discoveries in a garden that grows familiar over time.</p>
+        <h1 id="hero-title">Keep useful thoughts<br /><em>close.</em></h1>
+        <p class="lede">Collect ideas, study notes, references, and anything else you’ll want to come back to.</p>
         <div class="hero-actions">
           <p class="launch-badge"><small>In development</small>Coming soon</p>
         </div>
@@ -156,8 +156,8 @@ const decaySteps = [
     <section class="incubation" aria-labelledby="incubation-title">
       <div class="shell incubation-inner">
         <div class="incubation-copy">
-          <h2 id="incubation-title">A little attention keeps things alive.</h2>
-          <p class="incubation-intro">The garden quietly reflects where your attention has been. When a plant changes, it is simply an invitation to revisit the collection and spend a moment with what is there.</p>
+          <h2 id="incubation-title">A simple reason to come back.</h2>
+          <p class="incubation-intro">When you haven’t opened a collection for a while, its plant begins to change. Revisit it, clear the decay, and the plant returns to health.</p>
         </div>
 
         <div class="feature-decay" aria-label="Decay workflow">
@@ -191,10 +191,10 @@ const decaySteps = [
         <article class="feature-chapter feature-cards" aria-labelledby="feature-cards-title">
           <div class="feature-copy">
             <p class="feature-number">02</p>
-            <h3 id="feature-cards-title">A place for each<br /><em>thought to live.</em></h3>
+            <h3 id="feature-cards-title">Keep the small things<br /><em>worth remembering.</em></h3>
             <div class="feature-prose">
-              <p>Each card can hold an idea, a question, a useful detail, or something you are still working through.</p>
-              <p>Add to it as your understanding grows, or return simply to keep it familiar.</p>
+              <p>A card can hold an idea, definition, question, quotation, or useful detail.</p>
+              <p>Add more when you need to, or simply return when you want to see it again.</p>
             </div>
           </div>
 
@@ -213,10 +213,10 @@ const decaySteps = [
 
           <div class="feature-copy">
             <p class="feature-number">03</p>
-            <h3 id="feature-garden-title">A garden you<br /><em>come to know.</em></h3>
+            <h3 id="feature-garden-title">Find collections<br /><em>at a glance.</em></h3>
             <div class="feature-prose">
-              <p>Every collection grows into a distinct plant, giving ideas, subjects, projects, and references a place you can recognize at a glance.</p>
-              <p>As the garden becomes familiar, returning to a collection feels natural—and each visit helps you reconnect with what is there.</p>
+              <p>Every collection has its own plant, making subjects, projects, and references easier to recognize.</p>
+              <p>As the layout becomes familiar, you spend less time searching and more time with what you saved.</p>
             </div>
           </div>
         </article>
@@ -225,9 +225,9 @@ const decaySteps = [
 
     <section class="product-section shell" id="inside" aria-labelledby="inside-title">
       <div class="section-heading">
-        <p class="eyebrow"><span></span> What matters, gathered together</p>
+        <p class="eyebrow"><span></span> Notes for every part of life</p>
         <h2 id="inside-title">A familiar place<br /><em>for what you keep.</em></h2>
-        <p>Ideas, lessons, research, recipes, projects, and reflections can live alongside one another, each with a place you will recognize when you return.</p>
+        <p>Keep lessons, research, recipes, projects, lists, and ideas together without making them all feel the same.</p>
       </div>
 
       <div class="plant-field-window" role="img" aria-label="An expansive grid of LivingNotes plants continuing beyond the visible area">
@@ -266,7 +266,7 @@ const decaySteps = [
     <section class="closing shell" aria-labelledby="closing-title">
       <div class="closing-mark" aria-hidden="true"><PlantMark size={82} /></div>
       <p class="eyebrow centered"><span></span> Worth returning to <span></span></p>
-      <h2 id="closing-title">Keep your thoughts<br /><em>growing with you.</em></h2>
+      <h2 id="closing-title">Make your notes<br /><em>worth coming back to.</em></h2>
       <p>LivingNotes is coming soon to iPhone, iPad, and Mac.</p>
       <p class="launch-badge launch-badge-light"><small>In development</small>Coming soon</p>
     </section>
