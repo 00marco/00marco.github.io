@@ -90,17 +90,17 @@ const plantFieldNames = Array.from(
 const decaySteps = [
   {
     title: "See what you haven’t opened",
-    description: "Plants change when their collections have been quiet for a while.",
+    description: "Plants change when their collections have been quiet for a while",
     image: SITE_ASSETS.decayWorkflow[0],
   },
   {
     title: "Clear the decay",
-    description: "Open the collection and press and hold the card.",
+    description: "Open the collection and press and hold the card",
     image: SITE_ASSETS.decayWorkflow[1],
   },
   {
     title: "Back to health",
-    description: "Clearing the decay restores the card and its plant.",
+    description: "Clearing the decay restores the card and its plant",
     image: SITE_ASSETS.decayWorkflow[2],
   },
 ];
@@ -119,8 +119,8 @@ const decaySteps = [
   <main id="top">
     <section class="hero shell" aria-labelledby="hero-title">
       <div class="hero-copy reveal">
-        <h1 id="hero-title">Keep useful thoughts<br /><em>close.</em></h1>
-        <p class="lede">Collect ideas, study notes, references, and anything else you’ll want to come back to.</p>
+        <h1 id="hero-title">Keep useful thoughts<br /><em>close</em></h1>
+        <p class="lede">Collect ideas, study notes, references, and anything else you’ll want to come back to</p>
         <div class="hero-actions">
           <p class="launch-badge"><small>In development</small>Coming soon</p>
         </div>
@@ -156,7 +156,7 @@ const decaySteps = [
     <section class="incubation" aria-labelledby="incubation-title">
       <div class="shell incubation-inner">
         <div class="incubation-copy">
-          <h2 id="incubation-title">A simple reason to come back.</h2>
+          <h2 id="incubation-title">A simple reason to come back</h2>
           <p class="incubation-intro">When you haven’t opened a collection for a while, its plant begins to change. Revisit it, clear the decay, and the plant returns to health.</p>
         </div>
 
@@ -191,10 +191,10 @@ const decaySteps = [
         <article class="feature-chapter feature-cards" aria-labelledby="feature-cards-title">
           <div class="feature-copy">
             <p class="feature-number">02</p>
-            <h3 id="feature-cards-title">Keep the small things<br /><em>worth remembering.</em></h3>
+            <h3 id="feature-cards-title">Keep the small things<br /><em>worth remembering</em></h3>
             <div class="feature-prose">
-              <p>A card can hold an idea, definition, question, quotation, or useful detail.</p>
-              <p>Add more when you need to, or simply return when you want to see it again.</p>
+              <p>Each card gives you up to 200 characters for an idea, definition, question, quotation, or useful detail. Add another card whenever you need more room.</p>
+              <p>Keeping each card short makes the whole collection easier to scan and less overwhelming to return to.</p>
             </div>
           </div>
 
@@ -213,7 +213,7 @@ const decaySteps = [
 
           <div class="feature-copy">
             <p class="feature-number">03</p>
-            <h3 id="feature-garden-title">Find collections<br /><em>at a glance.</em></h3>
+            <h3 id="feature-garden-title">Find collections<br /><em>at a glance</em></h3>
             <div class="feature-prose">
               <p>Every collection has its own plant, making subjects, projects, and references easier to recognize.</p>
               <p>As the layout becomes familiar, you spend less time searching and more time with what you saved.</p>
@@ -225,9 +225,9 @@ const decaySteps = [
 
     <section class="product-section shell" id="inside" aria-labelledby="inside-title">
       <div class="section-heading">
-        <p class="eyebrow"><span></span> Notes for every part of life</p>
-        <h2 id="inside-title">A familiar place<br /><em>for what you keep.</em></h2>
-        <p>Keep lessons, research, recipes, projects, lists, and ideas together without making them all feel the same.</p>
+        <h2 id="inside-title">Make your notes<br /><em>worth coming back to</em></h2>
+        <p class="section-description">LivingNotes is coming soon to iPhone, iPad, and Mac</p>
+        <p class="launch-badge launch-badge-light"><small>In development</small>Coming soon</p>
       </div>
 
       <div class="plant-field-window" role="img" aria-label="An expansive grid of LivingNotes plants continuing beyond the visible area">
@@ -263,13 +263,6 @@ const decaySteps = [
       </div>
     </section>
 
-    <section class="closing shell" aria-labelledby="closing-title">
-      <div class="closing-mark" aria-hidden="true"><PlantMark size={82} /></div>
-      <p class="eyebrow centered"><span></span> Worth returning to <span></span></p>
-      <h2 id="closing-title">Make your notes<br /><em>worth coming back to.</em></h2>
-      <p>LivingNotes is coming soon to iPhone, iPad, and Mac.</p>
-      <p class="launch-badge launch-badge-light"><small>In development</small>Coming soon</p>
-    </section>
   </main>
 
   <footer class="site-footer shell">
@@ -1314,12 +1307,16 @@ const decaySteps = [
     line-height: 1;
   }
 
-  .section-heading > p:last-child {
+  .section-heading > .section-description {
     max-width: 480px;
     margin: 24px 0 0;
     color: var(--ink-muted);
     font-size: clamp(0.96rem, 1.25vw, 1.08rem);
     line-height: 1.55;
+  }
+
+  .section-heading .launch-badge {
+    margin-top: 30px;
   }
 
   .plant-field-window {
@@ -1583,7 +1580,7 @@ const decaySteps = [
       margin: 0;
     }
 
-    .section-heading > p:last-child {
+    .section-heading > .section-description {
       margin: 22px 0 0;
     }
 
@@ -1960,7 +1957,7 @@ const decaySteps = [
     }
 
     .feature-prose p,
-    .section-heading > p:last-child,
+    .section-heading > .section-description,
     .closing > p:not(.eyebrow) {
       font-size: 0.9rem;
       line-height: 1.5;
@@ -1971,7 +1968,7 @@ const decaySteps = [
     }
 
     .feature-copy,
-    .section-heading > p:last-child {
+    .section-heading > .section-description {
       margin-right: auto;
       margin-left: auto;
     }
