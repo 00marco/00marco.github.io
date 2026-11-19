@@ -2,6 +2,30 @@
 
 The static marketing site for LivingNotes, built with [Astro](https://astro.build/) and deployed to [00marco.github.io](https://00marco.github.io/) through GitHub Pages.
 
+Product and design decisions should follow the founder guidance in [LivingNotes product principles](docs/product-principles.md).
+
+## TODO
+
+### Introduce the living-garden mechanics
+
+Revise the homepage so changing game mechanics do not feel like undisclosed penalties. Establish that LivingNotes is an evolving system without listing or spoiling every possible effect. Individual effects should remain discoveries, but the page should promise that conditions can be helpful or demanding, that each one is explained when encountered, and that stored writing is never deleted.
+
+Replace **A simple reason to come back** with this broader framing:
+
+> **Your notes don’t stand still**
+>
+> Every note lives in a changing garden. As your plants grow, rest, and age, they may develop different conditions—some helpful, some demanding a little attention.
+>
+> Discover new effects as your garden evolves. LivingNotes always explains what an effect does, and your writing is never deleted.
+
+Keep the existing caterpillar workflow as one concrete example beneath that introduction:
+
+> **One condition you may encounter**
+>
+> Leave a collection quiet for a while and its plant may begin to decay. Return to it, clear the condition, and bring the plant back to health.
+
+Use **conditions**, **effects**, and **discoveries** in public copy rather than the more game-like term **status effects**. The intended promise is: the system is disclosed, individual effects remain surprising, consequences are explained in context, and writing remains safe.
+
 ## Local development
 
 This project requires Node.js 24 or newer. npm is included with Node.js.

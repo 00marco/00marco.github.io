@@ -3,8 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PlantMark from "../components/PlantMark.astro";
 import { SITE_ASSETS } from "../config";
 
-const title = "LivingNotes — Keep useful thoughts close";
-const description = "Collect ideas, study notes, references, and anything else you’ll want to come back to.";
+const title = "LivingNotes | Big topics take time";
+const description = "Some subjects need more than one sitting to make sense. LivingNotes helps you keep track of the pieces as you return to them.";
 
 const collectionNames = [
   "Ideas", "Reading Notes", "Drafts", "Questions", "Research", "Recipes",
@@ -87,24 +87,6 @@ const plantFieldNames = Array.from(
   (_, index) => collectionNames[index % collectionNames.length],
 );
 
-const decaySteps = [
-  {
-    title: "See what you haven’t opened",
-    description: "Plants change when their collections have been quiet for a while",
-    image: SITE_ASSETS.decayWorkflow[0],
-  },
-  {
-    title: "Clear the decay",
-    description: "Open the collection and press and hold the card",
-    image: SITE_ASSETS.decayWorkflow[1],
-  },
-  {
-    title: "Back to health",
-    description: "Clearing the decay restores the card and its plant",
-    image: SITE_ASSETS.decayWorkflow[2],
-  },
-];
-
 ---
 
 <BaseLayout {title} {description}>
@@ -117,116 +99,115 @@ const decaySteps = [
   </header>
 
   <main id="top">
-    <section class="hero shell" aria-labelledby="hero-title">
+    <section class="hero hero-centered shell" aria-labelledby="hero-title">
+      <div class="halo halo-one" aria-hidden="true"></div>
+      <div class="halo halo-two" aria-hidden="true"></div>
       <div class="hero-copy reveal">
-        <h1 id="hero-title">Keep useful thoughts<br /><span>close</span></h1>
-        <p class="lede">Collect ideas, study notes, references, and anything else you’ll want to come back to</p>
+        <h1 id="hero-title">Big topics<br /><span>take time.</span></h1>
+        <p class="lede">Saving notes helps. But with so many things competing for your attention, it’s easy to get lost in it all.</p>
+        <p class="lede hero-answer">LivingNotes helps you find your way back.</p>
         <div class="hero-actions">
           <p class="launch-badge"><small>In development</small>Coming soon</p>
         </div>
       </div>
+    </section>
 
-      <div class="hero-visual reveal">
-        <div class="halo halo-one"></div>
-        <div class="halo halo-two"></div>
-        <div class="hero-carousel" data-hero-carousel aria-roledescription="carousel" aria-label="LivingNotes across devices">
-          <div class="hero-carousel-viewport">
-            <figure class="hero-slide hero-phone-shot is-active" data-hero-slide aria-label="1 of 3: iPhone" aria-hidden="false">
-              <img src={SITE_ASSETS.heroPhone.src} alt={SITE_ASSETS.heroPhone.alt} width={SITE_ASSETS.heroPhone.width} height={SITE_ASSETS.heroPhone.height} fetchpriority="high" />
-            </figure>
-            <figure class="hero-slide hero-ipad-shot" data-hero-slide aria-label="2 of 3: iPad" aria-hidden="true">
-              <img src={SITE_ASSETS.heroTablet.src} alt={SITE_ASSETS.heroTablet.alt} width={SITE_ASSETS.heroTablet.width} height={SITE_ASSETS.heroTablet.height} fetchpriority="high" />
-            </figure>
-            <figure class="hero-slide hero-mac-shot" data-hero-slide aria-label="3 of 3: Mac" aria-hidden="true">
-              <div class="macbook-screen">
-                <img src={SITE_ASSETS.heroMac.src} alt={SITE_ASSETS.heroMac.alt} width={SITE_ASSETS.heroMac.width} height={SITE_ASSETS.heroMac.height} fetchpriority="high" />
+    <section class="incubation decay-story" aria-label="How Decay works">
+      <div class="shell incubation-inner">
+        <article class="feature-chapter decay-intro-section" id="inside" aria-labelledby="decay-title">
+          <div class="decay-story-copy">
+            <h2 id="decay-title">
+              <span>Introducing </span><span class="decay-word" aria-label="Decay">
+                <span class="decay-letter" data-decay-letter>D</span>
+                <span class="decay-letter" data-decay-letter>e</span>
+                <span class="decay-letter" data-decay-letter>c</span>
+                <span class="decay-letter" data-decay-letter>a</span>
+                <span class="decay-letter" data-decay-letter>y</span>
+              </span>
+            </h2>
+            <p>It’s easy to ignore saved notes you’ve already read.</p>
+            <p>To jog your memory, Decay does something every few days: it makes a few characters look corrupted without changing the writing underneath.</p>
+            <p class="decay-choice">Repair it, rewrite it, read it again, or decide it no longer needs your attention.</p>
+          </div>
+
+          <figure class="motion-demo ipad-decay-demo" data-motion-demo>
+            <div class="feature-ipad ipad-recording-frame">
+              <div class="motion-demo-frame ipad-recording-screen">
+                <img
+                  src={SITE_ASSETS.decayTabletAnimation.poster}
+                  data-motion-image
+                  data-animated-src={SITE_ASSETS.decayTabletAnimation.src}
+                  data-poster-src={SITE_ASSETS.decayTabletAnimation.poster}
+                  alt={SITE_ASSETS.decayTabletAnimation.alt}
+                  width={SITE_ASSETS.decayTabletAnimation.width}
+                  height={SITE_ASSETS.decayTabletAnimation.height}
+                  loading="lazy"
+                />
+                <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="true" aria-label="Play iPad Decay animation">
+                  <span aria-hidden="true" data-motion-icon>▶</span>
+                </button>
+              </div>
+            </div>
+            <figcaption>Decay doesn’t actually damage your note; it just gets you to look.</figcaption>
+          </figure>
+        </article>
+
+        <article class="feature-chapter repair-section" aria-labelledby="repair-title">
+          <figure class="single-decay-demo" aria-label="An iPhone demonstrating press-and-hold Decay repair">
+            <div class="hold-animation">
+              <img class="hold-phone" src={SITE_ASSETS.decayWorkflow[1].src} alt={SITE_ASSETS.decayWorkflow[1].alt} width={SITE_ASSETS.decayWorkflow[1].width} height={SITE_ASSETS.decayWorkflow[1].height} loading="lazy" />
+              <img class="hold-repaired" src={SITE_ASSETS.decayWorkflow[2].src} alt="" width={SITE_ASSETS.decayWorkflow[2].width} height={SITE_ASSETS.decayWorkflow[2].height} loading="lazy" aria-hidden="true" />
+              <svg class="hold-progress" viewBox="0 0 1179 2556" preserveAspectRatio="none" aria-hidden="true">
+                <rect pathLength="1" x="117" y="380" width="944" height="1967" rx="60" />
+              </svg>
+              <img class="hold-hand" src="/images/pointing-hand.png" alt="" width="512" height="512" loading="lazy" aria-hidden="true" />
+            </div>
+            <figcaption>It might even be a nice alternative to scrolling.</figcaption>
+          </figure>
+
+          <div class="decay-story-copy">
+            <h2 id="repair-title">Okay, now what?</h2>
+            <p>Fixing Decay is easy. Press and hold a changed character and wait.</p>
+            <p>No quiz. No review session. Just a simple fidget-toy mechanic that eases you back into an old note.</p>
+          </div>
+        </article>
+
+        <article class="feature-chapter attention-section" aria-labelledby="attention-title">
+          <div class="decay-story-copy">
+            <h2 id="attention-title">But how do you keep track of all that?</h2>
+            <p>Not with a hundred notifications.</p>
+            <p>As Decay accumulates, plants gradually turn orange. Many small changes become one signal you can check when you’re ready.</p>
+          </div>
+
+          <figure class="motion-demo mac-decay-demo" data-motion-demo>
+            <div class="feature-mac mac-recording-frame">
+              <div class="macbook-screen motion-demo-frame mac-recording-screen">
+                <img
+                  src={SITE_ASSETS.decayGardenAnimation.poster}
+                  data-motion-image
+                  data-animated-src={SITE_ASSETS.decayGardenAnimation.src}
+                  data-poster-src={SITE_ASSETS.decayGardenAnimation.poster}
+                  alt={SITE_ASSETS.decayGardenAnimation.alt}
+                  width={SITE_ASSETS.decayGardenAnimation.width}
+                  height={SITE_ASSETS.decayGardenAnimation.height}
+                  loading="lazy"
+                />
+                <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="true" aria-label="Play plant yellowing animation">
+                  <span aria-hidden="true" data-motion-icon>▶</span>
+                </button>
               </div>
               <span class="macbook-base" aria-hidden="true"></span>
-            </figure>
-          </div>
-          <div class="hero-carousel-controls" aria-label="Choose a device">
-            <button type="button" class="hero-carousel-dot is-active" data-hero-dot aria-label="Show LivingNotes on iPhone" aria-current="true"><span>iPhone</span></button>
-            <button type="button" class="hero-carousel-dot" data-hero-dot aria-label="Show LivingNotes on iPad"><span>iPad</span></button>
-            <button type="button" class="hero-carousel-dot" data-hero-dot aria-label="Show LivingNotes on Mac"><span>Mac</span></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="incubation" aria-labelledby="incubation-title">
-      <div class="shell incubation-inner">
-        <div class="incubation-copy">
-          <h2 id="incubation-title">A simple reason to come back</h2>
-          <p class="incubation-intro">When you haven’t opened a collection for a while, its plant begins to change. Revisit it, clear the decay, and the plant returns to health.</p>
-        </div>
-
-        <div class="feature-decay" aria-label="Decay workflow">
-          <ol class="workflow-steps">
-            {decaySteps.map((step, index) => (
-              <li class={`workflow-step workflow-step-${index + 1}`}>
-                <figure class="workflow-shot">
-                  {index === 1 ? (
-                    <div class="hold-animation">
-                      <img class="hold-phone" src={step.image.src} alt={step.image.alt} width={step.image.width} height={step.image.height} loading="lazy" />
-                      <img class="hold-repaired" src={SITE_ASSETS.decayWorkflow[2].src} alt="" width={SITE_ASSETS.decayWorkflow[2].width} height={SITE_ASSETS.decayWorkflow[2].height} loading="lazy" aria-hidden="true" />
-                      <svg class="hold-progress" viewBox="0 0 1179 2556" preserveAspectRatio="none" aria-hidden="true">
-                        <rect pathLength="1" x="117" y="380" width="944" height="1967" rx="60" />
-                      </svg>
-                      <img class="hold-hand" src="/images/pointing-hand.png" alt="" width="512" height="512" loading="lazy" aria-hidden="true" />
-                    </div>
-                  ) : (
-                    <img src={step.image.src} alt={step.image.alt} width={step.image.width} height={step.image.height} loading="lazy" />
-                  )}
-                  <p class="workflow-step-label">Step {index + 1}</p>
-                  <figcaption class="workflow-callout">
-                    <strong>{step.title}</strong>
-                    <span>{step.description}</span>
-                  </figcaption>
-                </figure>
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        <article class="feature-chapter feature-cards" aria-labelledby="feature-cards-title">
-          <div class="feature-copy">
-            <p class="feature-number">02</p>
-            <h3 id="feature-cards-title">Small things<br /><span>worth keeping</span></h3>
-            <div class="feature-prose">
-              <p>Each card gives you up to 200 characters for an idea, definition, question, quotation, or useful detail. Add another card whenever you need more room.</p>
-              <p>Keeping each card short makes the whole collection easier to scan and less overwhelming to return to.</p>
             </div>
-          </div>
-
-          <figure class="feature-device feature-ipad">
-            <img src={SITE_ASSETS.featureCards.src} alt={SITE_ASSETS.featureCards.alt} width={SITE_ASSETS.featureCards.width} height={SITE_ASSETS.featureCards.height} loading="lazy" />
           </figure>
-        </article>
-
-        <article class="feature-chapter feature-garden" aria-labelledby="feature-garden-title">
-          <figure class="feature-device feature-mac">
-            <div class="macbook-screen">
-              <img src={SITE_ASSETS.featureGarden.src} alt={SITE_ASSETS.featureGarden.alt} width={SITE_ASSETS.featureGarden.width} height={SITE_ASSETS.featureGarden.height} loading="lazy" />
-            </div>
-            <span class="macbook-base" aria-hidden="true"></span>
-          </figure>
-
-          <div class="feature-copy">
-            <p class="feature-number">03</p>
-            <h3 id="feature-garden-title">Find collections<br /><span>at a glance</span></h3>
-            <div class="feature-prose">
-              <p>Every collection has its own plant, making subjects, projects, and references easier to recognize.</p>
-              <p>As the layout becomes familiar, you spend less time searching and more time with what you saved.</p>
-            </div>
-          </div>
         </article>
       </div>
     </section>
 
-    <section class="product-section shell" id="inside" aria-labelledby="inside-title">
+    <section class="product-section shell" aria-labelledby="inside-title">
       <div class="section-heading">
-        <h2 id="inside-title">Make your notes<br /><span>worth coming back to</span></h2>
-        <p class="section-description">LivingNotes is coming soon to iPhone, iPad, and Mac</p>
+        <h2 id="inside-title">Your notes. Your devices. No subscription.</h2>
+        <p class="section-description">LivingNotes uses your devices and private iCloud account instead of storing your writing on our servers.</p>
+        <p class="section-description section-description-followup">That keeps the app private, technically modest, and sustainable as a one-time purchase.</p>
         <p class="launch-badge launch-badge-light"><small>In development</small>Coming soon</p>
       </div>
 
@@ -329,6 +310,119 @@ const decaySteps = [
     document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
     start();
   });
+
+  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const motionDemos = Array.from(document.querySelectorAll<HTMLElement>("[data-motion-demo]"));
+
+  motionDemos.forEach((demo) => {
+    const image = demo.querySelector<HTMLImageElement>("[data-motion-image]");
+    const toggle = demo.querySelector<HTMLButtonElement>("[data-motion-toggle]");
+    const icon = toggle?.querySelector<HTMLElement>("[data-motion-icon]");
+    if (!image || !toggle || !icon) return;
+
+    const animatedSource = image.dataset.animatedSrc;
+    const posterSource = image.dataset.posterSrc;
+    if (!animatedSource || !posterSource) return;
+
+    let isVisible = false;
+    let userPaused = false;
+
+    const showPoster = () => {
+      if (!image.src.endsWith(posterSource)) image.src = posterSource;
+      toggle.setAttribute("aria-pressed", "true");
+      toggle.setAttribute("aria-label", toggle.getAttribute("aria-label")?.replace("Pause", "Play") ?? "Play animation");
+      icon.textContent = "▶";
+    };
+
+    const play = () => {
+      if (motionPreference.matches || userPaused || !isVisible || document.hidden) {
+        showPoster();
+        return;
+      }
+      if (!image.src.endsWith(animatedSource)) image.src = animatedSource;
+      toggle.setAttribute("aria-pressed", "false");
+      toggle.setAttribute("aria-label", toggle.getAttribute("aria-label")?.replace("Play", "Pause") ?? "Pause animation");
+      icon.textContent = "Ⅱ";
+    };
+
+    toggle.addEventListener("click", () => {
+      const isPlaying = image.src.endsWith(animatedSource);
+      userPaused = isPlaying;
+      if (isPlaying) showPoster();
+      else {
+        userPaused = false;
+        play();
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      isVisible = entries.some((entry) => entry.isIntersecting);
+      if (isVisible) play();
+      else showPoster();
+    }, { rootMargin: "240px 0px" });
+
+    observer.observe(demo);
+    motionPreference.addEventListener("change", () => motionPreference.matches ? showPoster() : play());
+    document.addEventListener("visibilitychange", () => document.hidden ? showPoster() : play());
+  });
+
+  const decayLetters = Array.from(document.querySelectorAll<HTMLElement>("[data-decay-letter]"));
+  const decayMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const decayStyles = [
+    { family: "ui-rounded, system-ui, sans-serif", weight: "800", style: "normal" },
+    { family: "Georgia, ui-serif, serif", weight: "700", style: "italic" },
+    { family: "ui-monospace, SFMono-Regular, Menlo, monospace", weight: "750", style: "normal" },
+    { family: "'Snell Roundhand', 'Segoe Script', cursive", weight: "700", style: "normal" },
+    { family: "'Noteworthy', 'Comic Sans MS', cursive", weight: "700", style: "normal" },
+    { family: "Impact, Haettenschweiler, sans-serif", weight: "400", style: "normal" },
+  ];
+  const decayTimers = new Map<HTMLElement, number>();
+
+  const applyDecayStyle = (letter: HTMLElement, styleIndex: number) => {
+    const style = decayStyles[styleIndex % decayStyles.length];
+    letter.style.fontFamily = style.family;
+    letter.style.fontWeight = style.weight;
+    letter.style.fontStyle = style.style;
+    letter.style.setProperty("--decay-turn", `${((styleIndex * 3) % 7) - 3}deg`);
+  };
+
+  const stopDecayLetters = () => {
+    decayTimers.forEach((timer) => window.clearTimeout(timer));
+    decayTimers.clear();
+  };
+
+  const scheduleDecayLetter = (letter: HTMLElement, initialDelay = 0) => {
+    let styleIndex = Math.floor(Math.random() * decayStyles.length);
+    applyDecayStyle(letter, styleIndex);
+
+    const advance = () => {
+      if (decayMotion.matches || document.hidden) return;
+      let nextIndex = styleIndex;
+      while (nextIndex === styleIndex) nextIndex = Math.floor(Math.random() * decayStyles.length);
+      styleIndex = nextIndex;
+      applyDecayStyle(letter, styleIndex);
+      const timer = window.setTimeout(advance, 450 + Math.random() * 850);
+      decayTimers.set(letter, timer);
+    };
+
+    const timer = window.setTimeout(advance, initialDelay);
+    decayTimers.set(letter, timer);
+  };
+
+  const startDecayLetters = () => {
+    stopDecayLetters();
+    decayLetters.forEach((letter, index) => {
+      applyDecayStyle(letter, index);
+      if (!decayMotion.matches) scheduleDecayLetter(letter, 120 + Math.random() * 700);
+    });
+  };
+
+  decayMotion.addEventListener("change", startDecayLetters);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopDecayLetters();
+    else startDecayLetters();
+  });
+  startDecayLetters();
 </script>
 
 <style>
@@ -444,6 +538,12 @@ const decaySteps = [
     color: var(--ink-muted);
     font-size: clamp(1rem, 1.35vw, 1.18rem);
     line-height: 1.7;
+  }
+
+  .hero-copy .hero-answer {
+    margin-top: 12px;
+    color: var(--ink);
+    font-weight: 650;
   }
 
   .hero-actions {
@@ -1110,10 +1210,10 @@ const decaySteps = [
     height: auto;
     opacity: 0;
     transform-origin: 96.3% 35.2%;
-    animation: press-caterpillar 6.96s ease-in-out infinite;
+    animation: press-decayed-character 6.96s ease-in-out infinite;
   }
 
-  @keyframes press-caterpillar {
+  @keyframes press-decayed-character {
     0%, 31.3% { opacity: 0; transform: translateX(-220%) scale(1); }
     39.8% { opacity: 1; transform: translateX(0) scale(1); }
     43.7% { opacity: 1; transform: translateX(0) scale(0.926); }
@@ -2162,6 +2262,618 @@ const decaySteps = [
     text-align: center;
   }
 
+  /* Revised landing-page narrative, using the existing visual system and assets. */
+  .hero-centered {
+    position: relative;
+    display: flex;
+    min-height: 510px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-block: 64px 78px;
+    isolation: isolate;
+  }
+
+  .hero-centered .hero-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .hero-centered .hero-copy h1,
+  .hero-centered .hero-copy .lede {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-centered .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-centered .halo {
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-centered .halo-one {
+    width: 490px;
+    height: 490px;
+    transform: translate(-25%, -8%);
+  }
+
+  .hero-centered .halo-two {
+    width: 360px;
+    height: 360px;
+    transform: translate(34%, 19%);
+  }
+
+  .incubation-inner {
+    padding-top: 0;
+  }
+
+  .structure-section .feature-copy h2 {
+    margin: 0;
+    color: #262a27;
+    font-family: var(--serif);
+    font-size: clamp(2.35rem, 4vw, 4.2rem);
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+  }
+
+  .decay-section {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.9fr) minmax(280px, 1.1fr);
+    gap: clamp(48px, 7vw, 96px);
+    align-items: center;
+    color: #fff;
+    background: #242629;
+    border-top: 0;
+    box-shadow: 0 0 0 100vmax #242629;
+    clip-path: inset(0 -100vmax);
+  }
+
+  .decay-section .incubation-copy {
+    max-width: 560px;
+    margin: 0;
+    text-align: left;
+  }
+
+  .decay-section h2 {
+    margin-inline: 0;
+    color: #fff;
+  }
+
+  .decay-section .incubation-intro {
+    margin-left: 0;
+    color: rgba(255, 255, 255, 0.74);
+  }
+
+  .decay-explainer {
+    margin-top: 14px;
+  }
+
+  .decay-disclaimer {
+    max-width: 540px;
+    margin: 20px 0 0;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .devices-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+    gap: clamp(48px, 7vw, 96px);
+    align-items: center;
+  }
+
+  .devices-section .incubation-copy {
+    order: 2;
+    max-width: 520px;
+    margin: 0;
+    text-align: left;
+  }
+
+  .devices-section .incubation-copy h2 {
+    margin-inline: 0;
+  }
+
+  .devices-section .incubation-intro {
+    margin-left: 0;
+  }
+
+  .device-prompt {
+    margin: 22px 0 0;
+    color: #3f5e45;
+    font-size: clamp(1rem, 1.25vw, 1.1rem);
+    line-height: 1.45;
+  }
+
+  .device-prompt + .device-prompt {
+    margin-top: 10px;
+  }
+
+  .decay-word {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.055em;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  .decay-letter {
+    display: inline-grid;
+    width: 0.7em;
+    height: 1em;
+    box-sizing: border-box;
+    padding: 0;
+    place-items: center;
+    color: #fff;
+    background: #c75c1a;
+    border-radius: 0.1em;
+    line-height: 1;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(69, 25, 4, 0.28);
+    box-shadow: 0 5px 16px rgba(102, 37, 6, 0.24);
+    transform: rotate(var(--decay-turn, 0));
+    transition: color 180ms ease, font-family 180ms ease, transform 180ms ease;
+  }
+
+  .decay-choice {
+    max-width: 650px;
+    margin: 24px 0 0;
+    color: #fff;
+    font-size: clamp(1rem, 1.35vw, 1.16rem);
+    font-weight: 650;
+    line-height: 1.5;
+  }
+
+  .single-decay-demo {
+    display: grid;
+    min-height: 500px;
+    margin: 0;
+    place-items: center;
+  }
+
+  .single-decay-demo .hold-animation {
+    width: min(260px, 66vw);
+    margin-inline: auto;
+  }
+
+  .devices-supporting {
+    margin-top: 8px;
+  }
+
+  .device-carousel-wrap {
+    order: 1;
+    width: min(760px, 100%);
+    margin: 0 auto;
+  }
+
+  .device-carousel-wrap .hero-carousel-viewport {
+    height: 510px;
+  }
+
+  .device-carousel-wrap .hero-carousel-dot::before {
+    background: rgba(70, 94, 75, 0.25);
+  }
+
+  .device-carousel-wrap .hero-carousel-dot:is(:hover, :focus-visible)::before {
+    background: rgba(70, 94, 75, 0.62);
+  }
+
+  .device-carousel-wrap .hero-carousel-dot.is-active::before {
+    background: #55745b;
+  }
+
+  @media (max-width: 900px) {
+    .hero-centered {
+      min-height: 480px;
+      padding-block: 56px 68px;
+    }
+
+    .structure-section {
+      grid-template-columns: 1fr;
+      gap: 44px;
+    }
+
+    .structure-section .feature-copy {
+      order: 1;
+      max-width: 680px;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .structure-section .feature-device {
+      order: 2;
+      width: min(680px, 100%);
+      margin-inline: auto;
+      justify-self: center;
+    }
+
+    .decay-section,
+    .devices-section {
+      grid-template-columns: 1fr;
+      gap: 38px;
+    }
+
+    .decay-section .incubation-copy,
+    .devices-section .incubation-copy {
+      order: 1;
+      max-width: 680px;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .decay-section h2,
+    .decay-section .incubation-intro,
+    .devices-section .incubation-copy h2,
+    .devices-section .incubation-intro {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .decay-choice {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .decay-disclaimer {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .single-decay-demo,
+    .device-carousel-wrap {
+      order: 2;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .hero-centered {
+      min-height: 430px;
+      padding-block: 52px 58px;
+    }
+
+    .hero-centered .halo-one {
+      width: 350px;
+      height: 350px;
+      transform: translate(-24%, -12%);
+    }
+
+    .hero-centered .halo-two {
+      width: 270px;
+      height: 270px;
+      transform: translate(31%, 22%);
+    }
+
+    .structure-section .feature-copy h2 {
+      font-size: clamp(2rem, 8.5vw, 2.65rem);
+      line-height: 1.02;
+    }
+
+    .single-decay-demo {
+      min-height: 460px;
+      margin-top: 28px;
+    }
+
+    .single-decay-demo .hold-animation {
+      width: min(210px, 54vw);
+    }
+
+    .device-carousel-wrap .hero-carousel-viewport {
+      height: 390px;
+    }
+  }
+
+  /* Three-device Decay story. */
+  .decay-story .incubation-inner {
+    padding-top: 0;
+  }
+
+  .decay-story .feature-chapter {
+    display: grid;
+    gap: clamp(42px, 7vw, 94px);
+    min-height: min(760px, 90vh);
+    align-items: center;
+    border-top: 0;
+  }
+
+  .decay-story-copy {
+    max-width: 520px;
+  }
+
+  .decay-story-copy h2 {
+    max-width: 680px;
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(2.35rem, 4vw, 4.2rem);
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+  }
+
+  .decay-story-copy > p {
+    margin: 24px 0 0;
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    line-height: 1.58;
+  }
+
+  .decay-intro-section {
+    grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+    color: #fff;
+    background: #c75c1a;
+    box-shadow: 0 0 0 100vmax #c75c1a;
+    clip-path: inset(0 -100vmax);
+  }
+
+  .decay-intro-section .decay-story-copy h2,
+  .decay-intro-section .decay-choice {
+    color: #fff;
+  }
+
+  .decay-intro-section .decay-story-copy > p:not(.decay-choice) {
+    color: rgba(255, 255, 255, 0.84);
+  }
+
+  .decay-intro-section .decay-letter {
+    background: rgba(36, 38, 41, 0.3);
+    box-shadow: 0 5px 16px rgba(69, 25, 4, 0.18);
+  }
+
+  .motion-demo {
+    min-width: 0;
+    margin: 0;
+  }
+
+  .motion-demo-frame {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: clamp(18px, 2.5vw, 30px);
+    box-shadow: 0 28px 58px rgba(65, 24, 4, 0.28);
+  }
+
+  .motion-demo-frame > img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .ipad-recording-frame {
+    overflow: visible;
+    padding: 12px;
+  }
+
+  .ipad-recording-screen {
+    position: relative;
+    isolation: isolate;
+    aspect-ratio: 944 / 581;
+    overflow: hidden;
+    background: #050606;
+    border: 0;
+    border-radius: 14px;
+    box-shadow: none;
+  }
+
+  .ipad-recording-screen > img {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    transform: translateX(-50%) translateY(calc(-10.75% + 10px));
+  }
+
+  .ipad-recording-screen::after,
+  .mac-recording-screen::after {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    border: 2px solid rgba(0, 0, 0, 0.72);
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    content: "";
+    pointer-events: none;
+  }
+
+  .mac-recording-frame {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px 12px 8px;
+  }
+
+  .mac-recording-screen {
+    position: relative;
+    isolation: isolate;
+    aspect-ratio: 930 / 676;
+    overflow: hidden;
+    background: #050606;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .mac-recording-frame .mac-recording-screen > img {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    transform: translateX(-50%) translateY(-65px);
+  }
+
+  .motion-toggle {
+    position: absolute;
+    z-index: 3;
+    right: 14px;
+    bottom: 14px;
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    padding: 0;
+    color: #fff;
+    background: rgba(20, 22, 23, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    font: inherit;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+  }
+
+  .motion-toggle:is(:hover, :focus-visible) {
+    background: rgba(20, 22, 23, 0.94);
+    outline: 2px solid rgba(255, 255, 255, 0.86);
+    outline-offset: 3px;
+  }
+
+  .motion-toggle span {
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+
+  .ipad-decay-demo figcaption {
+    margin: 14px 4px 0;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.45;
+    text-align: center;
+  }
+
+  .repair-section .single-decay-demo {
+    align-content: center;
+    gap: 18px;
+  }
+
+  .repair-section .single-decay-demo figcaption {
+    max-width: 320px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.45;
+    text-align: center;
+  }
+
+  .attention-section {
+    grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+  }
+
+  .attention-section .motion-demo {
+    order: 2;
+  }
+
+  .attention-section .decay-story-copy {
+    order: 1;
+  }
+
+  .attention-section .decay-story-copy > p {
+    color: #606761;
+  }
+
+  .mac-motion-frame {
+    border-color: rgba(38, 48, 42, 0.16);
+    border-radius: 18px;
+    box-shadow: 0 28px 60px rgba(40, 48, 42, 0.18);
+  }
+
+  .repair-section {
+    grid-template-columns: minmax(280px, 0.82fr) minmax(260px, 1.18fr);
+    color: #fff;
+    background: #242629;
+    box-shadow: 0 0 0 100vmax #242629;
+    clip-path: inset(0 -100vmax);
+  }
+
+  .repair-section .decay-story-copy h2 {
+    color: #fff;
+  }
+
+  .repair-section .decay-story-copy > p {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .repair-section .single-decay-demo {
+    min-height: 560px;
+  }
+
+  .repair-section .single-decay-demo .hold-animation {
+    width: min(270px, 66vw);
+  }
+
+  @media (max-width: 900px) {
+    .decay-story .feature-chapter {
+      grid-template-columns: 1fr;
+      min-height: 0;
+      gap: 38px;
+      padding-block: clamp(72px, 12vw, 100px);
+    }
+
+    .decay-story-copy {
+      order: 1;
+      max-width: 680px;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .motion-demo,
+    .attention-section .motion-demo,
+    .single-decay-demo {
+      order: 2;
+      width: min(760px, 100%);
+      margin-inline: auto;
+    }
+
+    .attention-section .decay-story-copy {
+      order: 1;
+    }
+
+    .decay-intro-section .decay-choice {
+      margin-inline: auto;
+    }
+
+    .repair-section .single-decay-demo {
+      min-height: 500px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .decay-story-copy h2 {
+      font-size: clamp(2rem, 9.5vw, 2.8rem);
+    }
+
+    .motion-demo-frame {
+      border-radius: 16px;
+    }
+
+    .motion-toggle {
+      right: 10px;
+      bottom: 10px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .repair-section .single-decay-demo {
+      min-height: 440px;
+      margin-top: 0;
+    }
+
+    .repair-section .single-decay-demo .hold-animation {
+      width: min(205px, 56vw);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .hero-slide {
       transition: none;
@@ -2176,6 +2888,18 @@ const decaySteps = [
     .hold-repaired {
       opacity: 1;
       animation: none;
+    }
+
+    .decay-letter {
+      transition: none;
+    }
+
+    .motion-toggle {
+      display: none;
+    }
+
+    .repair-section .hold-repaired {
+      opacity: 0;
     }
   }
 </style>

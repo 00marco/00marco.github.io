@@ -29,7 +29,21 @@ export const SITE_ASSETS = {
     src: "/images/livingnotes-decay-cutout.png",
     width: 917,
     height: 1715,
-    alt: "LivingNotes on iPhone showing a caterpillar obscuring a vowel in a note and instructions to press and hold it for two seconds",
+    alt: "LivingNotes on iPhone showing a decayed vowel ready to be repaired",
+  },
+  decayTabletAnimation: {
+    src: "/images/livingnotes-decay-ipad.gif",
+    poster: "/images/livingnotes-decay-ipad-poster.png",
+    width: 944,
+    height: 651,
+    alt: "LivingNotes on iPad showing a center note accumulate fifteen dispersed decayed characters while two surrounding notes accumulate four each",
+  },
+  decayGardenAnimation: {
+    src: "/images/livingnotes-decay-garden-mac.gif",
+    poster: "/images/livingnotes-decay-garden-mac-poster.png",
+    width: 930,
+    height: 746,
+    alt: "LivingNotes showing three full sections of plants changing color outward from the center before reversing back to green",
   },
   decayWorkflow: [
     {
@@ -42,7 +56,7 @@ export const SITE_ASSETS = {
       src: "/images/livingnotes-decay-decayed-iphone.png",
       width: 1179,
       height: 2556,
-      alt: "A LivingNotes card with a caterpillar covering a vowel and instructions to press and hold it",
+      alt: "A LivingNotes card with a burnt-orange decayed vowel and instructions to press and hold it",
     },
     {
       src: "/images/livingnotes-decay-clean-iphone.png",
