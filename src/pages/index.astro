@@ -153,6 +153,13 @@ const plantFieldNames = Array.from(
         </article>
 
         <article class="feature-chapter repair-section" aria-labelledby="repair-title">
+          <div class="decay-story-copy">
+            <h2 id="repair-title">How does it work?</h2>
+            <p>Fixing Decay is easy. Press and hold a changed character and wait.</p>
+            <p>No quiz. No review session. Just a simple fidget-toy mechanic that eases you back into an old note.</p>
+            <p>From there, it’s up to you. You know what your notes mean and what they still need better than anyone else.</p>
+          </div>
+
           <figure class="single-decay-demo" aria-label="An iPhone demonstrating press-and-hold Decay repair">
             <div class="hold-animation">
               <img class="hold-phone" src={SITE_ASSETS.decayWorkflow[1].src} alt={SITE_ASSETS.decayWorkflow[1].alt} width={SITE_ASSETS.decayWorkflow[1].width} height={SITE_ASSETS.decayWorkflow[1].height} loading="lazy" />
@@ -164,20 +171,14 @@ const plantFieldNames = Array.from(
             </div>
             <figcaption>It might even be a nice alternative to scrolling.</figcaption>
           </figure>
-
-          <div class="decay-story-copy">
-            <h2 id="repair-title">Okay, now what?</h2>
-            <p>Fixing Decay is easy. Press and hold a changed character and wait.</p>
-            <p>No quiz. No review session. Just a simple fidget-toy mechanic that eases you back into an old note.</p>
-          </div>
         </article>
 
         <article class="feature-chapter attention-section" aria-labelledby="attention-title">
           <div class="decay-story-copy">
-            <h2 id="attention-title">But how do you keep track of all that?</h2>
-            <p>Not with a hundred notifications.</p>
-            <p>Sections and plants keep larger collections readable.</p>
-            <p>As Decay accumulates, plants gradually turn orange. Looking over a few plants beats opening an inbox full of alerts.</p>
+            <h2 id="attention-title">Designed for Large Collections</h2>
+            <p>Working through several big topics naturally creates a large collection. How do you keep it manageable as it grows?</p>
+            <p>There are plenty of ways to approach that problem. LivingNotes builds its entire system around one familiar metaphor: gardening.</p>
+            <p>Sections organize plants, plants hold related notes, and their changing appearance shows at a glance which topics receive your attention—and which ones you haven’t revisited in a while.</p>
           </div>
 
           <figure class="motion-demo mac-decay-demo" data-motion-demo>
@@ -2618,11 +2619,23 @@ const plantFieldNames = Array.from(
   }
 
   .decay-intro-section {
-    grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
     color: #fff;
     background: #c75c1a;
     box-shadow: 0 0 0 100vmax #c75c1a;
     clip-path: inset(0 -100vmax);
+  }
+
+  .decay-intro-section .motion-demo,
+  .attention-section .motion-demo {
+    order: 1;
+  }
+
+  .decay-intro-section .decay-story-copy,
+  .attention-section .decay-story-copy {
+    order: 2;
+    margin-left: auto;
+    text-align: right;
   }
 
   .decay-intro-section .decay-story-copy h2,
@@ -2789,15 +2802,7 @@ const plantFieldNames = Array.from(
   }
 
   .attention-section {
-    grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
-  }
-
-  .attention-section .motion-demo {
-    order: 2;
-  }
-
-  .attention-section .decay-story-copy {
-    order: 1;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
   }
 
   .attention-section .decay-story-copy > p {
@@ -2816,6 +2821,14 @@ const plantFieldNames = Array.from(
     background: #242629;
     box-shadow: 0 0 0 100vmax #242629;
     clip-path: inset(0 -100vmax);
+  }
+
+  .repair-section .decay-story-copy {
+    order: 1;
+  }
+
+  .repair-section .single-decay-demo {
+    order: 2;
   }
 
   .repair-section .decay-story-copy h2 {
@@ -2850,6 +2863,7 @@ const plantFieldNames = Array.from(
     }
 
     .motion-demo,
+    .decay-intro-section .motion-demo,
     .attention-section .motion-demo,
     .single-decay-demo {
       order: 2;
@@ -2857,7 +2871,14 @@ const plantFieldNames = Array.from(
       margin-inline: auto;
     }
 
+    .decay-intro-section .decay-story-copy,
     .attention-section .decay-story-copy {
+      order: 1;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .repair-section .decay-story-copy {
       order: 1;
     }
 

@@ -237,6 +237,16 @@ The garden represents a subject that remains alive across time. Plants, growth s
 
 The garden is a recognizable personal landscape, not a whiteboard or literal diagram of the user's knowledge.
 
+LivingNotes deliberately bends the design of the entire app around this familiar metaphor. Sections organize plants, plants hold related notes, growth reflects continued investment, and changing leaves summarize accumulated decay. These relationships create one visual language that can carry unfamiliar mechanics across the product.
+
+The metaphor is functional onboarding. People already understand that plants grow, change, and sometimes need attention, so a novel return mechanic can feel legible before every rule is explained. LivingNotes should use that familiarity to reduce the need for dashboards, terminology, alerts, and lengthy tutorials.
+
+The durable principle is:
+
+> Use a familiar metaphor to make unfamiliar behavior understandable.
+
+The metaphor must remain internally consistent and must not misrepresent what happens to the user's data. A changing plant may invite attention, but it must never imply that the underlying writing has been deleted, corrupted, or placed in danger.
+
 It also acts as an attention-compression layer. A plant can summarize the condition of many notes, allowing hundreds of possible note-level alerts to become a readable overview. Yellowing should communicate that something may deserve another look without implying an emergency or demanding immediate action.
 
 ### Verbal style
@@ -322,6 +332,9 @@ Decay must be described accurately as a display effect: it changes how certain c
 - Do not use urgency, guilt, obligation, streak loss, or failure language.
 - Do not turn note-level changes into a stream of alerts, badges, or repeated push notifications.
 - Present yellowing as compressed information and an invitation to inspect, not as an alarm.
+- Treat the garden as a consistent interface language rather than decorative theming.
+- Prefer mechanics that can be explained through the existing garden metaphor before introducing unrelated visual systems or specialist terminology.
+- Do not force the metaphor where it obscures behavior, compromises accessibility, or makes writing appear unsafe.
 - Do not present experimental mechanics as permanent or scientifically proven solutions.
 - Do not imply that users must repair every note or clear every condition.
 - Do not frame repair as a quiz, recall test, obligation, or proof of understanding.
